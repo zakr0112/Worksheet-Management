@@ -1,0 +1,16 @@
+[19/10/2025]
+
+Created a new multi-device application delphi
+Renamed the form to "MainForm" and saved the unit as "uMainForm.pas"
+Saved the application as "WorkSheets.dproj"
+Removed 32 bit target platforms from the project group (top right window)
+Enabled "Skia" from projects window (top right window)
+
+Added a data module, named it "DM" and saved it as "uDataModule"
+In project options, made sure that "DM" is the top form in the autocreate forms list
+Used "File > Use Unit" in the MainForm to make it aware of the DataModule, and added it as interface in the code section
+
+On the DataModule, I've added a FDConnection Object, renamed it to "FDlocal" and associated GUI error dialog and wait cursor
+I've set the driver ID to be SQLite, leaving open mode as CreateUTF8, changed locking mode to normal (in case of multithread), and changed the DateTimeFormat to use Delphi DateTime as it covers both formats of MySQL and SQLite. Additonaly added auto_vacuum=FULL to the SqLiteAdvanced, and the StringFormat to Unicode. 
+
+Within the DataModule, I've setup the connection information for the database dependant on the platform, primarily windows for my testing usecase, I've defined the "homeFolder" where the DB will be placed into, and if it doesn't exist on the target device then it creates the folder where it will be stored. Additionally if the database doesn't exist, then it will create it using the database definition const, and open it, and then finally it will execute my const for "SQL_CUSTOMERS", which defines the DB table definition for customers.
