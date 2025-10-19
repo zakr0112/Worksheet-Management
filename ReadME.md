@@ -1,14 +1,14 @@
-\# Worksheet Management App
+# Worksheet Management App
 
 
 
-\## Worklog
+## Worklog
 
-\+ \[Worklog](https://github.com/zakr0112/Worksheet-Management/tree/main/WorkLog)
++ [Worklog](https://github.com/zakr0112/Worksheet-Management/tree/main/WorkLog)
 
 
 
-\## About 
+## About 
 
 This is the GitHub repo that hosts the code for my delphi worksheet management application!
 
