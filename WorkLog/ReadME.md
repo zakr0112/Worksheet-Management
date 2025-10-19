@@ -1,82 +1,34 @@
-\# WorkSheetManager
+\# WorkLog
+
+\[19/10/2025]
 
 
 
-🗓️ \*\*WorkLog\*\*  
+Created a new multi-device application delphi
 
-📅 Date: 19/10/2025
+Renamed the form to "MainForm" and saved the unit as "uMainForm.pas"
 
+Saved the application as "WorkSheets.dproj"
 
+Removed 32 bit target platforms from the project group (top right window)
 
-\## Project Setup
-
-
-
-\- Created a new \*\*multi-device Delphi application\*\*.
-
-\- Renamed the main form to `MainForm` and saved the unit as `uMainForm.pas`.
-
-\- Saved the application project as `WorkSheets.dproj`.
-
-\- Removed \*\*32-bit target platforms\*\* from the project group.
-
-\- Enabled \*\*Skia graphics engine\*\* via the Projects window.
+Enabled "Skia" from projects window (top right window)
 
 
 
-\## Data Module Configuration
+Added a data module, named it "DM" and saved it as "uDataModule"
+
+In project options, made sure that "DM" is the top form in the autocreate forms list
+
+Used "File > Use Unit" in the MainForm to make it aware of the DataModule, and added it as interface in the code section
 
 
 
-\- Added a \*\*DataModule\*\*, named it `DM`, and saved it as `uDataModule.pas`.
+On the DataModule, I've added a FDConnection Object, renamed it to "FDlocal" and associated GUI error dialog and wait cursor
 
-\- In Project Options, set `DM` as the \*\*top form\*\* in the AutoCreate list.
-
-\- Used `File > Use Unit` in `MainForm` to link the DataModule and added it to the interface section.
+I've set the driver ID to be SQLite, leaving open mode as CreateUTF8, changed locking mode to normal (in case of multithread), and changed the DateTimeFormat to use Delphi DateTime as it covers both formats of MySQL and SQLite. Additonaly added auto\_vacuum=FULL to the SqLiteAdvanced, and the StringFormat to Unicode. 
 
 
 
-\## FDConnection Setup
-
-
-
-\- Added a `TFDConnection` component to the DataModule and renamed it to `FDlocal`.
-
-\- Enabled GUI error dialog and wait cursor for better user feedback.
-
-\- Configured the connection for \*\*SQLite\*\* with the following settings:
-
-&nbsp; - `DriverID`: `SQLite`
-
-&nbsp; - `OpenMode`: `CreateUTF8`
-
-&nbsp; - `LockingMode`: `Normal` (for multithreaded access)
-
-&nbsp; - `DateTimeFormat`: `Delphi DateTime` (compatible with MySQL and SQLite)
-
-&nbsp; - `SQLiteAdvanced`: `auto\_vacuum=FULL`
-
-&nbsp; - `StringFormat`: `Unicode`
-
-
-
-\## Platform-Specific Database Initialization
-
-
-
-\- Defined a `homeFolder` path for storing the database, depending on the platform (primarily Windows for testing).
-
-\- If the folder doesn't exist, it is created automatically.
-
-\- If the database file is missing:
-
-&nbsp; - It is created using a predefined constant for the database schema.
-
-&nbsp; - The connection is opened.
-
-&nbsp; - The `SQL\_CUSTOMERS` constant is executed to define the `customers` table.
-
-
-
-
+Within the DataModule, I've setup the connection information for the database dependant on the platform, primarily windows for my testing usecase, I've defined the "homeFolder" where the DB will be placed into, and if it doesn't exist on the target device then it creates the folder where it will be stored. Additionally if the database doesn't exist, then it will create it using the database definition const, and open it, and then finally it will execute my const for "SQL\_CUSTOMERS", which defines the DB table definition for customers.
 
