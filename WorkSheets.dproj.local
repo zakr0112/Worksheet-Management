@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025/10/19 16:50:59.128,=G:\RAD\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/10/19 16:56:55.552,G:\RAD\Projects\WorkSheetManager\uMainForm.fmx=G:\RAD\Projects\Unit1.fmx</Transaction>
+    <Transaction>2025/10/19 16:56:55.552,G:\RAD\Projects\WorkSheetManager\uMainForm.pas=G:\RAD\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/10/19 16:57:23.737,G:\RAD\Projects\WorkSheetManager\WorkSheets.dproj=G:\RAD\Projects\Project1.dproj</Transaction>
+    <Transaction>2025/10/19 16:59:59.404,=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+    <Transaction>2025/10/19 17:01:14.347,G:\RAD\Projects\WorkSheetManager\uDataModule.dfm=G:\RAD\Projects\WorkSheetManager\Unit1.dfm</Transaction>
+    <Transaction>2025/10/19 17:01:14.347,G:\RAD\Projects\WorkSheetManager\uDataModule.pas=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+    <Transaction>2025/10/19 18:05:48.707,=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+    <Transaction>2025/10/19 18:06:32.836,G:\RAD\Projects\WorkSheetManager\uCustomerClass.pas=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+  </Transactions>
+  <ActiveMobileDevice>   <NoProfile Android="R3CWB03MW6T" Android64="R3CWB03MW6T"/>
+  </ActiveMobileDevice>
+</BorlandProject>

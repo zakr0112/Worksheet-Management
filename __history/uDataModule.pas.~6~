@@ -1,0 +1,75 @@
+unit uDataModule;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, System.IOUtils,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite,
+  FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
+  FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait, FireDAC.FMXUI.Error,
+  FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client;
+
+type
+  TDM = class(TDataModule)
+    FDlocal: TFDConnection;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    FDGUIxErrorDialog1: TFDGUIxErrorDialog;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+const
+  DB_NAME: string = 'WorksheetV1.sdb';
+  SQL_CUSTOMERS: string =
+    '''
+      CREATE TABLE "customers" (
+      "custid"	INTEGER NOT NULL UNIQUE,
+      "custname"	TEXT NOT NULL UNIQUE,
+      "custaddress"	TEXT,
+      "custpostcode"	TEXT,
+      "custtelephone"	TEXT,
+      "custemail"	TEXT,
+      "custcontact"	TEXT,
+      "lastchanged"	DATETIME NOT NULL,
+      PRIMARY KEY("custid" AUTOINCREMENT));
+    ''';
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+var
+  homeFolder, dbfile: string;
+begin
+  // Setup connection information depending on platform (e.g. android, windows)
+
+  homeFolder := TPath.GetHomePath;
+  {$IF DEFINED(MSWINDOWS)}
+    homeFolder := TPath.Combine(homeFolder, 'WorkSheets');
+    if not DirectoryExists(homeFolder) then
+      CreateDir(homeFolder);
+  {$ENDIF}
+  dbfile := TPath.Combine(homeFolder, DB_NAME);
+  FDlocal.Params.Database := dbfile;
+  if not FilEexists(dbfile) then
+  begin
+    // If it doesn't exist, we will create the database using our database definition constants
+    FDlocal.Open;
+    FDLocal.ExecSQL(SQL_CUSTOMERS);
+    FDLocal.Close;
+  end;
+
+end;
+
+end.

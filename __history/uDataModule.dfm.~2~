@@ -1,0 +1,21 @@
+object DM: TDM
+  Height = 750
+  Width = 1000
+  PixelsPerInch = 120
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'DriverID=SQLite')
+    Left = 144
+    Top = 208
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'FMX'
+    Left = 552
+    Top = 64
+  end
+  object FDGUIxErrorDialog1: TFDGUIxErrorDialog
+    Provider = 'FMX'
+    Left = 400
+    Top = 64
+  end
+end

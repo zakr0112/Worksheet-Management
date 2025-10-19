@@ -1,0 +1,18 @@
+program WorkSheets;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  FMX.Skia,
+  uMainForm in 'uMainForm.pas' {MainForm},
+  uDataModule in 'uDataModule.pas' {DM: TDataModule};
+
+{$R *.res}
+
+begin
+  GlobalUseSkia := True;
+  Application.Initialize;
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TMainForm, MainForm);
+  Application.Run;
+end.
