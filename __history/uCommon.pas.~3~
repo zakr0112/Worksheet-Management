@@ -1,0 +1,10 @@
+unit uCommon;
+
+interface
+
+uses
+  System.SysUtils, System.Types;
+
+implementation
+
+end.

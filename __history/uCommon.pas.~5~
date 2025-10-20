@@ -1,0 +1,13 @@
+unit uCommon;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.DialogService.Async, FMX.DialogService, FMX.Controls;
+
+  procedure ShowWarning(const AMessage: string; Sender: TControl = nil);
+
+implementation
+
+end.

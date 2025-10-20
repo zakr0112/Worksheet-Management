@@ -1,16 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2025/10/19 16:50:59.128,=G:\RAD\Projects\Unit1.pas</Transaction>
-    <Transaction>2025/10/19 16:56:55.552,G:\RAD\Projects\WorkSheetManager\uMainForm.fmx=G:\RAD\Projects\Unit1.fmx</Transaction>
-    <Transaction>2025/10/19 16:56:55.552,G:\RAD\Projects\WorkSheetManager\uMainForm.pas=G:\RAD\Projects\Unit1.pas</Transaction>
-    <Transaction>2025/10/19 16:57:23.737,G:\RAD\Projects\WorkSheetManager\WorkSheets.dproj=G:\RAD\Projects\Project1.dproj</Transaction>
-    <Transaction>2025/10/19 16:59:59.404,=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
-    <Transaction>2025/10/19 17:01:14.347,G:\RAD\Projects\WorkSheetManager\uDataModule.dfm=G:\RAD\Projects\WorkSheetManager\Unit1.dfm</Transaction>
-    <Transaction>2025/10/19 17:01:14.347,G:\RAD\Projects\WorkSheetManager\uDataModule.pas=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
-    <Transaction>2025/10/19 18:05:48.707,=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
-    <Transaction>2025/10/19 18:06:32.836,G:\RAD\Projects\WorkSheetManager\uCustomerClass.pas=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+	<Transactions>
+    <Transaction>2025/10/19 16:50:59.000.128,=G:\RAD\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/10/19 16:56:55.000.552,G:\RAD\Projects\Unit1.pas=G:\RAD\Projects\WorkSheetManager\uMainForm.pas</Transaction>
+    <Transaction>2025/10/19 16:56:55.000.552,G:\RAD\Projects\Unit1.fmx=G:\RAD\Projects\WorkSheetManager\uMainForm.fmx</Transaction>
+    <Transaction>2025/10/19 16:57:23.000.737,G:\RAD\Projects\Project1.dproj=G:\RAD\Projects\WorkSheetManager\WorkSheets.dproj</Transaction>
+    <Transaction>2025/10/19 16:59:59.000.404,=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+    <Transaction>2025/10/19 17:01:14.000.347,G:\RAD\Projects\WorkSheetManager\Unit1.pas=G:\RAD\Projects\WorkSheetManager\uDataModule.pas</Transaction>
+    <Transaction>2025/10/19 17:01:14.000.347,G:\RAD\Projects\WorkSheetManager\Unit1.dfm=G:\RAD\Projects\WorkSheetManager\uDataModule.dfm</Transaction>
+    <Transaction>2025/10/19 18:05:48.000.707,=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+    <Transaction>2025/10/19 18:06:32.000.836,G:\RAD\Projects\WorkSheetManager\Unit1.pas=G:\RAD\Projects\WorkSheetManager\uCustomerClass.pas</Transaction>
+    <Transaction>2025/10/20 14:24:24.000.000,=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+    <Transaction>2025/10/20 14:25:07.000.120,G:\RAD\Projects\WorkSheetManager\uCustomerForm.fmx=G:\RAD\Projects\WorkSheetManager\Unit1.fmx</Transaction>
+    <Transaction>2025/10/20 14:25:07.000.120,G:\RAD\Projects\WorkSheetManager\uCustomerForm.pas=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+    <Transaction>2025/10/20 16:38:56.728,=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
+    <Transaction>2025/10/20 16:39:17.961,G:\RAD\Projects\WorkSheetManager\uCommon.pas=G:\RAD\Projects\WorkSheetManager\Unit1.pas</Transaction>
   </Transactions>
-  <ActiveMobileDevice>   <NoProfile Android="R3CWB03MW6T" Android64="R3CWB03MW6T"/>
-  </ActiveMobileDevice>
+	<ActiveMobileDevice>
+		<NoProfile Android="R3CWB03MW6T" Android64=""/>
+	</ActiveMobileDevice>
 </BorlandProject>

@@ -1,0 +1,352 @@
+object CustomerForm: TCustomerForm
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 500
+  ClientWidth = 700
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object TCcustomers: TTabControl
+    Align = Client
+    Size.Width = 700.000000000000000000
+    Size.Height = 500.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 1
+    TabOrder = 1
+    TabPosition = PlatformDefault
+    Sizes = (
+      700s
+      474s
+      700s
+      474s)
+    object TIcustomerlist: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = False
+      Size.Width = 38.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'List'
+      ExplicitSize.cx = 38.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object LVcustomers: TListView
+        ItemAppearanceClassName = 'TListItemAppearance'
+        ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Size.Width = 700.000000000000000000
+        Size.Height = 474.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        ItemAppearance.HeaderHeight = 1
+        ItemAppearance.FooterHeight = 1
+        OnItemClickEx = LVcustomersItemClickEx
+        SearchVisible = True
+      end
+    end
+    object TIcustomerdetails: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = True
+      Size.Width = 56.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Details'
+      ExplicitSize.cx = 56.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object gpanCustomer: TGridPanelLayout
+        Align = Client
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 2.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Margins.Left = 4.000000000000000000
+        Margins.Top = 4.000000000000000000
+        Margins.Right = 4.000000000000000000
+        Margins.Bottom = 4.000000000000000000
+        Size.Width = 692.000000000000000000
+        Size.Height = 466.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        ColumnCollection = <
+          item
+            SizeStyle = Absolute
+            Value = 150.000000000000000000
+          end
+          item
+            Value = 100.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 64.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = Label1
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = txtCustname
+            Row = 0
+          end
+          item
+            Column = 0
+            Control = Label3
+            Row = 1
+          end
+          item
+            Column = 1
+            Control = memCustaddress
+            Row = 1
+          end
+          item
+            Column = 0
+            Control = Label5
+            Row = 2
+          end
+          item
+            Column = 1
+            Control = txtCustpostcode
+            Row = 2
+          end
+          item
+            Column = 0
+            Control = Label7
+            Row = 3
+          end
+          item
+            Column = 0
+            Control = Label10
+            Row = 4
+          end
+          item
+            Column = 0
+            Control = Label13
+            Row = 5
+          end
+          item
+            Column = 1
+            Control = txtCusttelephone
+            Row = 3
+          end
+          item
+            Column = 1
+            Control = txtCustemail
+            Row = 4
+          end
+          item
+            Column = 1
+            Control = txtCustcontact
+            Row = 5
+          end
+          item
+            Column = 1
+            Control = Layout1
+            Row = 6
+          end>
+        RowCollection = <
+          item
+            SizeStyle = Absolute
+            Value = 44.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 160.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 44.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 44.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 44.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 44.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 44.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 44.000000000000000000
+          end>
+        object Label1: TLabel
+          Anchors = []
+          Position.X = 15.000000000000000000
+          Position.Y = 13.500000000000000000
+          Text = 'Customer Name'
+          TabOrder = 5
+        end
+        object txtCustname: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 10
+          Size.Width = 474.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Label3: TLabel
+          Anchors = []
+          Position.X = 15.000000000000000000
+          Position.Y = 115.500000000000000000
+          Text = 'Address'
+          TabOrder = 4
+        end
+        object memCustaddress: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          DataDetectorTypes = []
+          Align = Client
+          Size.Width = 474.000000000000000000
+          Size.Height = 156.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 11
+          Viewport.Width = 470.000000000000000000
+          Viewport.Height = 152.000000000000000000
+        end
+        object Label5: TLabel
+          Anchors = []
+          Position.X = 15.000000000000000000
+          Position.Y = 218.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Postcode'
+          TabOrder = 3
+        end
+        object txtCustpostcode: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 9
+          Size.Width = 474.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Label7: TLabel
+          Anchors = []
+          Position.X = 15.000000000000000000
+          Position.Y = 262.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Telephone No.'
+          TabOrder = 2
+        end
+        object Label10: TLabel
+          Anchors = []
+          Position.X = 15.000000000000000000
+          Position.Y = 306.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Email Address'
+          TabOrder = 1
+        end
+        object Label13: TLabel
+          Anchors = []
+          Position.X = 15.000000000000000000
+          Position.Y = 350.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Contact Name'
+          TabOrder = 0
+        end
+        object txtCusttelephone: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 6
+          Size.Width = 474.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object txtCustemail: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 7
+          Size.Width = 474.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object txtCustcontact: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 8
+          Size.Width = 474.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Layout1: TLayout
+          Align = Client
+          Size.Width = 474.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 12
+          object spdSave: TSpeedButton
+            Align = Left
+            Size.Width = 80.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Save'
+            TextSettings.Trimming = None
+          end
+          object spdDelete: TSpeedButton
+            Align = Center
+            Text = 'Delete'
+            TextSettings.Trimming = None
+          end
+          object spdCancel: TSpeedButton
+            Align = Right
+            Position.X = 394.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Cancel'
+            TextSettings.Trimming = None
+          end
+        end
+      end
+    end
+  end
+  object qryCustomerlist: TFDQuery
+    Connection = DM.FDlocal
+    SQL.Strings = (
+      'SELECT * FROM customers ORDER BY custname')
+    Left = 408
+    Top = 144
+  end
+  object qryCustomerFetch: TFDQuery
+    Connection = DM.FDlocal
+    SQL.Strings = (
+      'SELECT * FROM customers'
+      'WHERE custid = :custid; ')
+    Left = 272
+    Top = 136
+    ParamData = <
+      item
+        Name = 'CUSTID'
+        ParamType = ptInput
+      end>
+  end
+end

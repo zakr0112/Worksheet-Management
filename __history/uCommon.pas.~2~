@@ -1,0 +1,10 @@
+unit uCommon;
+
+interface
+
+uses
+  System.s
+
+implementation
+
+end.

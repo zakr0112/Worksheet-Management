@@ -6,7 +6,9 @@ uses
   FMX.Skia,
   uMainForm in 'uMainForm.pas' {MainForm},
   uDataModule in 'uDataModule.pas' {DM: TDataModule},
-  uCustomerClass in 'uCustomerClass.pas';
+  uCustomerClass in 'uCustomerClass.pas',
+  uCustomerForm in 'uCustomerForm.pas' {CustomerForm},
+  uCommon in 'uCommon.pas';
 
 {$R *.res}
 
@@ -14,6 +16,7 @@ begin
   GlobalUseSkia := True;
   Application.Initialize;
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TCustomerForm, CustomerForm);
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.

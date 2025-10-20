@@ -10,9 +10,10 @@ object DM: TDM
       'SQLiteAdvanced=auto_vacuum=FULL'
       'StringFormat=Unicode'
       
-        'Database=G:\RAD\Projects\WorkSheetManager\DataBase\WorksheetV1.s' +
-        'db'
+        'Database=C:\Users\Mrcreeperman246\AppData\Roaming\WorkSheets\Wor' +
+        'ksheetV1.sdb'
       'DriverID=SQLite')
+    LoginPrompt = False
     Left = 144
     Top = 208
   end
