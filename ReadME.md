@@ -61,7 +61,7 @@ This application helps engineers and field staff keep track of their jobs in a s
 
      ```text
      data/jobs.db
-     ```
+    
 
 2. If `jobs.db` does **not** exist:
    - Either allow the app to create a new database on first run (if your setup supports this), **or**  
@@ -71,7 +71,7 @@ This application helps engineers and field staff keep track of their jobs in a s
 
    ```text
    uDM.pas
-   ```
+
 
 4. Check the **FireDAC** connection settings on the `TFDConnection` component:
    - Ensure it points to the correct **SQLite** file (`jobs.db`).  
@@ -79,18 +79,18 @@ This application helps engineers and field staff keep track of their jobs in a s
 
      ```text
      SQLite
-     ```
+
 
    - Verify that the database path is valid for your current target platform (Windows or Android).
 
----
+
 
 ## 3. Run the App on Windows
 
 1. In Delphi, select the **Windows 64‑bit** target platform.  
 2. Press **F9** to build and run the application.
 
----
+
 
 ## 4. Run the App on Android
 
@@ -98,7 +98,7 @@ This application helps engineers and field staff keep track of their jobs in a s
 2. In Delphi, switch the target platform to **Android**.  
 3. Press **F9** to build and deploy the app to the device/emulator.
 
----
+
 
 ## 5. Using the Application
 
@@ -109,4 +109,3 @@ Once the application is running, you can:
 3. Log **time** and **travel** entries for each job.  
 4. Record **expenses** and **spare parts** used.  
 5. Store all data directly in the local **SQLite** database (`data/jobs.db`).
-```
