@@ -1,7 +1,7 @@
 <h1 align="center">Worksheet Management Application</h1>
 
 <p align="center">
-  <img src="https://github.com/zakr0112/Worksheet-Management/blob/main/WorkLog/16%2001%202026/WorksheetOptions.png" alt="Description" width="400">
+  <img src="https://github.com/zakr0112/Worksheet-Management/blob/main/WorkLog/16%2001%202026/WorksheetOptions.png" alt="Worksheet Manager main app page" width="400">
   <br>
   <em>Worksheet Manager App</em>
 </p>
