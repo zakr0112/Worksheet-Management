@@ -32,6 +32,9 @@ type
     procedure DeleteCustomer(Customer: TCustomer);
   end;
 
+var
+  Customer: TCustomerManager;
+
 implementation
 
 { TCustomerManager }

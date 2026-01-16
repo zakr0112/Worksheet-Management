@@ -1,11 +1,179 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'Worksheet Manager'
   ClientHeight = 480
   ClientWidth = 640
+  Position = MainFormCenter
+  StyleBook = DM.StyleBook1
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
+  object TCMain: TTabControl
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 1
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      640s
+      456s
+      640s
+      456s
+      640s
+      456s)
+    object TILogin: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 59.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TILogin'
+      ExplicitSize.cx = 59.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+    end
+    object TIOptions: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 72.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TIOptions'
+      ExplicitSize.cx = 72.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object panHeaderCustList: TPanel
+        Align = MostTop
+        Size.Width = 640.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object spdHome: TSpeedButton
+          Align = MostLeft
+          Padding.Left = 4.000000000000000000
+          Padding.Top = 4.000000000000000000
+          Padding.Right = 4.000000000000000000
+          Padding.Bottom = 4.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentcirclebuttonstyle'
+          object svgHome: TSkSvg
+            Align = Client
+            Size.Width = 36.000000000000000000
+            Size.Height = 36.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="utf-8"?>'#13#10'<!-- License: PD. Made b' +
+              'y icons8: https://icons8.com/c/flat-color-icons -->'#13#10'<svg width=' +
+              '"800px" height="800px" viewBox="0 0 48 48" version="1" xmlns="ht' +
+              'tp://www.w3.org/2000/svg" enable-background="new 0 0 48 48">'#13#10'  ' +
+              '  <polygon fill="#E8EAF6" points="42,39 6,39 6,23 24,6 42,23"/>'#13 +
+              #10'    <g fill="#C5CAE9">'#13#10'        <polygon points="39,21 34,16 34' +
+              ',9 39,9"/>'#13#10'        <rect x="6" y="39" width="36" height="5"/>'#13#10 +
+              '    </g>'#13#10'    <polygon fill="#B71C1C" points="24,4.3 4,22.9 6,25' +
+              '.1 24,8.4 42,25.1 44,22.9"/>'#13#10'    <rect x="18" y="28" fill="#D84' +
+              '315" width="12" height="16"/>'#13#10'    <rect x="21" y="17" fill="#01' +
+              '579B" width="6" height="6"/>'#13#10'    <path fill="#FF8A65" d="M27.5,' +
+              '35.5c-0.3,0-0.5,0.2-0.5,0.5v2c0,0.3,0.2,0.5,0.5,0.5S28,38.3,28,3' +
+              '8v-2C28,35.7,27.8,35.5,27.5,35.5z"/>'#13#10'</svg>'
+          end
+        end
+        object lblHeader: TSkLabel
+          Align = Client
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 32.000000000000000000
+          Size.Width = 548.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style]
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claGhostwhite
+          Words = <
+            item
+              Text = 'Worksheet manager options'
+            end>
+        end
+      end
+      object btnCustomers: TButton
+        Position.X = 19.000000000000000000
+        Position.Y = 96.000000000000000000
+        Size.Width = 126.000000000000000000
+        Size.Height = 137.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Manage Customers'
+        TextSettings.WordWrap = True
+        OnClick = btnCustomersClick
+      end
+      object btnManageJobs: TButton
+        Position.X = 179.000000000000000000
+        Position.Y = 96.000000000000000000
+        Size.Width = 126.000000000000000000
+        Size.Height = 137.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Manage Jobs'
+        TextSettings.WordWrap = True
+        OnClick = btnManageJobsClick
+      end
+    end
+    object TIAdmin: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 65.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TIAdmin'
+      ExplicitSize.cx = 65.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object Button1: TButton
+        Position.X = 99.000000000000000000
+        Position.Y = 96.000000000000000000
+        Size.Width = 97.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Create DB'
+        OnClick = Button1Click
+      end
+      object SkLabel1: TSkLabel
+        Align = Client
+        Margins.Left = 16.000000000000000000
+        Margins.Right = 32.000000000000000000
+        Size.Width = 592.000000000000000000
+        Size.Height = 456.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Family, Style]
+        TextSettings.Font.Size = 20.000000000000000000
+        TextSettings.FontColor = claGhostwhite
+        Words = <
+          item
+          end>
+        object lblAdminOptions: TLabel
+          Position.X = 60.000000000000000000
+          Position.Y = 40.000000000000000000
+          Size.Width = 161.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Admin Options'
+          TabOrder = 0
+        end
+      end
+    end
+  end
 end

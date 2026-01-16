@@ -1,0 +1,3 @@
+inherited frmForm2_Windows: TfrmForm2_Windows
+  DesignerMasterStyle = 0
+end

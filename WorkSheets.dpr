@@ -4,10 +4,14 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   FMX.Skia,
-  uMainForm in 'uMainForm.pas' {MainForm},
   uDataModule in 'uDataModule.pas' {DM: TDataModule},
-  uCustomerClass in 'uCustomerClass.pas',
   uCustomerForm in 'uCustomerForm.pas' {CustomerForm},
+  uCustomerManagerClass in 'uCustomerManagerClass.pas',
+  uCommonDialogs in 'uCommonDialogs.pas',
+  uHelperTabControl in 'uHelperTabControl.pas',
+  uJobForm in 'uJobForm.pas' {JobForm},
+  uMainForm in 'uMainForm.pas' {MainForm},
+  uJobsManagerClass in 'uJobsManagerClass.pas',
   uCommon in 'uCommon.pas';
 
 {$R *.res}
@@ -16,7 +20,6 @@ begin
   GlobalUseSkia := True;
   Application.Initialize;
   Application.CreateForm(TDM, DM);
-  Application.CreateForm(TCustomerForm, CustomerForm);
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.
