@@ -1,6 +1,20 @@
-# Worksheet Management Application
+<h1 align="center">Worksheet Management Application</h1>
 
-This application helps engineers and field staff keep track of their jobs in a simple, organised way. You can record customers, work details, time spent, expenses, and spare parts all in one place. It runs on both Windows and Android and is designed to be quick to use while you’re out on the job.
+<p align="center">
+  <img src="https://github.com/zakr0112/Worksheet-Management/blob/main/WorkLog/16%2001%202026/WorksheetOptions.png" alt="Description" width="400">
+  <br>
+  <em>Worksheet Manager App</em>
+</p>
+
+<p align="center">
+
+|  |  |  |
+|:---:|:---:|:---:|
+| <img src="https://github.com/zakr0112/Worksheet-Management/blob/main/WorkLog/16%2001%202026/WorksheetJobManagement.png" width="300"> | <img src="https://github.com/zakr0112/Worksheet-Management/blob/main/WorkLog/16%2001%202026/WorksheetNewJob.png" width="300"> | <img src="https://github.com/zakr0112/Worksheet-Management/blob/main/WorkLog/16%2001%202026/WorksheetCustomers.png" width="300"> |
+| <em>Job Management</em> | <em>New Job System</em> | <em>Customer List</em> |
+
+</p>
+
 
 ---
 
