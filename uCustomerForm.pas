@@ -16,7 +16,7 @@ uses
     AndroidAPI.JNI.JavaTypes, AndroidAPI.JNI.Widget, AndroidAPI.Helpers, Posix.UNISTD,
   {$ENDIF}
   uCommonDialogs, uCustomerManagerClass, uHelperTabControl, System.Skia,
-  FMX.Skia, FMX.MultiView, uJobForm;
+  FMX.Skia, FMX.MultiView, uJobForm, FMX.Objects;
 
 type
   TCustomerForm = class(TForm)
@@ -59,6 +59,7 @@ type
     radSortAZ: TRadioButton;
     radSortZA: TRadioButton;
     tbarCustomerEdit: TToolBar;
+    imgEdit: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure LVcustomersItemClickEx(const Sender: TObject; ItemIndex: Integer;
@@ -117,7 +118,7 @@ begin
     exit;
 
   // Only continue if the right hand arrow button clicked
-  if ItemObject is TListItemAccessory then
+  if ItemObject is TListItemImage then
   begin
     custid := LVCustomers.Items.Item[itemindex].Tag;
     if not Customer.FetchCustomerByID(custid) then
@@ -159,6 +160,7 @@ begin
       LITem.Data['lvoContact'] := qryCustomerList.FieldByName('custcontact').AsString;
       LITem.Data['lvoPhone'] := qryCustomerList.FieldByName('custtelephone').AsString;
       LItem.Text := qryCustomerList.FieldByName('custname').AsString;
+      LITem.Data['lvoImgEdit'] := imgEdit.Bitmap;
       qryCustomerList.Next;
     end;
   finally

@@ -52,6 +52,7 @@ object CustomerForm: TCustomerForm
         Size.Height = 471.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
+        ItemAppearance.ItemHeight = 56
         ItemAppearance.HeaderHeight = 1
         ItemAppearance.FooterHeight = 1
         ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
@@ -63,7 +64,7 @@ object CustomerForm: TCustomerForm
             Appearance.TextShadow.Enabled = False
             Appearance.TextColor = claPaleturquoise
             Appearance.Width = 616.000000000000000000
-            Appearance.Height = 22.000000000000000000
+            Appearance.Height = 28.000000000000000000
           end
           item
             AppearanceObjectName = 'lvoContact'
@@ -72,7 +73,7 @@ object CustomerForm: TCustomerForm
             Appearance.TextAlign = Leading
             Appearance.TextShadow.Enabled = False
             Appearance.Width = 308.000000000000000000
-            Appearance.Height = 22.000000000000000000
+            Appearance.Height = 28.000000000000000000
             Appearance.VertAlign = Trailing
           end
           item
@@ -80,6 +81,7 @@ object CustomerForm: TCustomerForm
             AppearanceClassName = 'TAccessoryObjectAppearance'
             Appearance.Width = 44.000000000000000000
             Appearance.Align = Trailing
+            Appearance.Visible = False
           end
           item
             AppearanceObjectName = 'lvoPhone'
@@ -88,10 +90,19 @@ object CustomerForm: TCustomerForm
             Appearance.TextAlign = Trailing
             Appearance.TextShadow.Enabled = False
             Appearance.Width = 308.000000000000000000
-            Appearance.Height = 22.000000000000000000
+            Appearance.Height = 28.000000000000000000
             Appearance.Align = Trailing
             Appearance.VertAlign = Trailing
             Appearance.PlaceOffset.X = -60.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'lvoImgEdit'
+            AppearanceClassName = 'TImageObjectAppearance'
+            Appearance.ScalingMode = Original
+            Appearance.Width = 42.000000000000000000
+            Appearance.Height = 42.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Center
           end>
         ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
           item
@@ -500,8 +511,8 @@ object CustomerForm: TCustomerForm
           Size.Height = 156.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 12
-          Viewport.Width = 474.000000000000000000
-          Viewport.Height = 156.000000000000000000
+          Viewport.Width = 466.000000000000000000
+          Viewport.Height = 148.000000000000000000
         end
         object Label5: TLabel
           Align = Client
@@ -730,6 +741,54 @@ object CustomerForm: TCustomerForm
         end
       end
     end
+  end
+  object imgEdit: TImage
+    MultiResBitmap.Height = 32
+    MultiResBitmap.Width = 32
+    MultiResBitmap = <
+      item
+        Width = 32
+        Height = 32
+        PNG = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000000473424954080808087C086488000003DC494441545885B5974B4C5C
+          5518C77FDFB90373991979584A5AC588090F5B9B56AD56373E20421A71E58274
+          61C169D73E36A6AE58A889B2D0B068E2AA19C7546B3071D5AAA0B63ED3C634B1
+          ADE92042006D0B08623A7486193A73EF71C1A333C31DE632C07F75EF39DFFD7E
+          FF73CE77CEBD5770A9FA93B3E592F6B68BE81644F6A1A9032A97BA6F228CA3F5
+          2584B3924A9E193ABAFD969BBC5228E0C1F05CA3853AA6E090069FCBA4F35A73
+          CAD056CF60B062B82803B57DBACC371F7F1BE135C0E306ECA09440EF82EDEF1E
+          0F4AD2B5815DA168435A195F08EC29129C237DC150EAC5C1C3FEC98206EAC3F1
+          4714BA1FD8BE39F0155D17681FEA0A5CC96B605728DA6029E3972D80AF98F0D8
+          3C1E0906A6961BD4F2455D489B96323EDF4238406D4A71BAB64F97AD32502AF1
+          77807D1BC95EE515BA9F28E5F8B326FB6B0CC71881FDBEF9D89B19F78B5BCD46
+          5DA5F86A679B2984DB4C1A2A17C794B2E1F51F927C7BCD72B211F3D8BA21120C
+          4C29000B756C237080F79FF2AEC0014A14F43E63F298E34CE840CA906E00A93F
+          395B6E58DE49B7874CAEAA4DA1AE5C319BD47CDC6652E3CBDE58037FA779E5FB
+          05A747E3924EEC5492F6B6170BBFDB143E6A3339D16AB2D32F740E24999ED759
+          31FFE4DC67C8AF3DE6F34A44B7140B0FB72EAEB969C0872DAB4D8C446D8E5F4E
+          E54F22B42844D65DF9CBF0C6AA3B6B9E6BE2FCA445577F929B0B796700347BA5
+          311C9B01AADDC2ABBC8BD5DE9401CF54D282A3DF24B938ED54FDAB34AD8072B7
+          F0F252E1C473F9E10013319BBF6ED96E5356E4CFE4000FB59A3CB42DFF23A351
+          9BCE8124338935A63D470A98730BDFB3C97020AA10C6D68A300D0AC247A23687
+          FBD70D07F4A842EB4B6B851C6A2A2908EFEA4FF26F72BD7010B8AC10CEAE1574
+          F07EE7970AC0D89CCDCB03C5C1971C7CA73C66E2341077EAAFF40A7BAB9D0D8C
+          CD153BED2B8A1B66E22B15E9A889A1F9CC29E2E97B0D0C878FB6C1FF6C5EFA7A
+          4370407F1AE9A88979000C6DF558627402255906EEB9337A5BC3D5599B33E369
+          4E0DA548BA3A67F2EAB6B64ADE83A557F060B062B8291CEBD5F04666D4C5690B
+          047E9EB0F8E986C56CB16BBD5A1F0C1F314721E39BB02EA4CD52153B07F2E466
+          519C24E8F35634D03CF2AA2C641900D81D8AED482B7E05EEDB22FE04A8037F76
+          F96E2C37646DF048303025F002707D0BE0D794CDC14CF82A0300435D812BB6A5
+          1F057EDC2CB2A0CF7B6C0EFC110CFC9EDBE778C48D1CB96BC68EFADBD0FA2DF2
+          9C112E751BE15D2B1A68CEFC17C8365740BB43B11D2943BA45EB4EC0EF121C47
+          F4273A5DD2B35CEDF954D0C08A91BEE9403A51D62ED0AC91878107C8FC3D8731
+          ADF56F0ACE19BEC497918E9A989BBCFF036327787348FF7C270000000049454E
+          44AE426082}
+        FileName = 'C:\Users\Mrcreeperman246\Downloads\pen.png'
+      end>
+    Position.X = 592.000000000000000000
+    Position.Y = 144.000000000000000000
+    Visible = False
   end
   object qryCustomerlist: TFDQuery
     Connection = DM.FDlocal
