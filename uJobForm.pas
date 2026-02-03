@@ -208,6 +208,7 @@ type
     qrySavePhoto: TFDQuery;
     OpenDialog1: TOpenDialog;
     qryJobphotos: TFDQuery;
+    TakePhotoFromCameraAction1: TTakePhotoFromCameraAction;
     procedure spdHomeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure radSortJobnoHLClick(Sender: TObject);
@@ -238,6 +239,7 @@ type
     procedure ImageCameraClick(Sender: TObject);
     procedure ShowPictureClick(Sender: TObject);
     procedure DeletePictureClick(Sender: TObject);
+    procedure TakePhotoFromCameraAction1DidFinishTaking(Image: TBitmap);
   private
     procedure PopulateJobsList;
     procedure DisplayJobRecord;
@@ -602,7 +604,7 @@ begin
   imgMainphoto.Bitmap.Assign(FThumbs[CurrentImageTag].Bitmap);
   if TPlatformServices.Current.SupportsPlatformService(IFMXCameraService, Service) then
   begin
-    //actTakePhotoFromCameraAction.Execute;
+    TakePhotoFromCameraAction1.Execute;
   end
   else
     ShowMessage('This device does not support the camera service');
@@ -800,6 +802,15 @@ end;
 procedure TJobForm.spdSaveTimeClick(Sender: TObject);
 begin
   InsertTimeRecord;
+end;
+
+procedure TJobForm.TakePhotoFromCameraAction1DidFinishTaking(Image: TBitmap);
+begin
+  if not Assigned(Image) then
+    exit;
+  SavePhoto(job.Jobno, CurrentImageTag, Image);
+  FThumbs[CurrentImageTag].Bitmap.Assign(Image);
+  imgMainPhoto.Bitmap.Assign(Image);
 end;
 
 procedure TJobForm.TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);

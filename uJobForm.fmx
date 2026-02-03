@@ -2737,6 +2737,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -2792,6 +2793,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -2859,6 +2861,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -2914,6 +2917,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -2981,6 +2985,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3036,6 +3041,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3103,6 +3109,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3158,6 +3165,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3225,6 +3233,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3280,6 +3289,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3347,6 +3357,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3402,6 +3413,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3556,11 +3568,15 @@ object JobForm: TJobForm
     Top = 168
   end
   object ActionList1: TActionList
-    Left = 480
-    Top = 503
+    Left = 72
+    Top = 575
     object TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction
       Category = 'Media Library'
       OnDidFinishTaking = TakePhotoFromLibraryAction1DidFinishTaking
+    end
+    object TakePhotoFromCameraAction1: TTakePhotoFromCameraAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromCameraAction1DidFinishTaking
     end
   end
   object qrySavePhoto: TFDQuery
