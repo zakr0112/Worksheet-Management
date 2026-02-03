@@ -752,8 +752,34 @@ begin
 end;
 
 procedure TJobForm.SavePhoto(const AJobNo, APhotoNo: integer; Image: TBitMap);
-begin
+
    // Resize the image (if required), and then save to the DB
+   procedure ResizeBitmap(source: TBitMap; MaxSize: integer = 1024);
+   var
+    Ratio: single;
+    NewWidth, NewHeight: integer;
+    BitmapScaled: TBitMap;
+    begin
+
+    end;
+var
+  Stream: TMemoryStream;
+begin
+  Stream := TMemoryStream.Create;
+  try
+   Stream.Position := 0;
+   try
+    ResizeBitmap(Image);
+    Image.SaveToStream(Stream);
+   except
+    on E: Exception do
+    begin 
+      ShowException('Save photo', E);
+    end;
+  end;
+  finally
+    Stream.Free;
+  end;
 end;
 
 procedure TJobForm.AskDeleteJob();

@@ -265,6 +265,8 @@ var
   DM: TDM;
   DBName: string;
 
+procedure RequestPermissions;
+
 implementation
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
@@ -301,6 +303,15 @@ begin
   FDLocal.ExecSQL(SQL_CUSTOMERS);
   FDLocal.ExecSQL(SQL_JOBSMASTER);
   FDLocal.Close;
+end;
+
+procedure RequestPermissions;
+begin
+  // Used to simplify asking user permissions for android devices
+  DM.MobilePermissions1.Dangerous.Camera := true;
+  DM.MobilePermissions1.Dangerous.WriteExternalStorage := true;
+  DM.MobilePermissions1.Dangerous.ReadExternalStorage := true;
+  DM.MobilePermissions1.Apply;
 end;
 
 end.
