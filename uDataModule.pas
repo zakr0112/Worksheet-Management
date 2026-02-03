@@ -11,7 +11,9 @@ uses
   FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait, FireDAC.FMXUI.Error,
   FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FMX.Types, FMX.Controls;
+  FMX.Types, FMX.Controls, MobilePermissions.Model.Signature,
+  MobilePermissions.Model.Dangerous, MobilePermissions.Model.Standard,
+  MobilePermissions.Component;
 
 type
   TDM = class(TDataModule)
@@ -26,6 +28,7 @@ type
     qryTime: TFDQuery;
     qryInsertSpare: TFDQuery;
     qryListCust: TFDQuery;
+    MobilePermissions1: TMobilePermissions;
     procedure DataModuleCreate(Sender: TObject);
     procedure FDlocalAfterConnect(Sender: TObject);
   private

@@ -18,7 +18,8 @@ uses
   {$ENDIF}
   uCommonDialogs, uCustomerManagerClass, uHelperTabControl, uJobsManagerClass,
   FMX.Objects, FMX.DateTimeCtrls, FMX.ListBox, uCommon, FMX.DialogService, FMX.DialogService.Async,
-  FMX.ComboEdit;
+  FMX.ComboEdit, FMX.MediaLibrary, System.Actions, FMX.ActnList, FMX.StdActns,
+  FMX.MediaLibrary.Actions;
 
 type
   TJobForm = class(TForm)
@@ -202,6 +203,8 @@ type
     Text13: TText;
     memNewReason: TMemo;
     spdCancel: TSpeedButton;
+    ActionList1: TActionList;
+    TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction;
     procedure spdHomeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure radSortJobnoHLClick(Sender: TObject);
@@ -226,6 +229,7 @@ type
     procedure spdAddJobClick(Sender: TObject);
     procedure spdDeleteJobClick(Sender: TObject);
     procedure sklLastchangedClick(Sender: TObject);
+    procedure TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
   private
     procedure PopulateJobsList;
     procedure DisplayJobRecord;
@@ -736,6 +740,14 @@ end;
 procedure TJobForm.spdSaveTimeClick(Sender: TObject);
 begin
   InsertTimeRecord;
+end;
+
+procedure TJobForm.TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
+begin
+  // If an image has been loaded, we need to display it and save it to the DB
+  if not Assigned(Image) then
+    exit;
+
 end;
 
 procedure TJobForm.AskDeleteJob();

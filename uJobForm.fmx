@@ -623,7 +623,7 @@ object JobForm: TJobForm
           TextSettings.HorzAlign = Trailing
         end
         object dtNewDate: TDateEdit
-          Date = 46038.000000000000000000
+          Date = 46056.000000000000000000
           TodayDefault = True
           Align = Left
           FirstDayOfWeek = dowMonday
@@ -1208,7 +1208,7 @@ object JobForm: TJobForm
             TextSettings.HorzAlign = Trailing
           end
           object dtJobdate: TDateEdit
-            Date = 46038.000000000000000000
+            Date = 46056.000000000000000000
             TodayDefault = True
             Align = Client
             FirstDayOfWeek = dowMonday
@@ -2168,7 +2168,7 @@ object JobForm: TJobForm
                   TextSettings.VertAlign = Trailing
                 end
                 object dtDate: TDateEdit
-                  Date = 46038.000000000000000000
+                  Date = 46056.000000000000000000
                   TodayDefault = True
                   Align = Client
                   Margins.Top = 2.000000000000000000
@@ -2543,7 +2543,7 @@ object JobForm: TJobForm
                   TextSettings.VertAlign = Trailing
                 end
                 object dtDateExp: TDateEdit
-                  Date = 46038.000000000000000000
+                  Date = 46056.000000000000000000
                   TodayDefault = True
                   Align = Client
                   Margins.Top = 2.000000000000000000
@@ -3538,5 +3538,13 @@ object JobForm: TJobForm
       'ORDER BY jobno DESC')
     Left = 312
     Top = 168
+  end
+  object ActionList1: TActionList
+    Left = 480
+    Top = 503
+    object TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromLibraryAction1DidFinishTaking
+    end
   end
 end
