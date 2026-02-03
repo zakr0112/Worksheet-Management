@@ -249,6 +249,7 @@ type
     procedure LoadCustomers;
     procedure AskInsertCustomer(const ACustName: string);
     procedure AskDeleteJob();
+    procedure SavePhoto(const AJobNo, APhotoNo: integer; Image: TBitMap);
     { Private declarations }
   public
     { Public declarations }
@@ -748,6 +749,11 @@ begin
   if not Assigned(Image) then
     exit;
 
+end;
+
+procedure TJobForm.SavePhoto(const AJobNo, APhotoNo: integer; Image: TBitMap);
+begin
+   // Resize the image (if required), and then save to the DB
 end;
 
 procedure TJobForm.AskDeleteJob();
