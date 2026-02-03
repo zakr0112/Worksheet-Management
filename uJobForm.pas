@@ -209,6 +209,8 @@ type
     OpenDialog1: TOpenDialog;
     qryJobphotos: TFDQuery;
     TakePhotoFromCameraAction1: TTakePhotoFromCameraAction;
+    imgEdit: TImage;
+    imgPdf: TImage;
     procedure spdHomeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure radSortJobnoHLClick(Sender: TObject);
@@ -902,22 +904,30 @@ begin
     exit;
 
   // Only continue if the right hand arrow button clicked
-  if ItemObject is TListItemAccessory then
+  if ItemObject is TListItemImage then
   begin
-    ClearJobRecord;
-    jobno := LVZJobs.Items.Item[itemindex].Tag;
-    if not Job.FetchJob(jobno) then
+    if itemobject.Name = 'lvoImgPdf' then
     begin
-      ShowWarning('Unable to find the selected record!');
-      exit;
+     // Launch pdf
+    end
+    else
+    begin
+       // Display the record for editing
+      ClearJobRecord;
+      jobno := LVZJobs.Items.Item[itemindex].Tag;
+      if not Job.FetchJob(jobno) then
+      begin
+        ShowWarning('Unable to find the selected record!');
+        exit;
+      end;
+      DisplayJobRecord;
+      ShowExpenses;
+      ShowSpares;
+      ShowTime;
+      ShowJobPhotos;
+      TCJobDetails.TabIndex := 0; // Always show the reason tab first on job edit
+      TCJobs.TabRight(TIJobsEdit);
     end;
-    DisplayJobRecord;
-    ShowExpenses;
-    ShowSpares;
-    ShowTime;
-    ShowJobPhotos;
-    TCJobDetails.TabIndex := 0; // Always show the reason tab first on job edit
-    TCJobs.TabRight(TIJobsEdit);
   end;
 end;
 
@@ -944,8 +954,8 @@ begin
           Data['lvoJobdate'] := 'dd/mm/yyyy'
         else
           Data['lvoJobdate'] := DateToStr(qryListjobs.FieldByName('jobdate').AsDateTime);
-       // Data['lvoPdf'] := imgPdf.Bitmap;
-       // Data['lvoEdit'] := imgEdit.Bitmap;
+        Data['lvoImgPdf'] := imgPdf.Bitmap;
+        Data['lvoImgEdit'] := imgEdit.Bitmap;
       end;
       qryListjobs.Next;
     end;
