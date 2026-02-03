@@ -60,6 +60,7 @@ type
     radSortZA: TRadioButton;
     tbarCustomerEdit: TToolBar;
     imgEdit: TImage;
+    imgPdf: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure LVcustomersItemClickEx(const Sender: TObject; ItemIndex: Integer;
@@ -120,16 +121,24 @@ begin
   // Only continue if the right hand arrow button clicked
   if ItemObject is TListItemImage then
   begin
-    custid := LVCustomers.Items.Item[itemindex].Tag;
-    if not Customer.FetchCustomerByID(custid) then
+    if itemobject.Name = 'lvoImgPdf' then
     begin
-      ShowWarning('Unable to find the selected record!');
-      exit;
+     // Showing a pdf of the customer details (including past jobs etc)
+    end
+    else
+    begin
+      // Showing the customer details for editing
+      custid := LVCustomers.Items.Item[itemindex].Tag;
+      if not Customer.FetchCustomerByID(custid) then
+      begin
+        ShowWarning('Unable to find the selected record!');
+        exit;
+      end;
+        // Now will move to the customer record tab
+        DisplayCustomerRecord;
+        lblCustomerDetails.Text := 'Edit customer details';
+        TCCustomers.TabRight(TIcustomerDetails);
     end;
-      // Now will move to the customer record tab
-      DisplayCustomerRecord;
-      lblCustomerDetails.Text := 'Edit customer details';
-      TCCustomers.TabRight(TIcustomerDetails);
   end;
 end;
 
@@ -161,6 +170,7 @@ begin
       LITem.Data['lvoPhone'] := qryCustomerList.FieldByName('custtelephone').AsString;
       LItem.Text := qryCustomerList.FieldByName('custname').AsString;
       LITem.Data['lvoImgEdit'] := imgEdit.Bitmap;
+      LITem.Data['lvoImgPdf'] := imgPdf.Bitmap;
       qryCustomerList.Next;
     end;
   finally
