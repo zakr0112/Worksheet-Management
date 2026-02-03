@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.StdCtrls,
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Platform,
   uDataModule,  FMX.ListView.Types, FMX.ListView.Appearances,
   FMX.ListView.Adapters.Base, System.Skia, FMX.Memo.Types, FMX.ScrollBox,
   FMX.Memo, FMX.Edit, FMX.Layouts, FMX.MultiView, FMX.Skia, FMX.ListView,
@@ -205,6 +205,9 @@ type
     spdCancel: TSpeedButton;
     ActionList1: TActionList;
     TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction;
+    qrySavePhoto: TFDQuery;
+    OpenDialog1: TOpenDialog;
+    qryJobphotos: TFDQuery;
     procedure spdHomeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure radSortJobnoHLClick(Sender: TObject);
@@ -230,6 +233,11 @@ type
     procedure spdDeleteJobClick(Sender: TObject);
     procedure sklLastchangedClick(Sender: TObject);
     procedure TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
+    //These are manually assigned so that i can add the event in multiple places
+    procedure LoadFromLibraryClick(Sender: TObject);
+    procedure ImageCameraClick(Sender: TObject);
+    procedure ShowPictureClick(Sender: TObject);
+    procedure DeletePictureClick(Sender: TObject);
   private
     procedure PopulateJobsList;
     procedure DisplayJobRecord;
@@ -250,7 +258,14 @@ type
     procedure AskInsertCustomer(const ACustName: string);
     procedure AskDeleteJob();
     procedure SavePhoto(const AJobNo, APhotoNo: integer; Image: TBitMap);
-    { Private declarations }
+    procedure UnselectThumbFill;
+    procedure ClearDisplayedPhotos;
+    procedure ShowJobPhotos;
+    procedure DeleteJobphoto(const AJobno, APhoto: integer);
+
+    var
+      FThumbs: array[1..6] of TImage;   // used for images
+      FRects: array[1..6] of TRectangle; // used for images   
   public
     { Public declarations }
   end;
@@ -260,6 +275,8 @@ type
 var
   JobForm: TJobForm;
   jobno: integer;
+
+  CurrentImageTag: integer;  // Used for currently clicked image
 
 implementation
 
@@ -291,6 +308,24 @@ begin
   if not DM.FDLocal.Connected then
     DM.FDlocal.Open();
   PopulateJobsList();
+
+  // used for photo management to save duplicate code!
+  FThumbs[1] := imgThumb1;
+  FThumbs[2] := imgThumb2;
+  FThumbs[3] := imgThumb3;
+  FThumbs[4] := imgThumb4;
+  FThumbs[5] := imgThumb5;
+  FThumbs[6] := imgThumb6;
+
+  FRects[1] := rectImage1;
+  FRects[2] := rectImage2;
+  FRects[3] := rectImage3;
+  FRects[4] := rectImage4;
+  FRects[5] := rectImage5;
+  FRects[6] := rectImage6;
+
+  CurrentImageTag := 0;  // default, we set when clicked later in code
+  
 end;
 
 procedure TJobForm.btnClearSignatureClick(Sender: TObject);
@@ -556,6 +591,32 @@ begin
   end;
 end;
 
+procedure TJobForm.ImageCameraClick(Sender: TObject);
+var
+  Service: IFMXCameraService;
+begin
+  RequestPermissions();
+  UnselectThumbFill();
+  CurrentImageTag := TComponent(Sender).Tag;
+  FRects[CurrentImageTag].Fill.Color := TAlphaColors.Lightskyblue;//.Cornflowerblue;
+  imgMainphoto.Bitmap.Assign(FThumbs[CurrentImageTag].Bitmap);
+  if TPlatformServices.Current.SupportsPlatformService(IFMXCameraService, Service) then
+  begin
+    //actTakePhotoFromCameraAction.Execute;
+  end
+  else
+    ShowMessage('This device does not support the camera service');
+
+  
+end;
+
+procedure TJobForm.UnselectThumbFill();
+begin
+  // Reset the background colour as no image control selected...
+  for var I := 1 to 6 do
+    FRects[I].Fill.Color := TAlphaColors.Lightslategray;
+end;
+
 procedure TJobForm.InsertExpenseRecord;
 var
   CostPrice: double;
@@ -696,8 +757,6 @@ begin
     exit;
   end;
 
-
-
   Job.Custname := Trim(txtCustname.Text);
   Job.Address := Trim(memAddress.Text);
   Job.Postcode := Trim(txtPostcode.Text);
@@ -749,34 +808,70 @@ begin
   if not Assigned(Image) then
     exit;
 
+  SavePhoto(job.Jobno, CurrentImageTag, Image);
+  FThumbs[CurrentImageTag].Bitmap.Assign(Image);
+  imgMainPhoto.Bitmap.Assign(Image); // display the resized image
 end;
 
 procedure TJobForm.SavePhoto(const AJobNo, APhotoNo: integer; Image: TBitMap);
 
-   // Resize the image (if required), and then save to the DB
-   procedure ResizeBitmap(source: TBitMap; MaxSize: integer = 1024);
-   var
+  // Resize the image (if required), and then save to the DB
+  procedure ResizeBitmap(source: TBitMap; MaxSize: integer = 1024);
+  var
     Ratio: single;
     NewWidth, NewHeight: integer;
     BitmapScaled: TBitMap;
+  begin
+    if (Source.Width <= MaxSize) and (Source.Height <= MaxSize) then
+      exit;
+    if Source.Width > Source.Height then
     begin
-
+      Ratio := MaxSize / Source.Width;
+      NewWidth := MaxSize;
+      NewHeight := Round(Source.Height * Ratio);
+    end
+    else
+    begin
+      Ratio := MaxSize / Source.Height;
+      NewWidth := Round(Source.Width * Ratio);
+      NewHeight := MaxSize;
     end;
+    BitmapScaled := TBitmap.Create(NewWidth, NewHeight);
+    try
+      BitmapScaled.Clear(0);
+      BitmapScaled.Canvas.BeginScene;
+      try
+        BitmapScaled.Canvas.DrawBitmap(Source, RectF(0, 0, Source.Width, Source.Height), RectF(0, 0, NewWidth, NewHeight), 1);
+      finally
+        BitmapScaled.Canvas.EndScene;
+      end;
+      Source.Assign(BitmapScaled);
+    finally
+      BitmapScaled.Free;
+    end;
+  end;
+
 var
   Stream: TMemoryStream;
 begin
   Stream := TMemoryStream.Create;
   try
-   Stream.Position := 0;
-   try
-    ResizeBitmap(Image);
-    Image.SaveToStream(Stream);
-   except
-    on E: Exception do
-    begin 
+    Stream.Position := 0;
+    try
+      ResizeBitmap(Image);
+      Image.SaveToStream(Stream);
+      qrySavePhoto.SQL.Text := 'REPLACE INTO jobs_photos (jobno, photono, photo, lastchanged) VALUES (:jobno, :photono, :photo, :lastchanged);';
+      qrySavePhoto.ParamByName('jobno').AsInteger := job.Jobno;
+      qrySavePhoto.ParamByName('photono').AsInteger := CurrentImageTag;
+      qrySavePhoto.ParamByName('photo').LoadFromStream(Stream, ftBlob);
+      qrySavePhoto.ParamByName('lastchanged').AsDateTime := Now();
+      qrySavePhoto.ExecSQL; // Execute the query
+    except
+      on E: Exception do
+      begin 
       ShowException('Save photo', E);
+      end;
     end;
-  end;
   finally
     Stream.Free;
   end;
@@ -837,6 +932,8 @@ begin
     ShowExpenses;
     ShowSpares;
     ShowTime;
+    ShowJobPhotos;
+    TCJobDetails.TabIndex := 0; // Always show the reason tab first on job edit
     TCJobs.TabRight(TIJobsEdit);
   end;
 end;
@@ -1299,6 +1396,127 @@ begin
     cbCustomers.EndUpdate;
     DM.qryListCust.Close;
   end;
+end;
+
+
+procedure TJobForm.LoadFromLibraryClick(Sender: TObject);
+var
+  ImageService: IFMXTakenImageService;
+begin
+  RequestPermissions();
+  UnselectThumbFill();
+  CurrentImageTag := TComponent(Sender).Tag;
+  FRects[CurrentImageTag].Fill.Color := TAlphaColors.Lightskyblue;
+  imgMainphoto.Bitmap.Assign(FThumbs[CurrentImageTag].Bitmap);
+  if TPlatformServices.Current.SupportsPlatformService(IFMXTakenImageService, IInterface(ImageService)) then
+  begin
+    TakePhotoFromLibraryAction1.Execute;
+    exit;
+  end;
+{$IF Defined(MSWINDOWS)}
+  // we load from a file...
+  OpenDialog1.Filter := 'All supported files (*.jpg;*.png)|*.JPG;*.PNG|JPEG Images (*.jpg)|*.JPG|PNG Images (*.png)|*.PNG';
+  if OpenDialog1.Execute then
+  begin
+    // We try load it...
+    if FileExists(OpenDialog1.FileName) then
+    begin
+      try
+        imgMainphoto.Bitmap.LoadFromFile(OpenDialog1.FileName);
+        SavePhoto(job.Jobno, CurrentImageTag, imgMainphoto.Bitmap);
+        FThumbs[CurrentImageTag].Bitmap.Assign(imgMainphoto.Bitmap);// display the THUMBNAIL version!
+      except
+        on E: Exception do
+        begin
+          ShowException('LoadFromLibraryClick', E);
+        end;
+      end;
+    end;
+  end;
+{$ENDIF}
+end;
+
+
+procedure TJobForm.ShowPictureClick(Sender: TObject);
+begin
+  UnselectThumbFill();
+  CurrentImageTag := TComponent(Sender).Tag;
+  FRects[CurrentImageTag].Fill.Color := TAlphaColors.Lightskyblue;
+  imgMainphoto.Bitmap.Assign(FThumbs[CurrentImageTag].Bitmap);
+end;
+
+
+
+procedure TJobForm.ShowJobPhotos();
+begin
+  ClearDisplayedPhotos();
+  try
+    qryJobphotos.Open(Format('SELECT photo, photono FROM jobs_photos WHERE jobno = %d ORDER BY photono LIMIT 6', [job.Jobno]));
+    while not qryJobphotos.Eof do
+    begin
+      if not (qryJobphotos.FieldByName('photo') as TBlobField).IsNull then
+        FThumbs[qryJobphotos.FieldByName('photono').AsInteger].Bitmap.Assign((qryJobphotos.FieldByName('photo') as TBlobField));
+      qryJobphotos.Next;
+    end;
+  finally
+    qryJobphotos.Close;
+  end;
+end;
+
+procedure TJobForm.ClearDisplayedPhotos();
+begin
+  UnselectThumbFill();
+  imgMainphoto.Bitmap := nil;
+  for var I := 1 to 6 do
+    FThumbs[I].Bitmap := nil;
+end;
+
+
+procedure TJobForm.DeleteJobphoto(const AJobno, APhoto: integer);
+begin
+  try
+    DM.FDlocal.ExecSQL('UPDATE jobs_photos SET photo=NULL WHERE jobno=:p1 AND photono=:p2;', [AJobno, APhoto]);
+    FThumbs[APhoto].Bitmap := nil;
+    imgMainphoto.Bitmap := nil;
+  except
+    on E: Exception do
+    begin
+      ShowException('DeleteJobPhoto', E);
+    end;
+  end;
+end;
+
+procedure TJobForm.DeletePictureClick(Sender: TObject);
+var
+  Index: integer;
+  Thumb: TImage;
+  Rect: TRectangle;
+begin
+  Index := TComponent(Sender).Tag;
+  Thumb := FThumbs[Index];
+  Rect := FRects[Index];
+  UnselectThumbFill();
+  Rect.Fill.Color := TAlphaColors.Lightskyblue;
+  imgMainphoto.Bitmap.Assign(Thumb.Bitmap);
+  if Thumb.Bitmap.IsEmpty then
+    exit;
+  var MSG := 'Do you really want to delete the selected job photograph ?';
+  TDialogService.MessageDialog(MSG, TMsgDlgType.mtConfirmation, mbYesNo, TMsgDlgBtn.mbNo, 0,
+    procedure (const AResult: TModalResult)
+      begin
+        if AResult = mrYes then
+        begin
+          try
+            DeleteJobphoto(job.Jobno, Index);
+            ShowJobPhotos();
+          except
+            on E: Exception do
+            begin
+              ShowException('DeletePicture', E);
+            end;
+          end;
+        end;
+      end);
 end;
 
 end.

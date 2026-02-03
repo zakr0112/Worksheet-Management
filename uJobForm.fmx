@@ -1564,7 +1564,7 @@ object JobForm: TJobForm
             Size.Height = 462.000000000000000000
             Size.PlatformDefault = False
             TabHeight = 49.000000000000000000
-            TabIndex = 2
+            TabIndex = 6
             TabOrder = 2
             TabStop = False
             TabPosition = PlatformDefault
@@ -1674,7 +1674,7 @@ object JobForm: TJobForm
               TextSettings.FontColor = claWhite
               TextSettings.Trimming = None
               StyledSettings = [Family]
-              IsSelected = True
+              IsSelected = False
               Size.Width = 90.000000000000000000
               Size.Height = 49.000000000000000000
               Size.PlatformDefault = False
@@ -2568,7 +2568,7 @@ object JobForm: TJobForm
               TextSettings.FontColor = claWhite
               TextSettings.Trimming = None
               StyledSettings = [Family]
-              IsSelected = False
+              IsSelected = True
               Size.Width = 90.000000000000000000
               Size.Height = 49.000000000000000000
               Size.PlatformDefault = False
@@ -2705,6 +2705,7 @@ object JobForm: TJobForm
                     Stroke.Kind = None
                     XRadius = 8.000000000000000000
                     YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
                     object imgThumb1: TImage
                       MultiResBitmap = <
                         item
@@ -2764,6 +2765,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -2825,6 +2827,7 @@ object JobForm: TJobForm
                     Stroke.Kind = None
                     XRadius = 8.000000000000000000
                     YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
                     object imgThumb2: TImage
                       MultiResBitmap = <
                         item
@@ -2884,6 +2887,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -2945,6 +2949,7 @@ object JobForm: TJobForm
                     Stroke.Kind = None
                     XRadius = 8.000000000000000000
                     YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
                     object imgThumb3: TImage
                       MultiResBitmap = <
                         item
@@ -3004,6 +3009,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3065,6 +3071,7 @@ object JobForm: TJobForm
                     Stroke.Kind = None
                     XRadius = 8.000000000000000000
                     YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
                     object imgThumb4: TImage
                       MultiResBitmap = <
                         item
@@ -3124,6 +3131,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3185,6 +3193,7 @@ object JobForm: TJobForm
                     Stroke.Kind = None
                     XRadius = 8.000000000000000000
                     YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
                     object imgThumb5: TImage
                       MultiResBitmap = <
                         item
@@ -3244,6 +3253,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3305,6 +3315,7 @@ object JobForm: TJobForm
                     Stroke.Kind = None
                     XRadius = 8.000000000000000000
                     YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
                     object imgThumb6: TImage
                       MultiResBitmap = <
                         item
@@ -3364,6 +3375,7 @@ object JobForm: TJobForm
                         Size.Width = 28.000000000000000000
                         Size.Height = 28.000000000000000000
                         Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
                         Svg.Source = 
                           '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
                           '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
@@ -3530,6 +3542,10 @@ object JobForm: TJobForm
       end
     end
   end
+  object OpenDialog1: TOpenDialog
+    Left = 279
+    Top = 591
+  end
   object qryListJobs: TFDQuery
     Connection = DM.FDlocal
     SQL.Strings = (
@@ -3546,5 +3562,15 @@ object JobForm: TJobForm
       Category = 'Media Library'
       OnDidFinishTaking = TakePhotoFromLibraryAction1DidFinishTaking
     end
+  end
+  object qrySavePhoto: TFDQuery
+    Connection = DM.FDlocal
+    Left = 344
+    Top = 307
+  end
+  object qryJobphotos: TFDQuery
+    Connection = DM.FDlocal
+    Left = 288
+    Top = 267
   end
 end
