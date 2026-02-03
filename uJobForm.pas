@@ -324,6 +324,10 @@ begin
   FRects[5] := rectImage5;
   FRects[6] := rectImage6;
 
+  teTravel.Format := 'HH:mm';
+  teArr.Format := 'HH:mm';
+  teDep.Format := 'HH:mm';
+
   CurrentImageTag := 0;  // default, we set when clicked later in code
   
 end;
@@ -1161,7 +1165,7 @@ begin
       LBL := TLabel.Create(LBI);
       LBL.Parent := LBI;
       LBL.AutoSize := false;
-      LBL.Width := 142;
+      LBL.Width := 152;
       LBL.Align := TAlignLayout.MostLeft;
       LBL.TextSettings.HorzAlign := TTextAlign.Leading;
       LBL.TextSettings.VertAlign := TTextAlign.Center;
@@ -1175,7 +1179,7 @@ begin
       LBL := TLabel.Create(LBI);
       LBL.Parent := LBI;
       LBL.AutoSize := false;
-      LBL.Width := 103;
+      LBL.Width := 115;
       LBL.Align := TAlignLayout.MostLeft;
       LBL.TextSettings.HorzAlign := TTextAlign.Leading;
       LBL.TextSettings.VertAlign := TTextAlign.Center;
@@ -1183,7 +1187,10 @@ begin
       LBL.TextSettings.Font.Size := 18;
       LBL.TextSettings.FontColor := TAlphaColors.White;
       LBL.StyledSettings := LBL.StyledSettings - [TStyledSetting.Size, TStyledSetting.FontColor];
-      LBL.Text := DM.qryTime.FieldByName('traveltime').AsString;
+      if DM.qryTime.FieldByName('traveltime').IsNull then
+        LBL.Text := ''
+      else
+        LBL.Text := FormatDateTime('HH:mm', DM.qryTime.FieldByName('traveltime').AsDateTime);
 
       // Create the label for time arrived
       LBL := TLabel.Create(LBI);
@@ -1200,7 +1207,7 @@ begin
       if DM.qryTime.FieldByName('timearrived').IsNull then
         LBL.Text := ''
       else
-        LBL.Text := FormatDateTime('hh:mm', DM.qryTime.FieldByName('timearrived').AsDateTime);
+        LBL.Text := FormatDateTime('HH:mm', DM.qryTime.FieldByName('timearrived').AsDateTime);
 
       // Create the label for time departed
       LBL := TLabel.Create(LBI);
@@ -1217,7 +1224,7 @@ begin
       if DM.qryTime.FieldByName('timedeparted').IsNull then
         LBL.Text := ''
       else
-        LBL.Text := FormatDateTime('hh:mm', DM.qryTime.FieldByName('timedeparted').AsDateTime);
+        LBL.Text := FormatDateTime('HH:mm', DM.qryTime.FieldByName('timedeparted').AsDateTime);
 
       // Create the label for mileage
       LBL := TLabel.Create(LBI);

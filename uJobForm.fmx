@@ -18,7 +18,7 @@ object JobForm: TJobForm
     Size.Height = 864.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -33,7 +33,7 @@ object JobForm: TJobForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -881,7 +881,7 @@ object JobForm: TJobForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -1584,7 +1584,7 @@ object JobForm: TJobForm
             Size.Height = 462.000000000000000000
             Size.PlatformDefault = False
             TabHeight = 49.000000000000000000
-            TabIndex = 7
+            TabIndex = 4
             TabOrder = 2
             TabStop = False
             TabPosition = PlatformDefault
@@ -1701,7 +1701,7 @@ object JobForm: TJobForm
               StyleLookup = ''
               TabOrder = 0
               TabStop = False
-              Text = 'REMEDIAL'
+              Text = 'OTHER'
               ExplicitSize.cx = 196.000000000000000000
               ExplicitSize.cy = 49.000000000000000000
               object memRemedial: TMemo
@@ -1739,7 +1739,7 @@ object JobForm: TJobForm
                 object Text4: TText
                   Align = MostLeft
                   Margins.Right = 8.000000000000000000
-                  Size.Width = 177.000000000000000000
+                  Size.Width = 137.000000000000000000
                   Size.Height = 44.000000000000000000
                   Size.PlatformDefault = False
                   Text = 'Issue referred to'
@@ -1755,7 +1755,7 @@ object JobForm: TJobForm
                   TextSettings.Font.Size = 18.000000000000000000
                   TextSettings.FontColor = claWhite
                   Margins.Right = 2.000000000000000000
-                  Size.Width = 517.000000000000000000
+                  Size.Width = 557.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   TextPrompt = 'REFERRED TO (If applicable)'
@@ -1788,7 +1788,7 @@ object JobForm: TJobForm
                 Margins.Top = 8.000000000000000000
                 Margins.Right = 8.000000000000000000
                 Position.X = 8.000000000000000000
-                Position.Y = 89.000000000000000000
+                Position.Y = 102.000000000000000000
                 Size.Width = 704.000000000000000000
                 Size.Height = 464.000000000000000000
                 Size.PlatformDefault = False
@@ -1814,7 +1814,7 @@ object JobForm: TJobForm
                 Position.X = 8.000000000000000000
                 Position.Y = 8.000000000000000000
                 Size.Width = 704.000000000000000000
-                Size.Height = 73.000000000000000000
+                Size.Height = 86.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 34
                 ColumnCollection = <
@@ -1853,12 +1853,12 @@ object JobForm: TJobForm
                   item
                     Column = 2
                     Control = spdInsertspare
-                    Row = 1
+                    Row = 0
                   end>
                 RowCollection = <
                   item
                     SizeStyle = Absolute
-                    Value = 30.000000000000000000
+                    Value = 36.000000000000000000
                   end
                   item
                     SizeStyle = Absolute
@@ -1870,7 +1870,7 @@ object JobForm: TJobForm
                 object Text10: TText
                   Align = Client
                   Size.Width = 554.000000000000000000
-                  Size.Height = 26.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   Text = 'Description of parts used'
                   TextSettings.Font.Size = 16.000000000000000000
@@ -1882,7 +1882,7 @@ object JobForm: TJobForm
                 object Text12: TText
                   Align = Client
                   Size.Width = 86.000000000000000000
-                  Size.Height = 26.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   Text = 'Qty'
                   TextSettings.Font.Size = 16.000000000000000000
@@ -1930,9 +1930,9 @@ object JobForm: TJobForm
                   StyledSettings = [Family, Style]
                   Margins.Right = 8.000000000000000000
                   Position.X = 654.000000000000000000
-                  Position.Y = 32.000000000000000000
+                  Position.Y = 2.000000000000000000
                   Size.Width = 40.000000000000000000
-                  Size.Height = 40.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'transparentcirclebuttonstyle'
                   TextSettings.Font.Size = 28.000000000000000000
@@ -1943,7 +1943,7 @@ object JobForm: TJobForm
                   object SkSvg2: TSkSvg
                     Align = Client
                     Size.Width = 40.000000000000000000
-                    Size.Height = 40.000000000000000000
+                    Size.Height = 32.000000000000000000
                     Size.PlatformDefault = False
                     Svg.Source = 
                       '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'#13#10'<!-- Upl' +
@@ -1990,14 +1990,14 @@ object JobForm: TJobForm
               TextSettings.FontColor = claWhite
               TextSettings.Trimming = None
               StyledSettings = [Family]
-              IsSelected = False
+              IsSelected = True
               Size.Width = 90.000000000000000000
               Size.Height = 49.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = ''
               TabOrder = 0
               TabStop = False
-              Text = 'TIME / TRAV'
+              Text = 'TRAVEL'
               ExplicitSize.cx = 196.000000000000000000
               ExplicitSize.cy = 49.000000000000000000
               object LBTime: TListBox
@@ -3462,7 +3462,7 @@ object JobForm: TJobForm
               TextSettings.FontColor = claWhite
               TextSettings.Trimming = None
               StyledSettings = [Family]
-              IsSelected = True
+              IsSelected = False
               Size.Width = 90.000000000000000000
               Size.Height = 49.000000000000000000
               Size.PlatformDefault = False
