@@ -18,7 +18,7 @@ object CustomerForm: TCustomerForm
     Size.Height = 564.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -31,7 +31,7 @@ object CustomerForm: TCustomerForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 350.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -322,7 +322,7 @@ object CustomerForm: TCustomerForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 350.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -500,8 +500,8 @@ object CustomerForm: TCustomerForm
           Size.Height = 156.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 12
-          Viewport.Width = 466.000000000000000000
-          Viewport.Height = 148.000000000000000000
+          Viewport.Width = 474.000000000000000000
+          Viewport.Height = 156.000000000000000000
         end
         object Label5: TLabel
           Align = Client
@@ -633,31 +633,37 @@ object CustomerForm: TCustomerForm
             end>
           object btnSave: TButton
             Align = Client
+            StyledSettings = [Family, Style, FontColor]
             Size.Width = 154.022354125976600000
             Size.Height = 36.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
             Text = 'Save'
+            TextSettings.Font.Size = 14.000000000000000000
             TextSettings.Trimming = None
             OnClick = btnSaveClick
           end
           object btnDelete: TButton
             Align = Client
+            StyledSettings = [Family, Style, FontColor]
             Size.Width = 154.135604858398400000
             Size.Height = 36.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
             Text = 'Delete'
+            TextSettings.Font.Size = 14.000000000000000000
             TextSettings.Trimming = None
             OnClick = btnDeleteClick
           end
           object btnCancel: TButton
             Align = Client
+            StyledSettings = [Family, Style, FontColor]
             Size.Width = 153.841979980468800000
             Size.Height = 36.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             Text = 'Cancel'
+            TextSettings.Font.Size = 14.000000000000000000
             TextSettings.Trimming = None
             OnClick = btnCancelClick
           end

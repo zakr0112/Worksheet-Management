@@ -11,14 +11,14 @@ object JobForm: TJobForm
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  DesignerMasterStyle = 0
+  DesignerMasterStyle = 3
   object TCJobs: TTabControl
     Align = Client
     Size.Width = 720.000000000000000000
     Size.Height = 864.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -33,8 +33,8 @@ object JobForm: TJobForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
-      Size.Width = 38.000000000000000000
+      IsSelected = True
+      Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
@@ -54,6 +54,7 @@ object JobForm: TJobForm
         Size.Height = 771.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
+        ItemAppearance.ItemHeight = 56
         ItemAppearance.HeaderHeight = 1
         ItemAppearance.FooterHeight = 1
         ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
@@ -65,36 +66,37 @@ object JobForm: TJobForm
             Appearance.TextShadow.Enabled = False
             Appearance.TextColor = claPaleturquoise
             Appearance.Width = 473.000000000000000000
-            Appearance.Height = 22.000000000000000000
-            Appearance.PlaceOffset.X = 86.000000000000000000
+            Appearance.Height = 28.000000000000000000
+            Appearance.PlaceOffset.X = 88.000000000000000000
           end
           item
             AppearanceObjectName = 'lvoJobdate'
             AppearanceClassName = 'TTextObjectAppearance'
             Appearance.Font.Size = 16.000000000000000000
-            Appearance.TextAlign = Leading
+            Appearance.TextAlign = Trailing
             Appearance.TextShadow.Enabled = False
-            Appearance.Width = 145.000000000000000000
-            Appearance.Height = 22.000000000000000000
+            Appearance.Width = 199.000000000000000000
+            Appearance.Height = 28.000000000000000000
+            Appearance.Align = Trailing
             Appearance.VertAlign = Trailing
-            Appearance.PlaceOffset.X = 86.000000000000000000
+            Appearance.PlaceOffset.X = -80.000000000000000000
           end
           item
-            AppearanceObjectName = 'Accessory3'
+            AppearanceObjectName = 'lvoSelect'
             AppearanceClassName = 'TAccessoryObjectAppearance'
-            Appearance.Width = 44.000000000000000000
+            Appearance.Width = 60.000000000000000000
             Appearance.Align = Trailing
+            Appearance.VertAlign = Center
           end
           item
             AppearanceObjectName = 'lvoJobtype'
             AppearanceClassName = 'TTextObjectAppearance'
-            Appearance.TextAlign = Trailing
+            Appearance.TextAlign = Leading
             Appearance.TextShadow.Enabled = False
-            Appearance.Width = 316.000000000000000000
-            Appearance.Height = 22.000000000000000000
-            Appearance.Align = Trailing
+            Appearance.Width = 223.000000000000000000
+            Appearance.Height = 28.000000000000000000
             Appearance.VertAlign = Trailing
-            Appearance.PlaceOffset.X = -52.000000000000000000
+            Appearance.PlaceOffset.X = 88.000000000000000000
           end
           item
             AppearanceObjectName = 'lvoJobno'
@@ -102,8 +104,7 @@ object JobForm: TJobForm
             Appearance.Font.Size = 30.000000000000000000
             Appearance.TextAlign = Leading
             Appearance.TextColor = claLightskyblue
-            Appearance.Width = 87.000000000000000000
-            Appearance.Height = 44.000000000000000000
+            Appearance.Width = 86.000000000000000000
             Appearance.VertAlign = Center
           end>
         ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
@@ -373,7 +374,7 @@ object JobForm: TJobForm
         end>
       TextSettings.Trimming = None
       IsSelected = False
-      Size.Width = 56.000000000000000000
+      Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
@@ -628,9 +629,9 @@ object JobForm: TJobForm
           Align = Left
           FirstDayOfWeek = dowMonday
           Position.X = 112.000000000000000000
-          Position.Y = 2.000000000000000000
+          Position.Y = 3.000000000000000000
           Size.Width = 145.000000000000000000
-          Size.Height = 34.000000000000000000
+          Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           StyledSettings = [Family, Style, FontColor]
           TabOrder = 0
@@ -698,7 +699,7 @@ object JobForm: TJobForm
           TextSettings.Font.Size = 18.000000000000000000
           TextSettings.FontColor = claWhite
           Size.Width = 350.000000000000000000
-          Size.Height = 34.000000000000000000
+          Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'Lead engineer'
           StyledSettings = [Family, Style, FontColor]
@@ -713,7 +714,7 @@ object JobForm: TJobForm
             'MAINTENANCE'
             'OTHER')
           Size.Width = 350.000000000000000000
-          Size.Height = 34.000000000000000000
+          Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'cbeJobtypeStyle1'
           TabOrder = 1
@@ -740,7 +741,7 @@ object JobForm: TJobForm
           TextSettings.Font.Size = 18.000000000000000000
           TextSettings.FontColor = claWhite
           Size.Width = 350.000000000000000000
-          Size.Height = 34.000000000000000000
+          Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'Additional engineer'
           StyledSettings = [Family, Style, FontColor]
@@ -766,7 +767,7 @@ object JobForm: TJobForm
           TextSettings.Font.Size = 18.000000000000000000
           StyledSettings = [Family, Style, FontColor]
           Size.Width = 350.000000000000000000
-          Size.Height = 34.000000000000000000
+          Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
         end
         object Text13: TText
@@ -792,8 +793,8 @@ object JobForm: TJobForm
           Size.PlatformDefault = False
           TabOrder = 3
           TabStop = False
-          Viewport.Width = 346.000000000000000000
-          Viewport.Height = 292.000000000000000000
+          Viewport.Width = 342.000000000000000000
+          Viewport.Height = 288.000000000000000000
         end
       end
       object ToolBar3: TToolBar
@@ -820,14 +821,14 @@ object JobForm: TJobForm
           Margins.Left = 8.000000000000000000
           Margins.Top = 2.000000000000000000
           Margins.Bottom = 2.000000000000000000
-          Position.X = 584.000000000000000000
+          Position.X = 456.000000000000000000
           Position.Y = 6.000000000000000000
           Size.Width = 120.000000000000000000
           Size.Height = 36.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'buttonstyle'
-          Text = 'SAVE JOB'
-          TextSettings.Font.Size = 16.000000000000000000
+          Text = 'Save Job'
+          TextSettings.Font.Size = 14.000000000000000000
           TextSettings.FontColor = claWhite
           TextSettings.Trimming = None
           TintColor = claPalevioletred
@@ -840,14 +841,14 @@ object JobForm: TJobForm
           Margins.Left = 8.000000000000000000
           Margins.Top = 2.000000000000000000
           Margins.Bottom = 2.000000000000000000
-          Position.X = 456.000000000000000000
+          Position.X = 584.000000000000000000
           Position.Y = 6.000000000000000000
           Size.Width = 120.000000000000000000
           Size.Height = 36.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'buttonstyle'
-          Text = 'CANCEL'
-          TextSettings.Font.Size = 16.000000000000000000
+          Text = 'Cancel'
+          TextSettings.Font.Size = 14.000000000000000000
           TextSettings.FontColor = claWhite
           TextSettings.Trimming = None
           TintColor = claPalevioletred
@@ -860,8 +861,8 @@ object JobForm: TJobForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
-      Size.Width = 74.000000000000000000
+      IsSelected = False
+      Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
@@ -981,8 +982,8 @@ object JobForm: TJobForm
           Size.Height = 36.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'buttonstyle'
-          Text = 'DELETE'
-          TextSettings.Font.Size = 16.000000000000000000
+          Text = 'Delete'
+          TextSettings.Font.Size = 14.000000000000000000
           TextSettings.FontColor = claWhite
           TextSettings.Trimming = None
           TintColor = claPalevioletred
@@ -1001,8 +1002,8 @@ object JobForm: TJobForm
           Size.Height = 36.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'buttonstyle'
-          Text = 'SAVE'
-          TextSettings.Font.Size = 16.000000000000000000
+          Text = 'Save'
+          TextSettings.Font.Size = 14.000000000000000000
           TextSettings.FontColor = claWhite
           TextSettings.Trimming = None
           TintColor = claPalevioletred
@@ -1017,7 +1018,6 @@ object JobForm: TJobForm
           Size.Width = 233.690002441406300000
           Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
-          OnClick = sklLastchangedClick
           StyledSettings = [Family, Style, FontColor]
           TextSettings.HorzAlign = Trailing
           Words = <
@@ -1213,7 +1213,7 @@ object JobForm: TJobForm
             Align = Client
             FirstDayOfWeek = dowMonday
             Size.Width = 246.005554199218800000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             StyledSettings = [Family, Style, FontColor]
             TabOrder = 0
@@ -1229,7 +1229,7 @@ object JobForm: TJobForm
             TextSettings.Font.Size = 18.000000000000000000
             TextSettings.FontColor = claWhite
             Size.Width = 246.005554199218800000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TextPrompt = 'Call no.'
             StyledSettings = [Family, Style, FontColor]
@@ -1243,7 +1243,7 @@ object JobForm: TJobForm
             TextSettings.Font.Size = 18.000000000000000000
             TextSettings.FontColor = claWhite
             Size.Width = 246.005554199218800000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TextPrompt = 'Contract no.'
             StyledSettings = [Family, Style, FontColor]
@@ -1279,7 +1279,7 @@ object JobForm: TJobForm
             TextSettings.Font.Size = 18.000000000000000000
             TextSettings.FontColor = claWhite
             Size.Width = 246.005554199218800000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TextPrompt = 'Lead engineer'
             StyledSettings = [Family, Style, FontColor]
@@ -1294,7 +1294,7 @@ object JobForm: TJobForm
               'MAINTENANCE'
               'OTHER')
             Size.Width = 246.005554199218800000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = 'cbeJobtypeStyle1'
             TabOrder = 1
@@ -1321,7 +1321,7 @@ object JobForm: TJobForm
             TextSettings.Font.Size = 18.000000000000000000
             TextSettings.FontColor = claWhite
             Size.Width = 246.005554199218800000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TextPrompt = 'Additional engineer'
             StyledSettings = [Family, Style, FontColor]
@@ -1456,7 +1456,7 @@ object JobForm: TJobForm
             TextSettings.Font.Size = 18.000000000000000000
             TextSettings.FontColor = claWhite
             Size.Width = 265.994445800781300000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TextPrompt = 'Email'
             StyledSettings = [Family, Style, FontColor]
@@ -1471,7 +1471,7 @@ object JobForm: TJobForm
             TextSettings.Font.Size = 18.000000000000000000
             TextSettings.FontColor = claWhite
             Size.Width = 265.994445800781300000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TextPrompt = 'Telephone'
             StyledSettings = [Family, Style, FontColor]
@@ -1492,7 +1492,7 @@ object JobForm: TJobForm
               TextSettings.Font.Size = 18.000000000000000000
               TextSettings.FontColor = claWhite
               Size.Width = 355.994445800781300000
-              Size.Height = 34.000000000000000000
+              Size.Height = 32.000000000000000000
               Size.PlatformDefault = False
               TextPrompt = 'Customers name'
               StyledSettings = [Family, Style, FontColor]
@@ -1517,7 +1517,7 @@ object JobForm: TJobForm
             TextSettings.Font.Size = 18.000000000000000000
             TextSettings.FontColor = claWhite
             Size.Width = 265.994445800781300000
-            Size.Height = 34.000000000000000000
+            Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TextPrompt = 'Postcode'
             StyledSettings = [Family, Style, FontColor]
@@ -1537,8 +1537,8 @@ object JobForm: TJobForm
             Size.PlatformDefault = False
             TabOrder = 1
             TabStop = False
-            Viewport.Width = 262.000000000000000000
-            Viewport.Height = 68.000000000000000000
+            Viewport.Width = 258.000000000000000000
+            Viewport.Height = 64.000000000000000000
           end
         end
       end
@@ -1564,7 +1564,7 @@ object JobForm: TJobForm
             Size.Height = 462.000000000000000000
             Size.PlatformDefault = False
             TabHeight = 49.000000000000000000
-            TabIndex = 6
+            TabIndex = 7
             TabOrder = 2
             TabStop = False
             TabPosition = PlatformDefault
@@ -1622,8 +1622,8 @@ object JobForm: TJobForm
                 Size.PlatformDefault = False
                 TabOrder = 3
                 TabStop = False
-                Viewport.Width = 700.000000000000000000
-                Viewport.Height = 541.000000000000000000
+                Viewport.Width = 696.000000000000000000
+                Viewport.Height = 537.000000000000000000
               end
             end
             object tiWork: TTabItem
@@ -1662,8 +1662,8 @@ object JobForm: TJobForm
                 Size.PlatformDefault = False
                 TabOrder = 2
                 TabStop = False
-                Viewport.Width = 700.000000000000000000
-                Viewport.Height = 541.000000000000000000
+                Viewport.Width = 696.000000000000000000
+                Viewport.Height = 537.000000000000000000
               end
             end
             object tiRemedial: TTabItem
@@ -1702,8 +1702,8 @@ object JobForm: TJobForm
                 Size.PlatformDefault = False
                 TabOrder = 1
                 TabStop = False
-                Viewport.Width = 700.000000000000000000
-                Viewport.Height = 489.000000000000000000
+                Viewport.Width = 696.000000000000000000
+                Viewport.Height = 485.000000000000000000
               end
               object Layout5: TLayout
                 Align = Top
@@ -1722,7 +1722,7 @@ object JobForm: TJobForm
                   Size.Width = 177.000000000000000000
                   Size.Height = 44.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'ISSUE REFERRED TO'
+                  Text = 'Issue referred to'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.HorzAlign = Leading
@@ -1736,7 +1736,7 @@ object JobForm: TJobForm
                   TextSettings.FontColor = claWhite
                   Margins.Right = 2.000000000000000000
                   Size.Width = 517.000000000000000000
-                  Size.Height = 44.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   TextPrompt = 'REFERRED TO (If applicable)'
                   StyledSettings = [Family, Style, FontColor]
@@ -1779,8 +1779,8 @@ object JobForm: TJobForm
                 DefaultItemStyles.ItemStyle = ''
                 DefaultItemStyles.GroupHeaderStyle = ''
                 DefaultItemStyles.GroupFooterStyle = ''
-                Viewport.Width = 700.000000000000000000
-                Viewport.Height = 460.000000000000000000
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 464.000000000000000000
               end
               object GridPanelLayout3: TGridPanelLayout
                 Align = MostTop
@@ -1852,7 +1852,7 @@ object JobForm: TJobForm
                   Size.Width = 554.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'DESCRIPTION OF PARTS USED'
+                  Text = 'Description of parts used'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -1864,7 +1864,7 @@ object JobForm: TJobForm
                   Size.Width = 86.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'QTY'
+                  Text = 'Qty'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -1883,7 +1883,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 86.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   TextPrompt = 'Qty'
                   StyledSettings = [Family, Style, FontColor]
@@ -1899,7 +1899,7 @@ object JobForm: TJobForm
                   TextSettings.FontColor = claWhite
                   Margins.Right = 4.000000000000000000
                   Size.Width = 550.000000000000000000
-                  Size.Height = 40.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   TextPrompt = 'Details'
                   StyledSettings = [Family, Style, FontColor]
@@ -1997,8 +1997,8 @@ object JobForm: TJobForm
                 DefaultItemStyles.ItemStyle = ''
                 DefaultItemStyles.GroupHeaderStyle = ''
                 DefaultItemStyles.GroupFooterStyle = ''
-                Viewport.Width = 700.000000000000000000
-                Viewport.Height = 460.000000000000000000
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 464.000000000000000000
               end
               object GridPanelLayout2: TGridPanelLayout
                 Align = MostTop
@@ -2112,7 +2112,7 @@ object JobForm: TJobForm
                   Size.Width = 142.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'DATE'
+                  Text = 'Date'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -2124,7 +2124,7 @@ object JobForm: TJobForm
                   Size.Width = 116.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'TRAVEL TIME'
+                  Text = 'Travel Time'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -2136,7 +2136,7 @@ object JobForm: TJobForm
                   Size.Width = 116.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'TIME ARR'
+                  Text = 'Time Arr.'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -2148,7 +2148,7 @@ object JobForm: TJobForm
                   Size.Width = 116.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'TIME DEP'
+                  Text = 'Time Dep.'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -2160,7 +2160,7 @@ object JobForm: TJobForm
                   Size.Width = 116.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'MILEAGE'
+                  Text = 'Mileage'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -2174,7 +2174,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 142.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'dateeditstyle'
                   StyledSettings = [Family, Style, FontColor]
@@ -2190,7 +2190,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 116.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   StyledSettings = [Family, Style, FontColor]
                   TextSettings.Font.Size = 18.000000000000000000
@@ -2205,7 +2205,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 116.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   StyledSettings = [Family, Style, FontColor]
                   TextSettings.Font.Size = 18.000000000000000000
@@ -2220,7 +2220,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 116.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   StyledSettings = [Family, Style, FontColor]
                   TextSettings.Font.Size = 18.000000000000000000
@@ -2238,7 +2238,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 116.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   TextPrompt = 'Mileage'
                   StyledSettings = [Family, Style, FontColor]
@@ -2336,8 +2336,8 @@ object JobForm: TJobForm
                 DefaultItemStyles.ItemStyle = ''
                 DefaultItemStyles.GroupHeaderStyle = ''
                 DefaultItemStyles.GroupFooterStyle = ''
-                Viewport.Width = 700.000000000000000000
-                Viewport.Height = 460.000000000000000000
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 464.000000000000000000
               end
               object GridPanelLayout1: TGridPanelLayout
                 Align = MostTop
@@ -2423,7 +2423,7 @@ object JobForm: TJobForm
                   Size.Width = 378.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'EXPENSE DETAILS'
+                  Text = 'Expense details'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -2435,7 +2435,7 @@ object JobForm: TJobForm
                   Size.Width = 116.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'COST '#163
+                  Text = 'Cost '#163
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -2453,7 +2453,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 378.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   TextPrompt = 'Expense details'
                   StyledSettings = [Family, Style, FontColor]
@@ -2469,7 +2469,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 116.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   TextPrompt = 'Cost '#163
                   StyledSettings = [Family, Style, FontColor]
@@ -2535,7 +2535,7 @@ object JobForm: TJobForm
                   Size.Width = 142.000000000000000000
                   Size.Height = 26.000000000000000000
                   Size.PlatformDefault = False
-                  Text = 'DATE'
+                  Text = 'Expense Date'
                   TextSettings.Font.Size = 16.000000000000000000
                   TextSettings.FontColor = claLightblue
                   TextSettings.WordWrap = False
@@ -2549,7 +2549,7 @@ object JobForm: TJobForm
                   Margins.Top = 2.000000000000000000
                   Margins.Bottom = 2.000000000000000000
                   Size.Width = 142.000000000000000000
-                  Size.Height = 36.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'dateeditstyle'
                   StyledSettings = [Family, FontColor]
@@ -2568,7 +2568,7 @@ object JobForm: TJobForm
               TextSettings.FontColor = claWhite
               TextSettings.Trimming = None
               StyledSettings = [Family]
-              IsSelected = True
+              IsSelected = False
               Size.Width = 90.000000000000000000
               Size.Height = 49.000000000000000000
               Size.PlatformDefault = False
@@ -3442,7 +3442,7 @@ object JobForm: TJobForm
               TextSettings.FontColor = claWhite
               TextSettings.Trimming = None
               StyledSettings = [Family]
-              IsSelected = False
+              IsSelected = True
               Size.Width = 90.000000000000000000
               Size.Height = 49.000000000000000000
               Size.PlatformDefault = False
@@ -3482,7 +3482,7 @@ object JobForm: TJobForm
                   TextSettings.FontColor = claWhite
                   Margins.Right = 8.000000000000000000
                   Size.Width = 484.000000000000000000
-                  Size.Height = 40.000000000000000000
+                  Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   TextPrompt = 'Name of person signing'
                   StyledSettings = [Family, Style, FontColor]
@@ -3533,18 +3533,20 @@ object JobForm: TJobForm
                 end
               end
               object btnClearSignature: TButton
+                StyledSettings = [Family, Style, FontColor]
                 Margins.Left = 4.000000000000000000
                 Margins.Top = 2.000000000000000000
                 Margins.Right = 4.000000000000000000
                 Margins.Bottom = 2.000000000000000000
-                Position.X = 411.000000000000000000
-                Position.Y = 334.000000000000000000
-                Size.Width = 157.000000000000000000
-                Size.Height = 27.000000000000000000
+                Position.X = 60.000000000000000000
+                Position.Y = 342.000000000000000000
+                Size.Width = 180.000000000000000000
+                Size.Height = 36.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 1
                 TabStop = False
-                Text = 'CLEAR SIGNATURE'
+                Text = 'Clear Signature'
+                TextSettings.Font.Size = 14.000000000000000000
                 TextSettings.Trimming = None
                 OnClick = btnClearSignatureClick
               end

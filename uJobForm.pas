@@ -232,7 +232,6 @@ type
     procedure spdSaveJobClick(Sender: TObject);
     procedure spdAddJobClick(Sender: TObject);
     procedure spdDeleteJobClick(Sender: TObject);
-    procedure sklLastchangedClick(Sender: TObject);
     procedure TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
     //These are manually assigned so that i can add the event in multiple places
     procedure LoadFromLibraryClick(Sender: TObject);
@@ -300,9 +299,6 @@ begin
   RoundRectSignatureCust.AutoCapture := true;
   StyleComboBox(cbeJobtype, 18, TAlphaColors.White);
   StyleComboBox(cbeNewJobtype, 18, TAlphaColors.White);
-
-    // preserve font styling for sklLastchanged
-  sklLastchanged.StyledSettings := sklLastchanged.StyledSettings - [TStyledSetting.Size, TStyledSetting.FontColor];
 
   Job := TJobManager.Create(DM.FDlocal);
   TCJobs.TabPosition := TTabPosition.None;
@@ -424,14 +420,7 @@ begin
   memRemedial.Text := Job.Remedial;
   txtPersonsigning.Text := Job.Signedby;
   PathSignatureCust.Data.Data := Job.Signaturepathdata;
-
-    // sets the last changed date with my actual styling
-  with sklLastchanged do
-  begin
-    TextSettings.Font.Size := 18;
-    TextSettings.FontColor := TAlphaColors.White;
-    Text := 'Last changed: ' + FormatDateTime('dd/mm/yyyy hh:nn', Job.Lastchanged);
-  end;
+  sklLastchanged.Words[1].Text := FormatDateTime('dd/mm/yyyy hh:nn', Job.Lastchanged);
 end;
 
 procedure TJobForm.ClearJobRecord;
@@ -454,6 +443,7 @@ begin
   memRemedial.Text := '';
   PathSignatureCust.Data.Clear;
   txtPersonsigning.Text := '';
+  sklLastchanged.Words[1].Text := '';
 end;
 
 procedure TJobForm.AskInsertCustomer(const ACustName: string);
@@ -474,18 +464,6 @@ begin
     end
   );
 end;
-
-procedure TJobForm.sklLastchangedClick(Sender: TObject);
-begin
-  // Last changed date
-  with sklLastchanged do
-  begin
-    TextSettings.Font.Size := 18;
-    TextSettings.FontColor := TAlphaColors.White;
-    Text := FormatDateTime('dd/mm/yyyy hh:nn', Job.Lastchanged);
-  end;
-end;
-
 
 procedure TJobForm.spdAddJobClick(Sender: TObject);
 begin
@@ -784,12 +762,6 @@ begin
   if success then
   begin
     Job.FetchJob(Job.Jobno);
-  with sklLastchanged do
-  begin
-    TextSettings.Font.Size := 18;
-    TextSettings.FontColor := TAlphaColors.White;
-    Text := 'Last changed: ' + FormatDateTime('dd/mm/yyyy hh:nn', Job.Lastchanged);
-  end;
     PopulateJobsList();
     TCJobs.SetActiveTabWithTransitionAsync(TIjoblist, TTabTransition.Slide, TTabTransitionDirection.Reversed,
       procedure()
