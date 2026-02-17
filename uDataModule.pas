@@ -11,9 +11,14 @@ uses
   FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait, FireDAC.FMXUI.Error,
   FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FMX.Types, FMX.Controls, MobilePermissions.Model.Signature,
-  MobilePermissions.Model.Dangerous, MobilePermissions.Model.Standard,
-  MobilePermissions.Component;
+  FMX.Types, FMX.Controls
+  {$IFDEF ANDROID}
+  , MobilePermissions.Model.Signature
+  , MobilePermissions.Model.Dangerous
+  , MobilePermissions.Model.Standard
+  , MobilePermissions.Component
+  {$ENDIF}
+  ;
 
 type
   TDM = class(TDataModule)
@@ -28,7 +33,9 @@ type
     qryTime: TFDQuery;
     qryInsertSpare: TFDQuery;
     qryListCust: TFDQuery;
+    {$IFDEF ANDROID}
     MobilePermissions1: TMobilePermissions;
+    {$ENDIF}
     qryPDF: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure FDlocalAfterConnect(Sender: TObject);
@@ -309,12 +316,23 @@ begin
 end;
 
 procedure RequestPermissions;
+{$IFDEF ANDROID}
+var
+  LPermissions: TMobilePermissions;
+{$ENDIF}
 begin
-  // Used to simplify asking user permissions for android devices
-  DM.MobilePermissions1.Dangerous.Camera := true;
-  DM.MobilePermissions1.Dangerous.WriteExternalStorage := true;
-  DM.MobilePermissions1.Dangerous.ReadExternalStorage := true;
-  DM.MobilePermissions1.Apply;
+  {$IFDEF ANDROID}
+  LPermissions := TMobilePermissions.Create(nil);
+  try
+    LPermissions.Dangerous.Camera := True;
+    LPermissions.Dangerous.WriteExternalStorage := True;
+    LPermissions.Dangerous.ReadExternalStorage := True;
+    LPermissions.Apply;
+  finally
+    LPermissions.Free;
+  end;
+  {$ENDIF}
 end;
+
 
 end.
