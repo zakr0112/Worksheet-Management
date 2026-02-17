@@ -29,6 +29,7 @@ type
     qryInsertSpare: TFDQuery;
     qryListCust: TFDQuery;
     MobilePermissions1: TMobilePermissions;
+    qryPDF: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure FDlocalAfterConnect(Sender: TObject);
   private
@@ -264,6 +265,7 @@ const
 var
   DM: TDM;
   DBName: string;
+  SAVE_PATH: string;
 
 procedure RequestPermissions;
 
@@ -277,12 +279,13 @@ procedure TDM.DataModuleCreate(Sender: TObject);
 begin
   // Setup connection information depending on platform (e.g. android, windows)
   {$IF DEFINED(Android)}
+    SAVE_PATH := TPath.GetHomePath;
     DBName := TPath.Combine(TPath.GetHomePath, 'WorksheetV1.sdb');
   {$ELSEIF DEFINED(MSWINDOWS)}
-    var homeFolder := TPath.Combine(TPath.GetHomePath, 'WorkSheets');
+    SAVE_PATH := TPath.Combine(TPath.GetHomePath, 'WorkSheets');
     if not DirectoryExists(homeFolder) then
-      CreateDir(homeFolder);
-    DBName := TPath.Combine(homeFolder, 'WorksheetV1.sdb');
+      CreateDir(SAVE_PATH);
+    DBName := TPath.Combine(SAVE_PATH, 'WorksheetV1.sdb');
   {$ENDIF}
 
   FDlocal.Params.Database := DBName;

@@ -12,7 +12,9 @@ uses
   uJobForm in 'uJobForm.pas' {JobForm},
   uMainForm in 'uMainForm.pas' {MainForm},
   uJobsManagerClass in 'uJobsManagerClass.pas',
-  uCommon in 'uCommon.pas';
+  uCommon in 'uCommon.pas',
+  uWorksheetPDF in 'uWorksheetPDF.pas',
+  uCommonUTF8Helper in 'uCommonUTF8Helper.pas';
 
 {$R *.res}
 
