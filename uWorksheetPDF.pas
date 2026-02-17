@@ -248,7 +248,7 @@ begin
     except
       on E: Exception do
       begin
-        ShowError('PDFTimeExpenses' + sLineBreak + E.Message);
+        ShowError('PDFTime' + sLineBreak + E.Message);
         exit(false);
       end;
     end;
@@ -259,6 +259,7 @@ begin
   // ===========================================================================
   // Expenses...
   // ===========================================================================
+  (*
   try
     try
       DM.qryPDF.Open(Format('SELECT * FROM jobs_expenses WHERE jobno = %d ORDER BY exdate ASC, lastchanged ASC', [fJobno]));
@@ -288,14 +289,14 @@ begin
     except
       on E: Exception do
       begin
-        ShowError('PDFTimeExpenses' + sLineBreak + E.Message);
+        ShowError('PDFExpenses' + sLineBreak + E.Message);
         exit(false);
       end;
     end;
   finally
     DM.qryPDF.Close;
   end;
-
+  *)
   // ===========================================================================
   // Signature processing...
   // ===========================================================================

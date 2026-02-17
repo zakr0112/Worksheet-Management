@@ -14,7 +14,8 @@ uses
   uJobsManagerClass in 'uJobsManagerClass.pas',
   uCommon in 'uCommon.pas',
   uWorksheetPDF in 'uWorksheetPDF.pas',
-  uCommonUTF8Helper in 'uCommonUTF8Helper.pas';
+  uCommonUTF8Helper in 'uCommonUTF8Helper.pas',
+  uCommonPDFLauncher in 'uCommonPDFLauncher.pas';
 
 {$R *.res}
 

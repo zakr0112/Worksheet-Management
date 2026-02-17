@@ -283,7 +283,7 @@ begin
     DBName := TPath.Combine(TPath.GetHomePath, 'WorksheetV1.sdb');
   {$ELSEIF DEFINED(MSWINDOWS)}
     SAVE_PATH := TPath.Combine(TPath.GetHomePath, 'WorkSheets');
-    if not DirectoryExists(homeFolder) then
+    if not DirectoryExists(SAVE_PATH) then
       CreateDir(SAVE_PATH);
     DBName := TPath.Combine(SAVE_PATH, 'WorksheetV1.sdb');
   {$ENDIF}

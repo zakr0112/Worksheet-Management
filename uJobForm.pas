@@ -3,7 +3,7 @@ unit uJobForm;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, System.IOUtils,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Platform,
   uDataModule,  FMX.ListView.Types, FMX.ListView.Appearances,
@@ -19,7 +19,7 @@ uses
   uCommonDialogs, uCustomerManagerClass, uHelperTabControl, uJobsManagerClass,
   FMX.Objects, FMX.DateTimeCtrls, FMX.ListBox, uCommon, FMX.DialogService, FMX.DialogService.Async,
   FMX.ComboEdit, FMX.MediaLibrary, System.Actions, FMX.ActnList, FMX.StdActns,
-  FMX.MediaLibrary.Actions;
+  FMX.MediaLibrary.Actions, uWorksheetPDF, uCommonPDFLauncher;
 
 type
   TJobForm = class(TForm)
@@ -910,15 +910,20 @@ begin
   // Only continue if the right hand arrow button clicked
   if ItemObject is TListItemImage then
   begin
+    jobno := LVZJobs.Items.Item[itemindex].Tag;
     if itemobject.Name = 'lvoImgPdf' then
     begin
-     // Launch pdf
+      if not Job.FetchJob(jobno) then
+      begin
+        ShowWarning('Unable to find the selected record!');
+        exit;
+      end;
+      if CreateWorksheetPdf(jobno) then
+        LaunchPDF(jobno);
     end
     else
     begin
-       // Display the record for editing
       ClearJobRecord;
-      jobno := LVZJobs.Items.Item[itemindex].Tag;
       if not Job.FetchJob(jobno) then
       begin
         ShowWarning('Unable to find the selected record!');
