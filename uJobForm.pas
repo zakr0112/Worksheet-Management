@@ -760,6 +760,7 @@ begin
   Job.Remedial := Trim(memRemedial.Text);
   Job.Signedby := Trim(txtPersonsigning.Text);
   Job.Signaturepathdata := pathsignaturecust.Data.Data;
+  showInfo(job.SignatureSVG);
 
   if Job.jobno < 0 then
     success := Job.InsertJob

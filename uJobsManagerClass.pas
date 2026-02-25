@@ -6,6 +6,10 @@ uses
   System.SysUtils, System.Classes, FireDAC.Comp.Client, FireDAC.Stan.Param,
   uCommonDialogs;
 
+  const svgwrapper: string =
+    '<svg width="640px" height="200px" xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, 640, 200" preserveAspectRatio="xMidYMid">' +
+    '<path style="fill:#ffffff00;fill-opacity:0;stroke:#1a1a1a;stroke-width:2px;stoke-opacity:1" d="%s" /></svg>';
+
 type
   TJobManager = class
   private
@@ -54,6 +58,7 @@ type
 
     procedure ShowChangedFields; // Debug usage
     function HasChanges: Boolean;
+    function GetSignatureSVG: string;
 
   public
     constructor Create(AConnection: TFDConnection);
@@ -78,6 +83,7 @@ type
     property Signedby: String read FSignedby write FSignedby;
     property Signaturepathdata: String read FSignaturepathdata write FSignaturepathdata;
     property Lastchanged: TDateTime read FLastchanged write FLastchanged;
+    property SignatureSVG: string read GetSignatureSVG;
     function FetchJob(const AJobno: Integer): Boolean;
     function DeleteJob(const AJobno: Integer = -1): boolean;
     function InsertJob: boolean;
@@ -183,6 +189,15 @@ begin
   finally
     FQry.close;
     FQry.SQL.Text := '';
+  end;
+end;
+
+function TJobManager.GetSignatureSVG: string;
+begin
+  Result := '';
+  if not FSignaturepathdata.IsEmpty then
+  begin
+    Result := Format(svgwrapper, [FSignaturepathdata]);
   end;
 end;
 

@@ -644,7 +644,7 @@ object JobForm: TJobForm
           TextSettings.HorzAlign = Trailing
         end
         object dtNewDate: TDateEdit
-          Date = 46070.000000000000000000
+          Date = 46078.000000000000000000
           TodayDefault = True
           Align = Left
           FirstDayOfWeek = dowMonday
@@ -1228,7 +1228,7 @@ object JobForm: TJobForm
             TextSettings.HorzAlign = Trailing
           end
           object dtJobdate: TDateEdit
-            Date = 46070.000000000000000000
+            Date = 46078.000000000000000000
             TodayDefault = True
             Align = Client
             FirstDayOfWeek = dowMonday
@@ -1584,7 +1584,7 @@ object JobForm: TJobForm
             Size.Height = 462.000000000000000000
             Size.PlatformDefault = False
             TabHeight = 49.000000000000000000
-            TabIndex = 5
+            TabIndex = 7
             TabOrder = 2
             TabStop = False
             TabPosition = PlatformDefault
@@ -2188,7 +2188,7 @@ object JobForm: TJobForm
                   TextSettings.VertAlign = Trailing
                 end
                 object dtDate: TDateEdit
-                  Date = 46070.000000000000000000
+                  Date = 46078.000000000000000000
                   TodayDefault = True
                   Align = Client
                   Margins.Top = 2.000000000000000000
@@ -2330,7 +2330,7 @@ object JobForm: TJobForm
               TextSettings.FontColor = claWhite
               TextSettings.Trimming = None
               StyledSettings = [Family]
-              IsSelected = True
+              IsSelected = False
               Size.Width = 90.000000000000000000
               Size.Height = 49.000000000000000000
               Size.PlatformDefault = False
@@ -2563,7 +2563,7 @@ object JobForm: TJobForm
                   TextSettings.VertAlign = Trailing
                 end
                 object dtDateExp: TDateEdit
-                  Date = 46070.000000000000000000
+                  Date = 46078.000000000000000000
                   TodayDefault = True
                   Align = Client
                   Margins.Top = 2.000000000000000000
@@ -3462,7 +3462,7 @@ object JobForm: TJobForm
               TextSettings.FontColor = claWhite
               TextSettings.Trimming = None
               StyledSettings = [Family]
-              IsSelected = False
+              IsSelected = True
               Size.Width = 90.000000000000000000
               Size.Height = 49.000000000000000000
               Size.PlatformDefault = False

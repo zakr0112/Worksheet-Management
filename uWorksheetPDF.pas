@@ -327,6 +327,7 @@ begin
           Cell(140, 6, FCurrentJob.Signedby, 'LTRB', 1, 'L', false);
         Cell(190, 38, '', 'LTRB', 1, 'L', false);
         y := GetY();
+        //Job.Signaturepathdata
 //        fCurrentJob.SaveSignaturePNG();
 //        if FileExists(fCurrentJob.SignatureFilename) then
 //          Image(fCurrentJob.SignatureFilename, 30, y - 32, 85);
