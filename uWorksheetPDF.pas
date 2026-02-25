@@ -4,7 +4,7 @@ interface
 
 uses
   System.Classes, System.SysUtils, System.Math, System.IOUtils, System.Types, uCommon, uDatamodule, Data.DB, fpdf_ext,
-  uCommonDialogs, uJobsManagerClass, uCommonUTF8Helper,
+  uCommonDialogs, uJobsManagerClass, uCommonUTF8Helper, System.StrUtils,
   uSvgSignatureHelper
   {$IFDEF Android}
     , Posix.Unistd
@@ -62,14 +62,6 @@ begin
   SetTextColor(0);
   SetFont('Arial', 'B', 14);
   SetLineWidth(0.1);
-
-
-    //Keeping this incase android logo doesn't work
-
-  //var LOGO := 'logo.png';
-  //if FileExists('logo.png') then
-    //Image(LOGO, 8, 8, 20, 20);
-
   var LOGO :=
     {$IF DEFINED(ANDROID)}
     TPath.Combine(TPath.GetDocumentsPath, 'logo.png');
@@ -77,15 +69,13 @@ begin
     Tpath.Combine(TPath.GetDirectoryName(ParamStr(0)), 'logo.png');
     {$ENDIF}
   if FileExists(LOGO) then
-    Image(LOGO, 8, 8, 20, 20);
-
-
+    Image(LOGO, 10, 8, 20, 20);
   MultiCell(190, 6, FHeadertitle, '0', 'C', false);
   Ln(5);
   SetY(10.1);
   SetX(-40.0);
   SetFont('Times', '', 18);
-  Cell(30, 8, 'JOB NO', '', 2, 'C', false);
+  Cell(30, 8, 'JOB', '', 2, 'R', false);
   SetTextColor(255, 0, 0); // RED
   SetFont('Times', 'B', 30);
   Cell(30, 10, Format('%d', [fJobNo]), '', 1, 'R', false);
@@ -138,10 +128,11 @@ begin
       SetDataFont();
       Cell(60, 6, FCurrentJob.ContractNo, 'LTRB', 1, 'L', false);
       SetTitleFont();
-      Cell(190, 6, 'ENGINEERS', 'LTRB', 1, 'L', false);
+      Cell(30, 6, 'ENGINEERS', 'LTRB', 0, 'L', false);
       SetDataFont();
-      Cell(95, 6, FCurrentJob.EngineerName1, 'LTRB', 0, 'L', false);
-      Cell(95, 6, FCurrentJob.EngineerName2, 'LTRB', 1, 'L', false);
+      Cell(160, 6, Format('%s%s', [FCurrentJob.EngineerName1, IfThen(FCurrentJob.EngineerName2.IsEmpty, '', ', ' + FCurrentJob.EngineerName2)]), 'LTRB', 1, 'L', false);
+      //Cell(160, 6, Format('%s %s', [FCurrentJob.EngineerName1, FCurrentJob.EngineerName2]), 'LTRB', 1, 'L', false);
+      //Cell(95, 6, FCurrentJob.EngineerName2, 'LTRB', 1, 'L', false);
       Ln(5);
       SetHeaderSection('CUSTOMER DETAILS');
       SetDataFont();

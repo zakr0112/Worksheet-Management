@@ -18,7 +18,7 @@ object JobForm: TJobForm
     Size.Height = 864.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -33,7 +33,7 @@ object JobForm: TJobForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -881,7 +881,7 @@ object JobForm: TJobForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False

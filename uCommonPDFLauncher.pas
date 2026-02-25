@@ -159,6 +159,7 @@ begin
       pdfsqlite.SetCreator('WorkSheetsFMX');
       pdfsqlite.SetAuthor('WorkSheetsFMX');
       pdfsqlite.fJobno := AJobNo;
+      pdfsqlite.fHeaderTitle := 'Company name here' + slinebreak + 'Telephone here' + slinebreak + 'Email here';
       if not pdfsqlite.PrintJob then
         exit(false);
       pdfsqlite.SaveToFile(PDF_FILENAME);
