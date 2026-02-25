@@ -157,7 +157,7 @@ begin
       pdfworksheet.SetCreator('WorkSheetsFMX');
       pdfworksheet.SetAuthor('WorkSheetsFMX');
       pdfworksheet.fJobno := AJobNo;
-      pdfworksheet.fHeaderTitle := 'Company name here' + slinebreak + 'Telephone here' + slinebreak + 'Email here';
+      pdfworksheet.fHeaderTitle := 'Company name goes here' + slinebreak + 'Telephone goes here' + slinebreak + 'Email goes here';
       if not pdfworksheet.PrintJob then
         exit(false);
       pdfworksheet.SaveToFile(PDF_FILENAME);
