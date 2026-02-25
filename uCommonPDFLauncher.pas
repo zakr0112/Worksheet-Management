@@ -140,29 +140,27 @@ begin
   {$ENDIF}
 end;
 
-//function CreateWorksheetPdf(const AJobno: integer; AShowSavedMsg: boolean = false): boolean; overload;
-
 function CreateWorksheetPdf(const AJobno: integer; AShowSavedMsg: boolean = false): boolean;
 var
-pdfsqlite : TWorksheetPDF;
+  pdfworksheet : TWorksheetPDF;
 begin
   Result := true;
-  pdfsqlite := TWorksheetPDF.Create;
+  pdfworksheet := TWorksheetPDF.Create;
   try
     try
       var PDF_FILENAME := GetWorksheetFilename(AJobno);
-      pdfsqlite.FCurrentJob := Job;
-      pdfsqlite.SetUTF8(true);
-      pdfsqlite.SetAliasNbPages();
-      pdfsqlite.SetTitle(Format('Worksheet %d.pdf', [AJobno]));
-      pdfsqlite.SetSubject('PRIVATE AND CONFIDENTIAL');
-      pdfsqlite.SetCreator('WorkSheetsFMX');
-      pdfsqlite.SetAuthor('WorkSheetsFMX');
-      pdfsqlite.fJobno := AJobNo;
-      pdfsqlite.fHeaderTitle := 'Company name here' + slinebreak + 'Telephone here' + slinebreak + 'Email here';
-      if not pdfsqlite.PrintJob then
+      pdfworksheet.FCurrentJob := Job;
+      pdfworksheet.SetUTF8(true);
+      pdfworksheet.SetAliasNbPages();
+      pdfworksheet.SetTitle(Format('Worksheet %d.pdf', [AJobno]));
+      pdfworksheet.SetSubject('PRIVATE AND CONFIDENTIAL');
+      pdfworksheet.SetCreator('WorkSheetsFMX');
+      pdfworksheet.SetAuthor('WorkSheetsFMX');
+      pdfworksheet.fJobno := AJobNo;
+      pdfworksheet.fHeaderTitle := 'Company name here' + slinebreak + 'Telephone here' + slinebreak + 'Email here';
+      if not pdfworksheet.PrintJob then
         exit(false);
-      pdfsqlite.SaveToFile(PDF_FILENAME);
+      pdfworksheet.SaveToFile(PDF_FILENAME);
       if FileExists(PDF_FILENAME) then
       begin
         {$IF NOT Defined(MSWINDOWS)}
@@ -176,7 +174,7 @@ begin
       end;
     end;
   finally
-    pdfsqlite.Free;
+    pdfworksheet.Free;
   end;
 end;
 
