@@ -18,7 +18,7 @@ object JobForm: TJobForm
     Size.Height = 864.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -33,7 +33,7 @@ object JobForm: TJobForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -255,6 +255,17 @@ object JobForm: TJobForm
               ':#FF7058;" points="58,327.6 100.4,327.6 104.8,260 211.6,260 216,' +
               '327.6 258.4,327.6 158,428 '#9'"/>'#13#10'</g>'#13#10'</svg>'
           end
+        end
+      end
+      object rectProgress: TRectangle
+        Align = Contents
+        Fill.Color = x80000000
+        Size.Width = 720.000000000000000000
+        Size.Height = 815.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        object aniProgress: TAniIndicator
+          Align = Center
         end
       end
       object MVDrawerJOB: TMultiView
@@ -881,7 +892,7 @@ object JobForm: TJobForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 240.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False

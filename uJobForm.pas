@@ -3,7 +3,7 @@ unit uJobForm;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, System.IOUtils,
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, System.IOUtils, System.Threading,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Platform,
   uDataModule,  FMX.ListView.Types, FMX.ListView.Appearances,
@@ -211,6 +211,8 @@ type
     TakePhotoFromCameraAction1: TTakePhotoFromCameraAction;
     imgEdit: TImage;
     imgPdf: TImage;
+    rectProgress: TRectangle;
+    aniProgress: TAniIndicator;
     procedure spdHomeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure radSortJobnoHLClick(Sender: TObject);
@@ -265,6 +267,7 @@ type
     procedure ClearDisplayedPhotos;
     procedure ShowJobPhotos;
     procedure DeleteJobphoto(const AJobno, APhoto: integer);
+    procedure CreateWorksheetPDFThread(const AJobno: integer);
 
     var
       FThumbs: array[1..6] of TImage;   // used for images
@@ -918,8 +921,8 @@ begin
         ShowWarning('Unable to find the selected record!');
         exit;
       end;
-      if CreateWorksheetPdf(jobno) then
-        LaunchPDF(jobno);
+       CreateWorksheetPDFThread(jobno);
+        //LaunchPDF(jobno);
     end
     else
     begin
@@ -1523,5 +1526,42 @@ begin
         end;
       end);
 end;
+
+procedure TJobForm.CreateWorksheetPDFThread(const AJobno: integer);
+var
+  PDFBuilt: boolean;
+begin
+  aniProgress.Enabled := true;
+  rectProgress.Visible := true;
+  TTask.Run(
+    procedure
+    begin
+      try
+        PDFBuilt := CreateWorksheetPdf(AJobno);
+
+        TThread.Queue(nil,
+          procedure
+          begin
+            aniProgress.Enabled := false;
+            rectProgress.Visible := false;
+            // now we show it...
+            if PDFBuilt then
+             LaunchPDF(jobno);
+          end);
+      except
+        on E: Exception do
+        begin
+          TThread.Queue(nil,
+          procedure
+          begin
+            aniProgress.Enabled := false;
+            rectProgress.Visible := false;
+          end);
+        end;
+      end;
+    end);
+end;
+
+
 
 end.
