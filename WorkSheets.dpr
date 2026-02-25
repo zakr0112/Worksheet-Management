@@ -15,7 +15,8 @@ uses
   uCommon in 'uCommon.pas',
   uWorksheetPDF in 'uWorksheetPDF.pas',
   uCommonUTF8Helper in 'uCommonUTF8Helper.pas',
-  uCommonPDFLauncher in 'uCommonPDFLauncher.pas';
+  uCommonPDFLauncher in 'uCommonPDFLauncher.pas',
+  uSvgSignatureHelper in 'uSvgSignatureHelper.pas';
 
 {$R *.res}
 

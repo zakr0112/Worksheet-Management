@@ -4,7 +4,8 @@ interface
 
 uses
   System.Classes, System.SysUtils, System.Math, System.IOUtils, System.Types, uCommon, uDatamodule, Data.DB, fpdf_ext,
-  uCommonDialogs, uJobsManagerClass, uCommonUTF8Helper
+  uCommonDialogs, uJobsManagerClass, uCommonUTF8Helper,
+  uSvgSignatureHelper
   {$IFDEF Android}
     , Posix.Unistd
   {$ENDIF}
@@ -327,10 +328,18 @@ begin
           Cell(140, 6, FCurrentJob.Signedby, 'LTRB', 1, 'L', false);
         Cell(190, 38, '', 'LTRB', 1, 'L', false);
         y := GetY();
-        //Job.Signaturepathdata
-//        fCurrentJob.SaveSignaturePNG();
-//        if FileExists(fCurrentJob.SignatureFilename) then
-//          Image(fCurrentJob.SignatureFilename, 30, y - 32, 85);
+        // convert save then display the signature!
+        if not Job.Signaturepathdata.IsEmpty then
+        begin
+          // we have data, so hopefully can convert to a png!
+          var SignatureFilename := Format('%d_signature.png', [Job.Jobno]);
+          // consider changing to a function to avoid checks for FileExists?
+          ExportSignatureAsPNG(Job.SignatureSVG, SignatureFilename);
+          if FileExists(SignatureFilename) then
+          begin
+            Image(SignatureFilename, 30, y - 32, 85);
+          end;
+        end;
       end;
     except
       on E: Exception do

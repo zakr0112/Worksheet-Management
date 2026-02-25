@@ -265,6 +265,7 @@
         <DCCReference Include="uWorksheetPDF.pas"/>
         <DCCReference Include="uCommonUTF8Helper.pas"/>
         <DCCReference Include="uCommonPDFLauncher.pas"/>
+        <DCCReference Include="uSvgSignatureHelper.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -747,6 +748,12 @@
                 <DeployFile LocalName="Win64\Debug\WorkSheets.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>WorkSheets.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\WorkSheets.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>WorkSheets.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
