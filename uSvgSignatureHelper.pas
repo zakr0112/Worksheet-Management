@@ -22,7 +22,7 @@ begin
         LSvgBrush: TSkSvgBrush;
       begin
         // Fill background (defaults to light cream green)
-        ACanvas.Clear($FFCCFFCC);
+        ACanvas.Clear($FFFFFFFF);
         LSvgBrush := TSkSvgBrush.Create;
         try
           LSvgBrush.Source := ASvgSource;

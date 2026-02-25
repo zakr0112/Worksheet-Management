@@ -136,17 +136,6 @@ const
          FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
         );
 
-        CREATE TABLE jobs_signatures (
-         jobno INTEGER NOT NULL UNIQUE,
-         signedby TEXT,
-         signedat DATETIME,
-         signaturepathdata TEXT,
-         signaturepng BLOB,
-         signaturesvg TEXT,
-         lastchanged DATETIME,
-         FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
-        );
-
         CREATE TABLE jobs_spareparts (
          spid INTEGER PRIMARY KEY AUTOINCREMENT,
          jobno INTEGER NOT NULL,
@@ -244,26 +233,6 @@ const
         (13, 13, '2025-10-13', '00:55:00', '10:15:00', '11:45:00', '02:25:00', 5400, 3300, 8700, 32, '2025-10-13 11:50:00'),
         (14, 14, '2025-10-14', '00:25:00', '09:30:00', '10:20:00', '01:15:00', 3000, 1500, 4500, 14, '2025-10-14 10:25:00'),
         (15, 15, '2025-10-15', '00:40:00', '11:00:00', '12:00:00', '01:40:00', 3600, 2400, 6000, 25, '2025-10-15 12:05:00');
-
-        INSERT INTO jobs_signatures (jobno, signedby, signedat, signaturepathdata, lastchanged)
-        VALUES
-        (1, 'Sarah Bennett', '2025-10-01 10:00:00', 'path/to/signature1', '2025-10-01 10:00:00'),
-        (2, 'James Carter', '2025-10-02 15:00:00', 'path/to/signature2', '2025-10-02 15:00:00'),
-        (3, 'Rachel Moore', '2025-10-03 12:30:00', 'path/to/signature3', '2025-10-03 12:30:00'),
-        (4, 'Daniel Price', '2025-10-04 12:30:00', 'path/to/signature4', '2025-10-04 12:30:00'),
-        (5, 'Rachel Moore', '2025-10-05 15:30:00', 'path/to/signature5', '2025-10-05 15:30:00'),
-        (6, 'Laura Green', '2025-10-06 11:00:00', 'path/to/signature6', '2025-10-06 11:00:00'),
-        (7, 'Daniel Price', '2025-10-07 09:45:00', 'path/to/signature7', '2025-10-07 09:45:00'),
-        (8, 'Oliver Scott', '2025-10-08 14:00:00', 'path/to/signature8', '2025-10-08 14:00:00'),
-        (9, 'Sophie Adams', '2025-10-09 12:15:00', 'path/to/signature9', '2025-10-09 12:15:00'),
-        (10, 'George White', '2025-10-10 09:00:00', 'path/to/signature10', '2025-10-10 09:00:00'),
-        (11, 'Amelia Clarke', '2025-10-11 16:30:00', 'path/to/signature11', '2025-10-11 16:30:00'),
-        (12, 'Liam Turner', '2025-10-12 13:00:00', 'path/to/signature12', '2025-10-12 13:00:00'),
-        (13, 'Grace Mitchell', '2025-10-13 11:45:00', 'path/to/signature13', '2025-10-13 11:45:00'),
-        (14, 'Nathan Brooks', '2025-10-14 10:20:00', 'path/to/signature14', '2025-10-14 10:20:00'),
-        (15, 'Chloe Davies', '2025-10-15 12:00:00', 'path/to/signature15', '2025-10-15 12:00:00');
-
-
    ''';
 
    const svgdelete: string =

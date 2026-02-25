@@ -332,12 +332,13 @@ begin
         if not Job.Signaturepathdata.IsEmpty then
         begin
           // we have data, so hopefully can convert to a png!
-          var SignatureFilename := Format('%d_signature.png', [Job.Jobno]);
+
+          var SignatureFilename := TPath.Combine(SAVE_PATH, Format('%d_signature.png', [Job.Jobno]));
           // consider changing to a function to avoid checks for FileExists?
           ExportSignatureAsPNG(Job.SignatureSVG, SignatureFilename);
           if FileExists(SignatureFilename) then
           begin
-            Image(SignatureFilename, 30, y - 32, 85);
+            Image(SignatureFilename, 30, y - 32, 90);
           end;
         end;
       end;
