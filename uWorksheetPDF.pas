@@ -62,9 +62,24 @@ begin
   SetTextColor(0);
   SetFont('Arial', 'B', 14);
   SetLineWidth(0.1);
-  var LOGO := 'logo.png';
-  if FileExists('logo.png') then
+
+
+    //Keeping this incase android logo doesn't work
+
+  //var LOGO := 'logo.png';
+  //if FileExists('logo.png') then
+    //Image(LOGO, 8, 8, 20, 20);
+
+  var LOGO :=
+    {$IF DEFINED(ANDROID)}
+    TPath.Combine(TPath.GetDocumentsPath, 'logo.png');
+    {$ELSE}
+    Tpath.Combine(TPath.GetDirectoryName(ParamStr(0)), 'logo.png');
+    {$ENDIF}
+  if FileExists(LOGO) then
     Image(LOGO, 8, 8, 20, 20);
+
+
   MultiCell(190, 6, FHeadertitle, '0', 'C', false);
   Ln(5);
   SetY(10.1);
