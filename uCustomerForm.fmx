@@ -112,6 +112,7 @@ object CustomerForm: TCustomerForm
             Appearance.Height = 42.000000000000000000
             Appearance.Align = Trailing
             Appearance.VertAlign = Center
+            Appearance.Visible = False
             Appearance.PlaceOffset.X = -54.000000000000000000
           end>
         ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
@@ -352,341 +353,471 @@ object CustomerForm: TCustomerForm
       Text = 'Details'
       ExplicitSize.cx = 56.000000000000000000
       ExplicitSize.cy = 26.000000000000000000
-      object gpanCustomer: TGridPanelLayout
+      object TCCustedit: TTabControl
         Align = Client
-        Padding.Left = 2.000000000000000000
-        Padding.Top = 2.000000000000000000
-        Padding.Right = 2.000000000000000000
-        Padding.Bottom = 2.000000000000000000
-        Margins.Left = 4.000000000000000000
-        Margins.Top = 4.000000000000000000
-        Margins.Right = 4.000000000000000000
-        Margins.Bottom = 4.000000000000000000
-        Size.Width = 692.000000000000000000
-        Size.Height = 451.000000000000000000
+        Size.Width = 700.000000000000000000
+        Size.Height = 459.000000000000000000
         Size.PlatformDefault = False
+        TabHeight = 49.000000000000000000
+        TabIndex = 1
         TabOrder = 0
-        ColumnCollection = <
-          item
-            SizeStyle = Absolute
-            Value = 150.000000000000000000
-          end
-          item
-            Value = 100.000000000000000000
-          end
-          item
-            SizeStyle = Absolute
-            Value = 64.000000000000000000
-          end>
-        ControlCollection = <
-          item
-            Column = 0
-            Control = Label1
-            Row = 0
-          end
-          item
-            Column = 1
-            Control = txtCustname
-            Row = 0
-          end
-          item
-            Column = 0
-            Control = Label3
-            Row = 1
-          end
-          item
-            Column = 1
-            Control = memCustaddress
-            Row = 1
-          end
-          item
-            Column = 0
-            Control = Label5
-            Row = 2
-          end
-          item
-            Column = 1
-            Control = txtCustpostcode
-            Row = 2
-          end
-          item
-            Column = 0
-            Control = Label7
-            Row = 3
-          end
-          item
-            Column = 0
-            Control = Label10
-            Row = 4
-          end
-          item
-            Column = 0
-            Control = Label13
-            Row = 5
-          end
-          item
-            Column = 1
-            Control = txtCusttelephone
-            Row = 3
-          end
-          item
-            Column = 1
-            Control = txtCustemail
-            Row = 4
-          end
-          item
-            Column = 1
-            Control = txtCustcontact
-            Row = 5
-          end
-          item
-            Column = 1
-            Control = GridPanelLayout1
-            Row = 6
-          end>
-        RowCollection = <
-          item
-            SizeStyle = Absolute
-            Value = 44.000000000000000000
-          end
-          item
-            SizeStyle = Absolute
-            Value = 160.000000000000000000
-          end
-          item
-            SizeStyle = Absolute
-            Value = 44.000000000000000000
-          end
-          item
-            SizeStyle = Absolute
-            Value = 44.000000000000000000
-          end
-          item
-            SizeStyle = Absolute
-            Value = 44.000000000000000000
-          end
-          item
-            SizeStyle = Absolute
-            Value = 44.000000000000000000
-          end
-          item
-            SizeStyle = Absolute
-            Value = 44.000000000000000000
-          end
-          item
-            SizeStyle = Absolute
-            Value = 44.000000000000000000
-          end>
-        object Label1: TLabel
-          Align = Client
-          StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
-          Size.Height = 40.000000000000000000
+        TabPosition = PlatformDefault
+        Sizes = (
+          700s
+          410s
+          700s
+          410s)
+        object tiEdit: TTabItem
+          CustomIcon = <
+            item
+            end>
+          TextSettings.Trimming = None
+          IsSelected = False
+          Size.Width = 350.000000000000000000
+          Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
-          TextSettings.Font.Size = 14.000000000000000000
-          TextSettings.FontColor = claLightblue
-          TextSettings.HorzAlign = Trailing
-          Text = 'Customer Name *'
-          TabOrder = 6
-        end
-        object txtCustname: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Client
-          TabOrder = 11
-          TextSettings.Font.Size = 18.000000000000000000
-          Size.Width = 474.000000000000000000
-          Size.Height = 32.000000000000000000
-          Size.PlatformDefault = False
-          StyledSettings = [Family, Style, FontColor]
-        end
-        object Label3: TLabel
-          Align = Client
-          StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
-          Size.Height = 156.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 14.000000000000000000
-          TextSettings.FontColor = claLightblue
-          TextSettings.HorzAlign = Trailing
-          Text = 'Address'
-          TabOrder = 5
-        end
-        object memCustaddress: TMemo
-          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-          DataDetectorTypes = []
-          StyledSettings = [Family, Style, FontColor]
-          TextSettings.Font.Size = 18.000000000000000000
-          Align = Client
-          Size.Width = 474.000000000000000000
-          Size.Height = 156.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 12
-          Viewport.Width = 474.000000000000000000
-          Viewport.Height = 156.000000000000000000
-        end
-        object Label5: TLabel
-          Align = Client
-          StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 14.000000000000000000
-          TextSettings.FontColor = claLightblue
-          TextSettings.HorzAlign = Trailing
-          Text = 'Postcode'
-          TabOrder = 4
-        end
-        object txtCustpostcode: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Client
-          TabOrder = 10
-          TextSettings.Font.Size = 18.000000000000000000
-          Size.Width = 474.000000000000000000
-          Size.Height = 32.000000000000000000
-          Size.PlatformDefault = False
-          StyledSettings = [Family, Style, FontColor]
-        end
-        object Label7: TLabel
-          Align = Client
-          StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 14.000000000000000000
-          TextSettings.FontColor = claLightblue
-          TextSettings.HorzAlign = Trailing
-          Text = 'Telephone No.'
-          TabOrder = 2
-        end
-        object Label10: TLabel
-          Align = Client
-          StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 14.000000000000000000
-          TextSettings.FontColor = claLightblue
-          TextSettings.HorzAlign = Trailing
-          Text = 'Email Address'
-          TabOrder = 1
-        end
-        object Label13: TLabel
-          Align = Client
-          StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 14.000000000000000000
-          TextSettings.FontColor = claLightblue
-          TextSettings.HorzAlign = Trailing
-          Text = 'Contact Name'
+          StyleLookup = ''
           TabOrder = 0
-        end
-        object txtCusttelephone: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Client
-          TabOrder = 7
-          TextSettings.Font.Size = 18.000000000000000000
-          Size.Width = 474.000000000000000000
-          Size.Height = 32.000000000000000000
-          Size.PlatformDefault = False
-          StyledSettings = [Family, Style, FontColor]
-        end
-        object txtCustemail: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Client
-          TabOrder = 8
-          TextSettings.Font.Size = 18.000000000000000000
-          Size.Width = 474.000000000000000000
-          Size.Height = 32.000000000000000000
-          Size.PlatformDefault = False
-          StyledSettings = [Family, Style, FontColor]
-        end
-        object txtCustcontact: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Client
-          TabOrder = 9
-          TextSettings.Font.Size = 18.000000000000000000
-          Size.Width = 474.000000000000000000
-          Size.Height = 32.000000000000000000
-          Size.PlatformDefault = False
-          StyledSettings = [Family, Style, FontColor]
-        end
-        object GridPanelLayout1: TGridPanelLayout
-          Align = Client
-          Padding.Left = 2.000000000000000000
-          Padding.Top = 2.000000000000000000
-          Padding.Right = 2.000000000000000000
-          Padding.Bottom = 2.000000000000000000
-          Size.Width = 474.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 3
-          ColumnCollection = <
-            item
-              Value = 33.338048014085410000
-            end
-            item
-              Value = 33.361942341916990000
-            end
-            item
-              Value = 33.300000000000000000
-            end>
-          ControlCollection = <
-            item
-              Column = 0
-              Control = btnSave
-              Row = 0
-            end
-            item
-              Column = 1
-              Control = btnDelete
-              Row = 0
-            end
-            item
-              Column = 2
-              Control = btnCancel
-              Row = 0
-            end>
-          RowCollection = <
-            item
-              Value = 100.000000000000000000
-            end>
-          object btnSave: TButton
+          Text = 'EDIT DETAILS'
+          object gpanCustomer: TGridPanelLayout
             Align = Client
-            StyledSettings = [Family, Style, FontColor]
-            Size.Width = 154.022354125976600000
-            Size.Height = 36.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 2
-            Text = 'Save'
-            TextSettings.Font.Size = 14.000000000000000000
-            TextSettings.Trimming = None
-            OnClick = btnSaveClick
-          end
-          object btnDelete: TButton
-            Align = Client
-            StyledSettings = [Family, Style, FontColor]
-            Size.Width = 154.135604858398400000
-            Size.Height = 36.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 1
-            Text = 'Delete'
-            TextSettings.Font.Size = 14.000000000000000000
-            TextSettings.Trimming = None
-            OnClick = btnDeleteClick
-          end
-          object btnCancel: TButton
-            Align = Client
-            StyledSettings = [Family, Style, FontColor]
-            Size.Width = 153.841979980468800000
-            Size.Height = 36.000000000000000000
+            Padding.Left = 2.000000000000000000
+            Padding.Top = 2.000000000000000000
+            Padding.Right = 2.000000000000000000
+            Padding.Bottom = 2.000000000000000000
+            Margins.Left = 4.000000000000000000
+            Margins.Top = 4.000000000000000000
+            Margins.Right = 4.000000000000000000
+            Margins.Bottom = 4.000000000000000000
+            Size.Width = 692.000000000000000000
+            Size.Height = 402.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
-            Text = 'Cancel'
-            TextSettings.Font.Size = 14.000000000000000000
-            TextSettings.Trimming = None
-            OnClick = btnCancelClick
+            ColumnCollection = <
+              item
+                SizeStyle = Absolute
+                Value = 150.000000000000000000
+              end
+              item
+                Value = 100.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 64.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = Label1
+                Row = 0
+              end
+              item
+                Column = 1
+                Control = txtCustname
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = Label3
+                Row = 1
+              end
+              item
+                Column = 1
+                Control = memCustaddress
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = Label5
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = txtCustpostcode
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = Label7
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = Label10
+                Row = 4
+              end
+              item
+                Column = 0
+                Control = Label13
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = txtCusttelephone
+                Row = 3
+              end
+              item
+                Column = 1
+                Control = txtCustemail
+                Row = 4
+              end
+              item
+                Column = 1
+                Control = txtCustcontact
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = GridPanelLayout1
+                Row = 6
+              end>
+            RowCollection = <
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 160.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end>
+            object Label1: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Customer Name *'
+              TabOrder = 6
+            end
+            object txtCustname: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 11
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object Label3: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 156.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Address'
+              TabOrder = 5
+            end
+            object memCustaddress: TMemo
+              Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+              DataDetectorTypes = []
+              StyledSettings = [Family, Style, FontColor]
+              TextSettings.Font.Size = 18.000000000000000000
+              Align = Client
+              Size.Width = 474.000000000000000000
+              Size.Height = 156.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 12
+              Viewport.Width = 466.000000000000000000
+              Viewport.Height = 148.000000000000000000
+            end
+            object Label5: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Postcode'
+              TabOrder = 4
+            end
+            object txtCustpostcode: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 10
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object Label7: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Telephone No.'
+              TabOrder = 2
+            end
+            object Label10: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Email Address'
+              TabOrder = 1
+            end
+            object Label13: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Contact Name'
+              TabOrder = 0
+            end
+            object txtCusttelephone: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 7
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object txtCustemail: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 8
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object txtCustcontact: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 9
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object GridPanelLayout1: TGridPanelLayout
+              Align = Client
+              Padding.Left = 2.000000000000000000
+              Padding.Top = 2.000000000000000000
+              Padding.Right = 2.000000000000000000
+              Padding.Bottom = 2.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 3
+              ColumnCollection = <
+                item
+                  Value = 33.338048014085410000
+                end
+                item
+                  Value = 33.361942341916990000
+                end
+                item
+                  Value = 33.300000000000000000
+                end>
+              ControlCollection = <
+                item
+                  Column = 0
+                  Control = btnSave
+                  Row = 0
+                end
+                item
+                  Column = 1
+                  Control = btnDelete
+                  Row = 0
+                end
+                item
+                  Column = 2
+                  Control = btnCancel
+                  Row = 0
+                end>
+              RowCollection = <
+                item
+                  Value = 100.000000000000000000
+                end>
+              object btnSave: TButton
+                Align = Client
+                StyledSettings = [Family, Style, FontColor]
+                Size.Width = 154.022354125976600000
+                Size.Height = 36.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 2
+                Text = 'Save'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.Trimming = None
+                OnClick = btnSaveClick
+              end
+              object btnDelete: TButton
+                Align = Client
+                StyledSettings = [Family, Style, FontColor]
+                Size.Width = 154.135604858398400000
+                Size.Height = 36.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                Text = 'Delete'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.Trimming = None
+                OnClick = btnDeleteClick
+              end
+              object btnCancel: TButton
+                Align = Client
+                StyledSettings = [Family, Style, FontColor]
+                Size.Width = 153.841979980468800000
+                Size.Height = 36.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                Text = 'Cancel'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.Trimming = None
+                OnClick = btnCancelClick
+              end
+            end
+          end
+        end
+        object tiPreviousJobs: TTabItem
+          CustomIcon = <
+            item
+            end>
+          TextSettings.Trimming = None
+          IsSelected = True
+          Size.Width = 350.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = ''
+          TabOrder = 0
+          Text = 'JOB HISTORY'
+          object LVZJobs: TListView
+            ItemAppearanceClassName = 'TDynamicAppearance'
+            ItemEditAppearanceClassName = 'TDynamicAppearance'
+            HeaderAppearanceClassName = 'TListHeaderObjects'
+            FooterAppearanceClassName = 'TListHeaderObjects'
+            AlternatingColors = True
+            Align = Client
+            Margins.Right = 8.000000000000000000
+            Size.Width = 692.000000000000000000
+            Size.Height = 410.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            ItemAppearance.ItemHeight = 56
+            ItemAppearance.HeaderHeight = 1
+            ItemAppearance.FooterHeight = 1
+            ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+              item
+                AppearanceObjectName = 'lvoJobno'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 18.000000000000000000
+                Appearance.TextAlign = Trailing
+                Appearance.TextShadow.Enabled = False
+                Appearance.Width = 199.000000000000000000
+                Appearance.Height = 28.000000000000000000
+                Appearance.Align = Trailing
+                Appearance.PlaceOffset.X = -64.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'lvoJobtype'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 18.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.TextShadow.Enabled = False
+                Appearance.TextColor = claPaleturquoise
+                Appearance.Width = 233.000000000000000000
+                Appearance.Height = 28.000000000000000000
+                Appearance.PlaceOffset.X = 126.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'lvoJobdate'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 20.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.TextColor = claLightskyblue
+                Appearance.Width = 119.000000000000000000
+                Appearance.Height = 56.000000000000000000
+                Appearance.VertAlign = Center
+              end
+              item
+                AppearanceObjectName = 'lvoImgPdf'
+                AppearanceClassName = 'TImageObjectAppearance'
+                Appearance.ScalingMode = Original
+                Appearance.Width = 42.000000000000000000
+                Appearance.Height = 42.000000000000000000
+                Appearance.Align = Trailing
+                Appearance.VertAlign = Center
+                Appearance.PlaceOffset.X = -6.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'lvoReason'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 18.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.Width = 481.000000000000000000
+                Appearance.Height = 28.000000000000000000
+                Appearance.PlaceOffset.X = 126.000000000000000000
+                Appearance.PlaceOffset.Y = 28.000000000000000000
+              end>
+            ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+              item
+                AppearanceObjectName = 'Text1'
+                AppearanceClassName = 'TTextObjectAppearance'
+              end>
+            OnItemClickEx = LVZJobsItemClickEx
+            OnPullRefresh = LVZJobsPullRefresh
+            SearchVisible = True
+            PullToRefresh = True
+          end
+          object rectProgress: TRectangle
+            Align = Contents
+            Fill.Color = x80000000
+            Size.Width = 720.000000000000000000
+            Size.Height = 815.000000000000000000
+            Size.PlatformDefault = False
+            Visible = False
+            object aniProgress: TAniIndicator
+              Align = Center
+            end
           end
         end
       end
@@ -869,7 +1000,16 @@ object CustomerForm: TCustomerForm
     SQL.Strings = (
       'SELECT * FROM customers '
       'ORDER BY custname')
-    Left = 408
-    Top = 144
+    Left = 344
+    Top = 288
+  end
+  object qryListJobs: TFDQuery
+    Connection = DM.FDlocal
+    SQL.Strings = (
+      'SELECT jobno, custname, jobtype, jobdate'
+      'FROM jobs_master'
+      'ORDER BY jobno DESC')
+    Left = 256
+    Top = 272
   end
 end

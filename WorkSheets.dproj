@@ -269,6 +269,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="uCommonPDFLauncher.pas"/>
         <DCCReference Include="uSvgSignatureHelper.pas"/>
         <DCCReference Include="uHeaderDetailsClass.pas"/>
+        <DCCReference Include="uCustomerPDF.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

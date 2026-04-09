@@ -17,7 +17,8 @@ uses
   uCommonUTF8Helper in 'uCommonUTF8Helper.pas',
   uCommonPDFLauncher in 'uCommonPDFLauncher.pas',
   uSvgSignatureHelper in 'uSvgSignatureHelper.pas',
-  uHeaderDetailsClass in 'uHeaderDetailsClass.pas';
+  uHeaderDetailsClass in 'uHeaderDetailsClass.pas',
+  uCustomerPDF in 'uCustomerPDF.pas';
 
 {$R *.res}
 

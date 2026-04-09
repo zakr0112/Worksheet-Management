@@ -16,7 +16,8 @@ uses
     AndroidAPI.JNI.JavaTypes, AndroidAPI.JNI.Widget, AndroidAPI.Helpers, Posix.UNISTD,
   {$ENDIF}
   uCommonDialogs, uCustomerManagerClass, uHelperTabControl, System.Skia,
-  FMX.Skia, FMX.MultiView, uJobForm, FMX.Objects;
+  FMX.Skia, FMX.MultiView, uJobForm, FMX.Objects, uCommonPDFLauncher, System.Threading,
+  uWorksheetPDF, uJobsManagerClass;
 
 type
   TCustomerForm = class(TForm)
@@ -42,11 +43,8 @@ type
     spdNew: TSpeedButton;
     svgNew: TSkSvg;
     lblHeader: TSkLabel;
-    lblCustomerDetails: TSkLabel;
     spdHome: TSpeedButton;
     svgHome: TSkSvg;
-    spdbackcustomer: TSpeedButton;
-    svgbackcustomer: TSkSvg;
     GridPanelLayout1: TGridPanelLayout;
     btnSave: TButton;
     btnDelete: TButton;
@@ -58,9 +56,19 @@ type
     lblSort: TLabel;
     radSortAZ: TRadioButton;
     radSortZA: TRadioButton;
-    tbarCustomerEdit: TToolBar;
     imgEdit: TImage;
     imgPdf: TImage;
+    TCCustedit: TTabControl;
+    tiEdit: TTabItem;
+    tiPreviousJobs: TTabItem;
+    tbarCustomerEdit: TToolBar;
+    lblCustomerDetails: TSkLabel;
+    spdbackcustomer: TSpeedButton;
+    svgbackcustomer: TSkSvg;
+    LVZJobs: TListView;
+    qryListJobs: TFDQuery;
+    rectProgress: TRectangle;
+    aniProgress: TAniIndicator;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure LVcustomersItemClickEx(const Sender: TObject; ItemIndex: Integer;
@@ -73,7 +81,12 @@ type
     procedure spdHomeClick(Sender: TObject);
     procedure radSortAZChange(Sender: TObject);
     procedure radSortZAChange(Sender: TObject);
+    procedure LVZJobsPullRefresh(Sender: TObject);
+    procedure LVZJobsItemClickEx(const Sender: TObject; ItemIndex: Integer;
+      const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
   private
+    procedure PopulateJobHistory;
+    procedure CreateWorksheetPDFThread(const AJobno: integer);
     //
     { Private declarations }
   public
@@ -87,6 +100,7 @@ var
   CustomerForm: TCustomerForm;
   CustId: integer;
   CustName: string;
+  JobNo: integer;
 
 implementation
 
@@ -94,6 +108,7 @@ implementation
 
 procedure TCustomerForm.FormCreate(Sender: TObject);
 begin
+  Job := TJobManager.Create(DM.FDlocal);
   TCCustomers.TabPosition := TTabPosition.None;
   TCCustomers.ActiveTab := TICustomerList;
   Customer := TCustomerManager.Create(DM.FDlocal);
@@ -109,6 +124,8 @@ begin
   // Whatever we create, we free
   if Assigned(Customer) then
     Customer.Free;
+  if Assigned(Job) then
+    Job.Free;
 end;
 
 procedure TCustomerForm.LVcustomersItemClickEx(const Sender: TObject;
@@ -136,7 +153,11 @@ begin
       end;
         // Now will move to the customer record tab
         DisplayCustomerRecord;
-        lblCustomerDetails.Text := 'Edit customer details';
+        PopulateJobHistory();
+        lblCustomerDetails.Text := 'Edit ' + Customer.CustName;
+        TCCustedit.TabPosition := TTabPosition.Top;
+        TCCustedit.ActiveTab := tiEdit;
+
         TCCustomers.TabRight(TIcustomerDetails);
     end;
   end;
@@ -145,6 +166,68 @@ end;
 procedure TCustomerForm.LVcustomersPullRefresh(Sender: TObject);
 begin
   PopulateCustomerList;
+end;
+
+procedure TCustomerForm.CreateWorksheetPDFThread(const AJobno: integer);
+var
+  PDFBuilt: boolean;
+begin
+  aniProgress.Enabled := true;
+  rectProgress.Visible := true;
+  TTask.Run(
+    procedure
+    begin
+      try
+        PDFBuilt := CreateWorksheetPdf(AJobno);
+
+        TThread.Queue(nil,
+          procedure
+          begin
+            aniProgress.Enabled := false;
+            rectProgress.Visible := false;
+            // now we show it...
+            if PDFBuilt then
+             LaunchPDF(AJobno);
+          end);
+      except
+        on E: Exception do
+        begin
+          TThread.Queue(nil,
+          procedure
+          begin
+            aniProgress.Enabled := false;
+            rectProgress.Visible := false;
+          end);
+        end;
+      end;
+    end);
+end;
+
+procedure TCustomerForm.LVZJobsItemClickEx(const Sender: TObject;
+  ItemIndex: Integer; const LocalClickPos: TPointF;
+  const ItemObject: TListItemDrawable);
+begin
+  if (ItemIndex < 0) OR (ItemObject = NIL) then
+    exit;
+
+  if ItemObject is TListItemImage then
+  begin
+    JobNo := LVZJobs.Items.Item[itemindex].Tag;
+    if itemobject.Name = 'lvoImgPdf' then
+    begin
+      if not Job.FetchJob(JobNo) then
+      begin
+        ShowWarning('Unable to find the selected job record!');
+        exit;
+      end;
+      CreateWorksheetPDFThread(JobNo);
+    end;
+  end;
+end;
+
+procedure TCustomerForm.LVZJobsPullRefresh(Sender: TObject);
+begin
+  PopulateJobHistory();
 end;
 
 procedure TCustomerForm.PopulateCustomerList(ASortAtoZ: boolean = true);
@@ -200,6 +283,8 @@ begin
   // This is giong to launch the blank customer form ready for a new customer
   lblCustomerDetails.Text := 'Add a new customer';
   ClearCustomerRecord;
+  TCCustedit.TabPosition := TTabPosition.None;
+  TCCustedit.ActiveTab := tiEdit;
   TCCustomers.TabRight(TICustomerDetails);
 end;
 
@@ -298,6 +383,13 @@ begin
   txtCusttelephone.Text := '';
   txtCustemail.Text := '';
   txtCustcontact.Text := '';
+  // clear jobhistory
+  LVZJobs.BeginUpdate;
+  try
+    LVZJobs.Items.Clear;
+  finally
+    LVZJobs.EndUpdate;
+  end;
 end;
 
 procedure TCustomerForm.DisplayCustomerRecord();
@@ -311,5 +403,41 @@ begin
   txtCustemail.Text := Customer.CustEmail;
   txtCustcontact.Text := Customer.CustContact;
 end;
+
+procedure TCustomerForm.PopulateJobHistory();
+begin
+  qryListjobs.Close;
+  qryListjobs.SQL.Text :=
+    'SELECT jobno, custname, jobtype, jobdate, reason ' +
+    'FROM jobs_master ' +
+    'WHERE custname = :custname ' +
+    'ORDER BY jobdate DESC';
+  qryListjobs.ParamByName('custname').AsString := Customer.CustName;
+  qryListjobs.Open;
+  LVZJobs.BeginUpdate;
+  try
+    LVZJobs.Items.Clear;
+    while not qryListjobs.Eof do
+    begin
+      with LVZJobs.Items.Add do
+      begin
+        Tag := qryListjobs.FieldByName('jobno').AsInteger;
+        Data['lvoJobno'] := Format('%.*d', [5, qryListjobs.FieldByName('jobno').AsInteger]);
+        Data['lvoReason'] := qryListjobs.FieldByName('reason').AsString.Substring(0, 50);
+        Data['lvoJobtype'] := qryListjobs.FieldByName('jobtype').AsString;
+        if qryListjobs.FieldByName('jobdate').IsNull then
+          Data['lvoJobdate'] := 'dd/mm/yyyy'
+        else
+          Data['lvoJobdate'] := DateToStr(qryListjobs.FieldByName('jobdate').AsDateTime);
+        Data['lvoImgPdf'] := imgPdf.Bitmap;
+      end;
+      qryListjobs.Next;
+    end;
+  finally
+    LVZJobs.EndUpdate;
+    qryListjobs.Close;
+  end;
+end;
+
 
 end.

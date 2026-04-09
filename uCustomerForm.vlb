@@ -45,7 +45,7 @@ Coordinates=319,10,60,58
 Coordinates=401,78,104,58
 
 []
-Coordinates=653,166,144,36
+Coordinates=543,309,123,36
 
 [txtCustcontact]
 Coordinates=389,10,96,58
@@ -55,12 +55,6 @@ Coordinates=197,214,99,36
 
 [TCCustomers]
 Coordinates=136,282,93,36
-
-[lblCustomerDetails]
-Coordinates=543,309,123,36
-
-[svgbackcustomer]
-Coordinates=543,364,114,36
 
 [GridPanelLayout1]
 Coordinates=424,389,118,36
@@ -85,9 +79,6 @@ Coordinates=704,56,77,36
 
 [radSortZA]
 Coordinates=704,221,73,36
-
-[spdbackcustomer]
-Coordinates=368,293,115,58
 
 [radSortAZ]
 Coordinates=704,276,73,36
