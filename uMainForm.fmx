@@ -517,6 +517,7 @@ object MainForm: TMainForm
           Text = 'Save'
           TextSettings.Font.Size = 14.000000000000000000
           TextSettings.Trimming = None
+          OnClick = btnSaveClick
         end
         object Label9: TLabel
           Align = Client

@@ -5,6 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   uWorksheetPDF, uDataModule, uCommonDialogs, uJobsManagerClass,
+  uHeaderDetailsClass,
   {$IFDEF Android}
     Androidapi.JNI.GraphicsContentViewText,
     Androidapi.JNI.Embarcadero,
@@ -143,8 +144,22 @@ end;
 function CreateWorksheetPdf(const AJobno: integer; AShowSavedMsg: boolean = false): boolean;
 var
   pdfworksheet : TWorksheetPDF;
+  Mgr: THeaderDetailsManager;
+  D: THeaderDetails;
+  Title: string;
 begin
   Result := true;
+  // Load the report heading details
+  Mgr := THeaderDetailsManager.Create(DM.FDlocal);
+  try
+    Mgr.EnsureDefaultRow;
+    if Mgr.Load(D) then
+    begin
+      Title := Format('%s%s%s%s%s',[D.HeaderName,sLinebreak,D.HeaderTelephone,sLinebreak,D.HeaderEmail]);
+    end;
+  finally
+    Mgr.Free;
+  end;
   pdfworksheet := TWorksheetPDF.Create;
   try
     try
@@ -157,7 +172,7 @@ begin
       pdfworksheet.SetCreator('WorkSheetsFMX');
       pdfworksheet.SetAuthor('WorkSheetsFMX');
       pdfworksheet.fJobno := AJobNo;
-      pdfworksheet.fHeaderTitle := 'Company name goes here' + slinebreak + 'Telephone goes here' + slinebreak + 'Email goes here';
+      pdfworksheet.fHeaderTitle := Title;
       if not pdfworksheet.PrintJob then
         exit(false);
       pdfworksheet.SaveToFile(PDF_FILENAME);

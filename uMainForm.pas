@@ -46,6 +46,7 @@ type
     procedure spdAdminClick(Sender: TObject);
     procedure spdbackcustomerClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -97,6 +98,41 @@ begin
     DeleteFile(DBName);
   end;
   DM.CreateDB;
+end;
+
+procedure TMainForm.btnSaveClick(Sender: TObject);
+var
+  Mgr: THeaderDetailsManager;
+  D: THeaderDetails;
+begin
+
+  if txtHeaderName.text.IsEmpty then
+  begin
+    ShowWarning('You must enter the company Header name!', txtHeaderName);
+    exit;
+  end;
+  if txtHeaderTelephone.text.IsEmpty then
+  begin
+    ShowWarning('You must enter the company Telephone number!', txtHeaderTelephone);
+    exit;
+  end;
+  if txtHeaderEmail.text.IsEmpty then
+  begin
+    ShowWarning('You must enter the company email address!', txtHeaderEmail);
+    exit;
+  end;
+  D.HeaderName := txtHeaderName.Text;
+  D.HeaderTelephone := txtHeaderTelephone.Text;
+  D.HeaderEmail := txtHeaderEmail.Text;
+
+  Mgr := THeaderDetailsManager.Create(DM.FDlocal);
+  try
+    Mgr.Save(D);
+    ShowMessage('Header details saved.');
+  finally
+    Mgr.Free;
+  end;
+
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
