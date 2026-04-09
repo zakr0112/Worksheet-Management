@@ -9,26 +9,43 @@ uses
       {$IF Defined(Android)}
     AndroidAPI.JNI.JavaTypes, AndroidAPI.JNI.Widget, AndroidAPI.Helpers, Posix.UNISTD,
   {$ENDIF}
-  uCustomerForm, uDataModule, uHelperTabControl, uJobForm;
+  uCustomerForm, uDataModule, uHelperTabControl, uJobForm, FMX.Edit, FMX.Layouts,
+  uHeaderDetailsClass;
 
 type
   TMainForm = class(TForm)
     TCMain: TTabControl;
-    TILogin: TTabItem;
     TIOptions: TTabItem;
-    TIAdmin: TTabItem;
     panHeaderCustList: TPanel;
     spdHome: TSpeedButton;
     svgHome: TSkSvg;
     btnCustomers: TButton;
-    Button1: TButton;
     btnManageJobs: TButton;
-    SkLabel1: TSkLabel;
     lblHeader: TSkLabel;
-    lblAdminOptions: TLabel;
+    tiAdmin: TTabItem;
+    tbarCustomerEdit: TToolBar;
+    lblCustomerDetails: TSkLabel;
+    spdbackcustomer: TSpeedButton;
+    svgbackcustomer: TSkSvg;
+    gpanCustomer: TGridPanelLayout;
+    Label1: TLabel;
+    txtHeadername: TEdit;
+    Label7: TLabel;
+    Label10: TLabel;
+    txtHeadertelephone: TEdit;
+    txtHeaderemail: TEdit;
+    Label2: TLabel;
+    btnSave: TButton;
+    Label9: TLabel;
+    btnRecreatedb: TButton;
+    spdAdmin: TSpeedButton;
+    SkSvg1: TSkSvg;
     procedure btnCustomersClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnRecreatedbClick(Sender: TObject);
     procedure btnManageJobsClick(Sender: TObject);
+    procedure spdAdminClick(Sender: TObject);
+    procedure spdbackcustomerClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -72,7 +89,7 @@ begin
 
 end;
 
-procedure TMainForm.Button1Click(Sender: TObject);
+procedure TMainForm.btnRecreatedbClick(Sender: TObject);
 begin
   if FileExists(DBName) then
   begin
@@ -80,6 +97,40 @@ begin
     DeleteFile(DBName);
   end;
   DM.CreateDB;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+  // TCMain change buttons and set tiOptions as visible
+  TCMain.TabPosition := ttabposition.None;
+  TCMain.ActiveTab := tiOptions;
+end;
+
+procedure TMainForm.spdAdminClick(Sender: TObject);
+var
+  Mgr: THeaderDetailsManager;
+  D: THeaderDetails;
+begin
+  // Load the report heading details
+    Mgr := THeaderDetailsManager.Create(DM.FDlocal);
+  try
+    Mgr.EnsureDefaultRow;
+    if Mgr.Load(D) then
+    begin
+      txtHeaderName.Text := D.HeaderName;
+      txtHeaderTelephone.Text := D.HeaderTelephone;
+      txtHeaderEmail.Text := D.HeaderEmail;
+    end;
+  finally
+    Mgr.Free;
+  end;
+
+  TCMain.TabRight(tiAdmin);
+end;
+
+procedure TMainForm.spdbackcustomerClick(Sender: TObject);
+begin
+  TCMain.TabLeft(tiOptions);
 end;
 
 end.

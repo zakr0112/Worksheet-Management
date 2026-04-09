@@ -655,7 +655,7 @@ object JobForm: TJobForm
           TextSettings.HorzAlign = Trailing
         end
         object dtNewDate: TDateEdit
-          Date = 46078.000000000000000000
+          Date = 46121.000000000000000000
           TodayDefault = True
           Align = Left
           FirstDayOfWeek = dowMonday
@@ -824,8 +824,8 @@ object JobForm: TJobForm
           Size.PlatformDefault = False
           TabOrder = 3
           TabStop = False
-          Viewport.Width = 342.000000000000000000
-          Viewport.Height = 288.000000000000000000
+          Viewport.Width = 350.000000000000000000
+          Viewport.Height = 296.000000000000000000
         end
       end
       object ToolBar3: TToolBar
@@ -1239,7 +1239,7 @@ object JobForm: TJobForm
             TextSettings.HorzAlign = Trailing
           end
           object dtJobdate: TDateEdit
-            Date = 46078.000000000000000000
+            Date = 46121.000000000000000000
             TodayDefault = True
             Align = Client
             FirstDayOfWeek = dowMonday
@@ -1568,8 +1568,8 @@ object JobForm: TJobForm
             Size.PlatformDefault = False
             TabOrder = 1
             TabStop = False
-            Viewport.Width = 258.000000000000000000
-            Viewport.Height = 64.000000000000000000
+            Viewport.Width = 266.000000000000000000
+            Viewport.Height = 72.000000000000000000
           end
         end
       end
@@ -1653,8 +1653,8 @@ object JobForm: TJobForm
                 Size.PlatformDefault = False
                 TabOrder = 3
                 TabStop = False
-                Viewport.Width = 696.000000000000000000
-                Viewport.Height = 537.000000000000000000
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 545.000000000000000000
               end
             end
             object tiWork: TTabItem
@@ -1693,8 +1693,8 @@ object JobForm: TJobForm
                 Size.PlatformDefault = False
                 TabOrder = 2
                 TabStop = False
-                Viewport.Width = 696.000000000000000000
-                Viewport.Height = 537.000000000000000000
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 545.000000000000000000
               end
             end
             object tiRemedial: TTabItem
@@ -1733,8 +1733,8 @@ object JobForm: TJobForm
                 Size.PlatformDefault = False
                 TabOrder = 1
                 TabStop = False
-                Viewport.Width = 696.000000000000000000
-                Viewport.Height = 485.000000000000000000
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 493.000000000000000000
               end
               object Layout5: TLayout
                 Align = Top
@@ -2199,7 +2199,7 @@ object JobForm: TJobForm
                   TextSettings.VertAlign = Trailing
                 end
                 object dtDate: TDateEdit
-                  Date = 46078.000000000000000000
+                  Date = 46121.000000000000000000
                   TodayDefault = True
                   Align = Client
                   Margins.Top = 2.000000000000000000
@@ -2574,7 +2574,7 @@ object JobForm: TJobForm
                   TextSettings.VertAlign = Trailing
                 end
                 object dtDateExp: TDateEdit
-                  Date = 46078.000000000000000000
+                  Date = 46121.000000000000000000
                   TodayDefault = True
                   Align = Client
                   Margins.Top = 2.000000000000000000

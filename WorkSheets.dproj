@@ -5,10 +5,11 @@
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Android64</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>32770</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>WorkSheets.dpr</MainSource>
+        <ProjectName Condition="'$(ProjectName)'==''">WorkSheets</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -267,6 +268,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="uCommonUTF8Helper.pas"/>
         <DCCReference Include="uCommonPDFLauncher.pas"/>
         <DCCReference Include="uSvgSignatureHelper.pas"/>
+        <DCCReference Include="uHeaderDetailsClass.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -763,6 +765,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="Win64\Debug\WorkSheets.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>WorkSheets.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\WorkSheets.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>WorkSheets.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

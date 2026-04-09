@@ -18,7 +18,7 @@ object CustomerForm: TCustomerForm
     Size.Height = 564.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -31,7 +31,7 @@ object CustomerForm: TCustomerForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 350.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -343,7 +343,7 @@ object CustomerForm: TCustomerForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 350.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -521,8 +521,8 @@ object CustomerForm: TCustomerForm
           Size.Height = 156.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 12
-          Viewport.Width = 466.000000000000000000
-          Viewport.Height = 148.000000000000000000
+          Viewport.Width = 474.000000000000000000
+          Viewport.Height = 156.000000000000000000
         end
         object Label5: TLabel
           Align = Client

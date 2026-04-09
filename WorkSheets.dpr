@@ -16,7 +16,8 @@ uses
   uWorksheetPDF in 'uWorksheetPDF.pas',
   uCommonUTF8Helper in 'uCommonUTF8Helper.pas',
   uCommonPDFLauncher in 'uCommonPDFLauncher.pas',
-  uSvgSignatureHelper in 'uSvgSignatureHelper.pas';
+  uSvgSignatureHelper in 'uSvgSignatureHelper.pas',
+  uHeaderDetailsClass in 'uHeaderDetailsClass.pas';
 
 {$R *.res}
 

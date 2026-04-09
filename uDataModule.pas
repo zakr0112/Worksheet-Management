@@ -50,6 +50,17 @@ type
 const
   SQL_CUSTOMERS: string =
     '''
+      CREATE TABLE headerdetails (
+          id INTEGER PRIMARY KEY CHECK (id = 1),
+          headername TEXT NOT NULL,
+          headertelephone TEXT,
+          headeremail TEXT
+        );
+      INSERT INTO headerdetails
+       (id, headername, headertelephone, headeremail)
+       VALUES
+       (1, 'Worksheet Manager', '0800 03482132', 'worksheetmanager@worksheet.com');
+
       CREATE TABLE customers (
         custid INTEGER PRIMARY KEY AUTOINCREMENT,
         custname TEXT NOT NULL UNIQUE,
