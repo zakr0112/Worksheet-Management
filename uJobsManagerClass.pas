@@ -56,7 +56,6 @@ type
     FOrigSignaturepathdata: String;
     FOrigLastchanged: TDateTime;
 
-    procedure ShowChangedFields; // Debug usage
     function HasChanges: Boolean;
     function GetSignatureSVG: string;
 
@@ -162,7 +161,6 @@ begin
       FEngineername2 := Trim(FQry.FieldByName('engineername2').AsString);
       FSignedby := Trim(FQry.FieldByName('signedby').AsString);
       FSignaturepathdata := Trim(FQry.FieldByName('signaturepathdata').AsString);
-      //FLastchanged   := Trunc(FQry.FieldByName('lastchanged').AsDateTime);
       FLastchanged := FQry.FieldByName('lastchanged').AsDateTime;
 
       FOrigJobno := FJobno;
@@ -221,11 +219,6 @@ begin
     (FEngineername1 <> FOrigEngineername1) or
     (FSignedby <> FOrigSignedby) or
     (FSignaturepathdata <> FOrigSignaturepathdata);
-end;
-
-procedure TJobManager.ShowChangedFields;
-begin
-
 end;
 
 function TJobManager.UpdateJob: Boolean;
@@ -298,7 +291,7 @@ end;
 function TJobManager.InsertJob: Boolean;
 begin
   Result := False;
-
+  FQry.Close;
   try
     // Always update lastchanged before saving
     FLastchanged := Now;

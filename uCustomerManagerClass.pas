@@ -27,14 +27,12 @@ type
     FOriginalCustEmail: string;
     FOriginalCustContact: string;
     FOriginalLastChanged: TDateTime;
-    procedure ShowChangedFields; // Debug usage
     function HasChanges: Boolean;
     function IsCustomerNameUnique(const ACustName: string; const ACustID: Integer = -1): Boolean;
 
   public
     constructor Create(AConnection: TFDConnection);
     destructor Destroy(); override;
-
     property CustID: Integer read FCustID write FCustID;
     property CustName: string read FCustName write FCustName;
     property CustAddress: string read FCustAddress write FCustAddress;
@@ -60,9 +58,9 @@ implementation
 
 destructor TCustomerManager.Destroy;
 begin
-  inherited;
   if Assigned(FQry) then
     FQry.Free;
+  inherited;
 end;
 
 constructor TCustomerManager.Create(AConnection: TFDConnection);
@@ -263,35 +261,6 @@ begin
     (FCustTelephone <> FOriginalCustTelephone) or
     (FCustEmail <> FOriginalCustEmail) or
     (FCustContact <> FOriginalCustContact);
-end;
-
-procedure TCustomerManager.ShowChangedFields;
-var
-  Changes: TStringList;
-begin
-  Changes := TStringList.Create;
-  try
-    if Trim(LowerCase(FCustName)) <> Trim(LowerCase(FOriginalCustName)) then
-      Changes.Add('CustName');
-    if Trim(LowerCase(FCustAddress)) <> Trim(LowerCase(FOriginalCustAddress)) then
-      Changes.Add('CustAddress');
-    if Trim(LowerCase(FCustPostcode)) <> Trim(LowerCase(FOriginalCustPostcode)) then
-      Changes.Add('CustPostcode');
-    if Trim(LowerCase(FCustTelephone)) <> Trim(LowerCase(FOriginalCustTelephone)) then
-      Changes.Add('CustTelephone');
-    if Trim(LowerCase(FCustEmail)) <> Trim(LowerCase(FOriginalCustEmail)) then
-      Changes.Add('CustEmail');
-    if Trim(LowerCase(FCustContact)) <> Trim(LowerCase(FOriginalCustContact)) then
-      Changes.Add('CustContact');
-    if Trunc(FLastChanged) <> Trunc(FOriginalLastChanged) then
-      Changes.Add('LastChanged');
-    if Changes.Count > 0 then
-      ShowInfo('Changed fields: ' + Changes.CommaText)
-    else
-      ShowInfo('No changes detected.');
-  finally
-    Changes.Free;
-  end;
 end;
 
 function TCustomerManager.IsCustomerNameUnique(const ACustName: string; const ACustID: Integer): Boolean;

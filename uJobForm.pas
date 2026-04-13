@@ -267,8 +267,6 @@ type
     procedure ClearDisplayedPhotos;
     procedure ShowJobPhotos;
     procedure DeleteJobphoto(const AJobno, APhoto: integer);
-    procedure CreateWorksheetPDFThread(const AJobno: integer);
-
     var
       FThumbs: array[1..6] of TImage;   // used for images
       FRects: array[1..6] of TRectangle; // used for images   
@@ -594,9 +592,7 @@ begin
     TakePhotoFromCameraAction1.Execute;
   end
   else
-    ShowMessage('This device does not support the camera service');
-
-  
+    ShowWarning('This device does not support the camera service');
 end;
 
 procedure TJobForm.UnselectThumbFill();
@@ -654,7 +650,6 @@ begin
       ShowException('Save Expenses', E);
   end;
 end;
-
 
 procedure TJobForm.InsertTimeRecord;
 var
@@ -921,8 +916,8 @@ begin
         ShowWarning('Unable to find the selected record!');
         exit;
       end;
-       CreateWorksheetPDFThread(jobno);
-        //LaunchPDF(jobno);
+       CreateWorksheetPDFThread(jobno, aniProgress, rectProgress);
+
     end
     else
     begin
@@ -1444,7 +1439,6 @@ begin
 {$ENDIF}
 end;
 
-
 procedure TJobForm.ShowPictureClick(Sender: TObject);
 begin
   UnselectThumbFill();
@@ -1452,8 +1446,6 @@ begin
   FRects[CurrentImageTag].Fill.Color := TAlphaColors.Lightskyblue;
   imgMainphoto.Bitmap.Assign(FThumbs[CurrentImageTag].Bitmap);
 end;
-
-
 
 procedure TJobForm.ShowJobPhotos();
 begin
@@ -1526,42 +1518,5 @@ begin
         end;
       end);
 end;
-
-procedure TJobForm.CreateWorksheetPDFThread(const AJobno: integer);
-var
-  PDFBuilt: boolean;
-begin
-  aniProgress.Enabled := true;
-  rectProgress.Visible := true;
-  TTask.Run(
-    procedure
-    begin
-      try
-        PDFBuilt := CreateWorksheetPdf(AJobno);
-
-        TThread.Queue(nil,
-          procedure
-          begin
-            aniProgress.Enabled := false;
-            rectProgress.Visible := false;
-            // now we show it...
-            if PDFBuilt then
-             LaunchPDF(jobno);
-          end);
-      except
-        on E: Exception do
-        begin
-          TThread.Queue(nil,
-          procedure
-          begin
-            aniProgress.Enabled := false;
-            rectProgress.Visible := false;
-          end);
-        end;
-      end;
-    end);
-end;
-
-
 
 end.

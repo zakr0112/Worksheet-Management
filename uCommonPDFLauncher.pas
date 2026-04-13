@@ -4,8 +4,8 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  uWorksheetPDF, uDataModule, uCommonDialogs, uJobsManagerClass,
-  uHeaderDetailsClass,
+  System.Threading, uWorksheetPDF, uDataModule, uCommonDialogs, uJobsManagerClass,
+  uHeaderDetailsClass, FMX.StdCtrls,  FMX.Objects,
   {$IFDEF Android}
     Androidapi.JNI.GraphicsContentViewText,
     Androidapi.JNI.Embarcadero,
@@ -31,9 +31,9 @@ uses
     Winapi.ShellAPI, Winapi.Windows;
   {$ENDIF}
 
-  function PDFRebuildRequired(ADatetime: TDateTime; AFilename: string): Boolean;
   procedure LaunchPDF(const AFilename: string); overload;
   procedure LaunchPDF(const AJobno: Integer); overload;
+  procedure CreateWorksheetPDFThread(const AJobNo: Integer; const AProgressAni: TAniIndicator; const AProgressRect: TRectangle);
   function CreateWorksheetPdf(const AJobno: integer; AShowSavedMsg: boolean = false): boolean;
   function GetWorksheetFilename(const AJobno: Integer): string;
 
@@ -44,122 +44,69 @@ uses
 
 function GetWorksheetFilename(const AJobno: Integer): string;
 begin
-  Result := TPath.Combine(SAVE_PATH, Format('Worksheet %d.pdf', [AJobno]));
+  Result := TPath.Combine(PDF_PATH, Format('Worksheet %d.pdf', [AJobno]));
 end;
 
-function PDFRebuildRequired(ADatetime: TDateTime; AFilename: string): Boolean;
+procedure OpenFile(const AFilePath: string);
+{$IF Defined(ANDROID)}
 var
-  FileDateTime: TDateTime;
+  Intent: JIntent;
+  FileURI: Jnet_Uri;
+{$ENDIF}
+{$IF Defined(MACOS) or Defined(IOS)}
+var
+  URL: NSURL;
+{$ENDIF}
 begin
-  // Check if the file exists
-  if not TFile.Exists(AFilename) then
-  begin
-    Result := True;  // File doesn't exist, needs to be created
+  if not FileExists(AFilePath) then
     Exit;
-  end;
-  // Get the last modified datetime of the file
-  FileDateTime := TFile.GetLastWriteTime(AFilename);
-  // Check if the file's last modified datetime is earlier than the given datetime
-  Result := FileDateTime < ADateTime;
+
+  {$IF Defined(MSWINDOWS)}
+    ShellExecute(0, nil, PChar(AFilePath), nil, nil, SW_SHOWNORMAL);
+  {$ENDIF}
+
+  {$IF Defined(ANDROID)}
+    Intent := TJIntent.JavaClass.init(TJIntent.JavaClass.ACTION_VIEW);
+    FileURI := TAndroidHelper.JFileToJURI(
+      TJFile.JavaClass.init(StringToJString(AFilePath))
+    );
+    Intent.setDataAndType(FileURI, StringToJString('application/pdf'));
+    Intent.setFlags(
+      TJIntent.JavaClass.FLAG_ACTIVITY_NO_HISTORY or
+      TJIntent.JavaClass.FLAG_GRANT_READ_URI_PERMISSION
+    );
+    TAndroidHelper.Activity.startActivity(Intent);
+  {$ENDIF}
+
+  {$IF Defined(MACOS) or Defined(IOS)}
+    URL := TNSURL.Wrap(
+      TNSURL.OCClass.fileURLWithPath(NSStr(AFilePath))
+    );
+    {$IF Defined(MACOS)}
+      NSWorkspace.sharedWorkspace.openURL(URL);
+    {$ELSE}
+      SharedApplication.openURL(URL);
+    {$ENDIF}
+  {$ENDIF}
 end;
 
 procedure LaunchPDF(const AFilename: string); overload;
-{$IF Defined(ANDROID)}
-var
-  Intent: JIntent;
-  FileURI: Jnet_Uri;
-  PDFFilePath: string;
-{$ENDIF}
-{$IF Defined(MACOS)}
-var
-  URL: NSURL;
-{$ENDIF}
-{$IF Defined(IOS)}
-var
-  URL: NSURL;
-{$ENDIF}
 begin
-  if not FileExists(AFilename) then
-    exit;
-  {$IF Defined(MSWINDOWS)}
-    ShellExecute(0, nil, PChar(AFilename), nil,  nil, SW_SHOWNORMAL);
-  {$ENDIF}
-  {$IF Defined(ANDROID)}
-    PDFFilePath := TPath.Combine(TPath.GetDocumentsPath, AFilename);
-    Intent := TJIntent.JavaClass.init(TJIntent.JavaClass.ACTION_VIEW);
-    FileURI := TAndroidHelper.JFileToJURI(TJFile.JavaClass.init(StringToJString(PDFFilePath)));
-    Intent.setDataAndType(FileURI, StringToJString('application/pdf'));
-    Intent.setFlags(TJIntent.JavaClass.FLAG_ACTIVITY_NO_HISTORY or TJIntent.JavaClass.FLAG_GRANT_READ_URI_PERMISSION);
-    TAndroidHelper.Activity.startActivity(Intent);
-  {$ENDIF}
-  {$IF Defined(MACOS)}
-    URL := TNSURL.Wrap(TNSURL.OCClass.fileURLWithPath(NSStr(TPath.Combine(TPath.GetDocumentsPath, AFilename))));
-    NSWorkspace.sharedWorkspace.openURL(URL);
-  {$ENDIF}
-  {$IF Defined(IOS)}
-    URL := TNSURL.Wrap(TNSURL.OCClass.fileURLWithPath(NSStr(TPath.Combine(TPath.GetDocumentsPath, AFilename))));
-    SharedApplication.openURL(URL);
-  {$ENDIF}
+  OpenFile(Afilename);
 end;
 
 procedure LaunchPDF(const AJobno: Integer); overload;
-{$IF Defined(ANDROID)}
-var
-  Intent: JIntent;
-  FileURI: Jnet_Uri;
-{$ENDIF}
-{$IF Defined(MACOS)}
-var
-  URL: NSURL;
-{$ENDIF}
-{$IF Defined(IOS)}
-var
-  URL: NSURL;
-{$ENDIF}
 begin
   if AJobno < 1 then
-    exit;
-
-  var PDFFilePath := GetWorksheetFilename(AJobno);
-  {$IF Defined(MSWINDOWS)}
-    ShellExecute(0, nil, PChar(PDFFilePath), nil,  nil, SW_SHOWNORMAL);
-  {$ENDIF}
-  {$IF Defined(ANDROID)}
-    Intent := TJIntent.JavaClass.init(TJIntent.JavaClass.ACTION_VIEW);
-    FileURI := TAndroidHelper.JFileToJURI(TJFile.JavaClass.init(StringToJString(PDFFilePath)));
-    Intent.setDataAndType(FileURI, StringToJString('application/pdf'));
-    Intent.setFlags(TJIntent.JavaClass.FLAG_ACTIVITY_NO_HISTORY or TJIntent.JavaClass.FLAG_GRANT_READ_URI_PERMISSION);
-    TAndroidHelper.Activity.startActivity(Intent);
-  {$ENDIF}
-  {$IF Defined(MACOS)}
-    URL := TNSURL.Wrap(TNSURL.OCClass.fileURLWithPath(NSStr(TPath.Combine(TPath.GetDocumentsPath, AFilename))));
-    NSWorkspace.sharedWorkspace.openURL(URL);
-  {$ENDIF}
-  {$IF Defined(IOS)}
-    URL := TNSURL.Wrap(TNSURL.OCClass.fileURLWithPath(NSStr(TPath.Combine(TPath.GetDocumentsPath, AFilename))));
-    SharedApplication.openURL(URL);
-  {$ENDIF}
+    Exit;
+  OpenFile(GetWorksheetFilename(AJobno));
 end;
 
 function CreateWorksheetPdf(const AJobno: integer; AShowSavedMsg: boolean = false): boolean;
 var
   pdfworksheet : TWorksheetPDF;
-  Mgr: THeaderDetailsManager;
-  D: THeaderDetails;
-  Title: string;
 begin
   Result := true;
-  // Load the report heading details
-  Mgr := THeaderDetailsManager.Create(DM.FDlocal);
-  try
-    Mgr.EnsureDefaultRow;
-    if Mgr.Load(D) then
-    begin
-      Title := Format('%s%s%s%s%s',[D.HeaderName,sLinebreak,D.HeaderTelephone,sLinebreak,D.HeaderEmail]);
-    end;
-  finally
-    Mgr.Free;
-  end;
   pdfworksheet := TWorksheetPDF.Create;
   try
     try
@@ -172,7 +119,7 @@ begin
       pdfworksheet.SetCreator('WorkSheetsFMX');
       pdfworksheet.SetAuthor('WorkSheetsFMX');
       pdfworksheet.fJobno := AJobNo;
-      pdfworksheet.fHeaderTitle := Title;
+      pdfworksheet.fHeaderTitle := ReportManager.GetHeader();
       if not pdfworksheet.PrintJob then
         exit(false);
       pdfworksheet.SaveToFile(PDF_FILENAME);
@@ -191,6 +138,46 @@ begin
   finally
     pdfworksheet.Free;
   end;
+end;
+
+procedure CreateWorksheetPDFThread(const AJobNo: Integer;
+                              const AProgressAni: TAniIndicator;
+                              const AProgressRect: TRectangle);
+begin
+  AProgressAni.Enabled := True;
+  AProgressRect.Visible := True;
+
+  TTask.Run(
+    procedure
+    var
+      PDFBuilt: Boolean;
+    begin
+      try
+        PDFBuilt := CreateWorksheetPdf(AJobNo);
+
+        TThread.Queue(nil,
+          procedure
+          begin
+            AProgressAni.Enabled := False;
+            AProgressRect.Visible := False;
+
+            if PDFBuilt then
+              LaunchPDF(AJobNo);
+          end);
+
+      except
+        on E: Exception do
+        begin
+          TThread.Queue(nil,
+            procedure
+            begin
+              AProgressAni.Enabled := False;
+              AProgressRect.Visible := False;
+            end);
+        end;
+      end;
+    end
+  );
 end;
 
 end.

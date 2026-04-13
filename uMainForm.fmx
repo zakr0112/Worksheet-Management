@@ -16,7 +16,7 @@ object MainForm: TMainForm
     Size.Width = 640.000000000000000000
     Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -29,7 +29,7 @@ object MainForm: TMainForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 72.000000000000000000
       Size.Height = 24.000000000000000000
       Size.PlatformDefault = False
@@ -248,13 +248,15 @@ object MainForm: TMainForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 98.000000000000000000
       Size.Height = 24.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = 'Administration'
+      ExplicitSize.cx = 98.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
       object tbarCustomerEdit: TToolBar
         Padding.Left = 8.000000000000000000
         Padding.Top = 2.000000000000000000
@@ -334,14 +336,14 @@ object MainForm: TMainForm
         ColumnCollection = <
           item
             SizeStyle = Absolute
-            Value = 150.000000000000000000
+            Value = 120.000000000000000000
           end
           item
             Value = 100.000000000000000000
           end
           item
             SizeStyle = Absolute
-            Value = 64.000000000000000000
+            Value = 80.000000000000000000
           end>
         ControlCollection = <
           item
@@ -391,8 +393,13 @@ object MainForm: TMainForm
           end
           item
             Column = 1
-            Control = btnRecreatedb
+            Control = btnCreate
             Row = 7
+          end
+          item
+            Column = 1
+            Control = btnCreatedemo
+            Row = 8
           end>
         RowCollection = <
           item
@@ -413,7 +420,7 @@ object MainForm: TMainForm
           end
           item
             SizeStyle = Absolute
-            Value = 36.000000000000000000
+            Value = 44.000000000000000000
           end
           item
             SizeStyle = Absolute
@@ -425,26 +432,30 @@ object MainForm: TMainForm
           end
           item
             SizeStyle = Absolute
-            Value = 36.000000000000000000
+            Value = 44.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 44.000000000000000000
           end>
         object Label1: TLabel
           Align = Client
           StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
+          Size.Width = 116.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 14.000000000000000000
           TextSettings.FontColor = claLightblue
           TextSettings.HorzAlign = Trailing
           Text = 'Company Name'
-          TabOrder = 6
+          TabOrder = 7
         end
         object txtHeadername: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
-          TabOrder = 9
+          TabOrder = 10
           TextSettings.Font.Size = 18.000000000000000000
-          Size.Width = 414.000000000000000000
+          Size.Width = 428.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           StyledSettings = [Family, Style, FontColor]
@@ -452,33 +463,33 @@ object MainForm: TMainForm
         object Label7: TLabel
           Align = Client
           StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
+          Size.Width = 116.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 14.000000000000000000
           TextSettings.FontColor = claLightblue
           TextSettings.HorzAlign = Trailing
           Text = 'Telephone No.'
-          TabOrder = 3
+          TabOrder = 4
         end
         object Label10: TLabel
           Align = Client
           StyledSettings = [Family, Style]
-          Size.Width = 146.000000000000000000
+          Size.Width = 116.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 14.000000000000000000
           TextSettings.FontColor = claLightblue
           TextSettings.HorzAlign = Trailing
           Text = 'Email Address'
-          TabOrder = 2
+          TabOrder = 3
         end
         object txtHeadertelephone: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
-          TabOrder = 7
+          TabOrder = 8
           TextSettings.Font.Size = 18.000000000000000000
-          Size.Width = 414.000000000000000000
+          Size.Width = 428.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           StyledSettings = [Family, Style, FontColor]
@@ -486,9 +497,9 @@ object MainForm: TMainForm
         object txtHeaderemail: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
-          TabOrder = 8
+          TabOrder = 9
           TextSettings.Font.Size = 18.000000000000000000
-          Size.Width = 414.000000000000000000
+          Size.Width = 428.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           StyledSettings = [Family, Style, FontColor]
@@ -496,33 +507,31 @@ object MainForm: TMainForm
         object Label2: TLabel
           Align = Client
           StyledSettings = [Family, Style]
-          Size.Width = 414.000000000000000000
+          Size.Width = 428.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claGhostwhite
           TextSettings.HorzAlign = Center
           Text = 'Report Header Information'
-          TabOrder = 5
+          TabOrder = 6
         end
         object btnSave: TButton
-          Align = Right
+          Align = Center
           StyledSettings = [Family, Style, FontColor]
-          Position.X = 446.000000000000000000
-          Position.Y = 146.000000000000000000
-          Size.Width = 120.000000000000000000
-          Size.Height = 32.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 1
+          TabOrder = 2
           Text = 'Save'
-          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.Font.Size = 16.000000000000000000
           TextSettings.Trimming = None
           OnClick = btnSaveClick
         end
         object Label9: TLabel
           Align = Client
           StyledSettings = [Family, Style]
-          Size.Width = 414.000000000000000000
+          Size.Width = 428.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 16.000000000000000000
@@ -530,17 +539,31 @@ object MainForm: TMainForm
           TextSettings.HorzAlign = Center
           TextSettings.VertAlign = Trailing
           Text = 'Database Configuration'
-          TabOrder = 4
+          TabOrder = 5
         end
-        object btnRecreatedb: TButton
+        object btnCreate: TButton
           Align = Center
-          Size.Width = 120.000000000000000000
+          StyledSettings = [Family, Style, FontColor]
+          Size.Width = 210.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'Create Blank Database'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Trimming = None
+          OnClick = btnCreateClick
+        end
+        object btnCreatedemo: TButton
+          Align = Center
+          StyledSettings = [Family, Style, FontColor]
+          Size.Width = 210.000000000000000000
           Size.Height = 34.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
-          Text = 'Recreate DB'
+          Text = 'Create With Demo Data'
+          TextSettings.Font.Size = 16.000000000000000000
           TextSettings.Trimming = None
-          OnClick = btnRecreatedbClick
+          OnClick = btnCreatedemoClick
         end
       end
     end

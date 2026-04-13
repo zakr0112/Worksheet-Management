@@ -3,7 +3,7 @@ unit uDataModule;
 interface
 
 uses
-  System.SysUtils, System.Classes, System.IOUtils,
+  System.SysUtils, System.Classes, System.IOUtils, System.UITypes,
   FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite,
@@ -11,7 +11,8 @@ uses
   FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait, FireDAC.FMXUI.Error,
   FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FMX.Types, FMX.Controls
+  FMX.Types, FMX.Controls, FMX.DialogService.Async, FMX.DialogService,  uHeaderDetailsClass,
+  uCommonDialogs
   {$IFDEF ANDROID}
   , MobilePermissions.Model.Signature
   , MobilePermissions.Model.Dangerous
@@ -39,27 +40,27 @@ type
     qryPDF: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure FDlocalAfterConnect(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
+    procedure CreateDB();
+    procedure CreateDBWithDemoData();
   public
     { Public declarations }
-    procedure CreateDB();
-
+    procedure AskCreateDB(ADemodata: boolean = false);
   end;
 
 const
-  SQL_CUSTOMERS: string =
+  SQL_SCHEMA: string =
     '''
       CREATE TABLE headerdetails (
-          id INTEGER PRIMARY KEY CHECK (id = 1),
-          headername TEXT NOT NULL,
-          headertelephone TEXT,
-          headeremail TEXT
-        );
-      INSERT INTO headerdetails
-       (id, headername, headertelephone, headeremail)
-       VALUES
-       (1, 'Worksheet Manager', '0800 03482132', 'worksheetmanager@worksheet.com');
+        id INTEGER PRIMARY KEY CHECK (id = 1),
+        headername TEXT NOT NULL,
+        headertelephone TEXT,
+        headeremail TEXT
+      );
+      INSERT INTO headerdetails (id, headername, headertelephone, headeremail) VALUES
+        (1, 'Worksheet Manager', '0800 03482132', 'worksheetmanager@worksheet.com');
 
       CREATE TABLE customers (
         custid INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -71,7 +72,74 @@ const
         custcontact TEXT,
         lastchanged DATETIME NOT NULL
       );
-      INSERT INTO customers (custname, custaddress, custpostcode, custtelephone, custemail, custcontact, lastchanged) VALUES
+       CREATE TABLE jobs_master (
+        jobno INTEGER PRIMARY KEY AUTOINCREMENT,
+        jobtype TEXT,
+        jobdate DATE,
+        custname TEXT,
+        address TEXT,
+        postcode TEXT,
+        email TEXT,
+        telephone TEXT,
+        callno TEXT,
+        contractno TEXT,
+        reason TEXT,
+        workdone TEXT,
+        remedial TEXT,
+        referredto TEXT,
+        engineername1 TEXT,
+        engineername2 TEXT,
+        signedby TEXT,
+        signaturepathdata TEXT,
+        lastchanged DATETIME
+      );
+       CREATE TABLE jobs_expenses (
+        exid INTEGER PRIMARY KEY AUTOINCREMENT,
+        jobno INTEGER NOT NULL,
+        exdate DATE NOT NULL,
+        exdetails TEXT NOT NULL,
+        excost REAL NOT NULL,
+        lastchanged DATETIME NOT NULL,
+        FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
+      );
+       CREATE TABLE jobs_photos (
+        jobno INTEGER NOT NULL,
+        photono INTEGER NOT NULL,
+        photo BLOB,
+        lastchanged DATETIME,
+        PRIMARY KEY(jobno, photono),
+        FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
+      );
+       CREATE TABLE jobs_spareparts (
+        spid INTEGER PRIMARY KEY AUTOINCREMENT,
+        jobno INTEGER NOT NULL,
+        partdetails TEXT NOT NULL,
+        qtyused INTEGER NOT NULL,
+        lastchanged DATETIME NOT NULL,
+        FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
+      );
+       CREATE TABLE jobs_timerecords (
+        trid INTEGER PRIMARY KEY AUTOINCREMENT,
+        jobno INTEGER NOT NULL,
+        logdate DATE,
+        traveltime TIME,
+        timearrived TIME,
+        timedeparted TIME,
+        timetotal TIME,
+        jobtimeseconds INTEGER,
+        traveltimeseconds INTEGER,
+        totaltimeseconds INTEGER,
+        mileage INTEGER,
+        lastchanged DATETIME,
+        FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
+      );
+     ''';
+
+const
+  SQL_DATA_CUSTOMERS: string =
+    '''
+      INSERT INTO customers
+        (custname, custaddress, custpostcode, custtelephone, custemail, custcontact, lastchanged) VALUES
         ('Oakridge Solutions Ltd', '12 Elm Street, Manchester', 'M1 2AB', '0161 555 1234', 'info@oakridge.co.uk', 'Sarah Bennett', '2025-10-19 10:15:00'),
         ('Brightwave Media', '45 King''s Road, Brighton', 'BN1 3XY', '01273 555 6789', 'hello@brightwave.co.uk', 'James Carter', '2025-10-19 10:16:00'),
         ('Nimbus Technologies', '88 Cloud Lane, Leeds', 'LS2 8PL', '0113 555 2468', 'support@nimbus-tech.co.uk', 'Emily Watson', '2025-10-19 10:17:00'),
@@ -103,78 +171,49 @@ const
         ('Pinecone Software', 'Suite 2, CodeWorks, Bristol', 'BS1 5AA', '0117 555 2233', 'dev@pineconesoft.co.uk', 'Evie Russell', '2025-10-19 10:43:00'),
         ('Wrenhill Textiles', 'Mill House, Loom Street, Bradford', 'BD1 3AA', '01274 555 6677', 'sales@wrenhill.co.uk', 'Archie Bennett', '2025-10-19 10:44:00');
     ''';
-    const
-      SQL_JOBSMASTER: string =
-       '''
-          CREATE TABLE jobs_master (
-            jobno INTEGER PRIMARY KEY AUTOINCREMENT,
-            jobtype TEXT,
-            jobdate DATE,
-            custname TEXT,
-            address TEXT,
-            postcode TEXT,
-            email TEXT,
-            telephone TEXT,
-            callno TEXT,
-            contractno TEXT,
-            reason TEXT,
-            workdone TEXT,
-            remedial TEXT,
-            referredto TEXT,
-            engineername1 TEXT,
-            engineername2 TEXT,
-            signedby TEXT,
-            signaturepathdata TEXT,
-            lastchanged DATETIME
-          );
 
-          CREATE TABLE jobs_expenses (
-           exid INTEGER PRIMARY KEY AUTOINCREMENT,
-           jobno INTEGER NOT NULL,
-           exdate DATE NOT NULL,
-           exdetails TEXT NOT NULL,
-           excost REAL NOT NULL,
-           lastchanged DATETIME NOT NULL,
-           FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
-          );
+const
+  SvgPath =
+    'M33.1428604125977,128.857177734375 M53.1428604125977,159.714294433594 L49.7142944335937,140.285766601562 ' +
+    'L50.8571472167969,128.857177734375 L56.0000076293945,103.142883300781 L62.8571472167969,80.857177734375 ' +
+    'L70.8571472167969,60.857177734375 L82.8571472167969,36.2857360839844 L94.2857208251953,23.1428833007813 ' +
+    'L97.7142944335938,20.2857360839844 L101.142868041992,20.2857360839844 L101.142868041992,24.857177734375 ' +
+    'L100,31.7142944335937 L98.8571472167969,38.0000305175781 L97.7142944335938,48.857177734375 ' +
+    'L97.1428680419922,60.2857666015625 L97.7142944335938,68.857177734375 L98.8571472167969,83.1428833007812 ' +
+    'L101.142868041992,100.857177734375 L102.285720825195,112.857177734375 L102.285720825195,124.857177734375 ' +
+    'L101.142868041992,140.857177734375 L101.142868041992,155.142883300781 L100,162 L98.8571472167969,168.857177734375 ' +
+    'L98.8571472167969,171.142883300781 L100,168.857177734375 L98.8571472167969,167.714294433594 L98.8571472167969,166 ' +
+    'M62.8571472167969,128.857177734375 L81.7142944335938,127.714294433594 L97.1428680419922,122 ' +
+    'L114.857147216797,111.714294433594 L141.142868041992,98 L154.857147216797,87.7142944335938 ' +
+    'L169.142868041992,76.2857666015625 L174.285720825195,71.1428833007812 L174.285720825195,68.857177734375 ' +
+    'L166.285720825195,70 L154.857147216797,72.857177734375 L150.285720825195,75.1428833007812 ' +
+    'L145.142868041992,79.1428833007812 L140.000015258789,87.7142944335938 L137.714294433594,94 ' +
+    'L134.285720825195,108.285766601562 L130.857147216797,124.285766601562 L132.000015258789,147.142883300781 ' +
+    'L137.714294433594,160.857177734375 L142.857147216797,159.142883300781 L146.857147216797,140.285766601562 ' +
+    'L153.142868041992,95.1428833007812 L158.285720825195,55.7142944335937 L161.142868041992,44.2857360839844 ' +
+    'L162.857147216797,40.857177734375 L162.857147216797,51.1428833007812 L161.714294433594,67.1428833007812 ' +
+    'L157.142868041992,102 L150.285720825195,136.857177734375 L145.142868041992,152.857177734375 ' +
+    'L141.142868041992,159.714294433594 L140.000015258789,156.857177734375 L142.857147216797,139.142883300781 ' +
+    'L145.714294433594,124.285766601562 L150.857147216797,108.285766601562 L157.142868041992,103.142883300781 ' +
+    'L165.142868041992,107.142883300781 L177.714294433594,132.285766601562 L193.142868041992,163.142883300781 ' +
+    'L206.857147216797,172.857177734375 L221.142883300781,156.857177734375 L228,110 L228,87.7142944335938 ' +
+    'L222.857147216797,67.1428833007812 L218.857147216797,67.1428833007812 L209.142883300781,79.1428833007812 ' +
+    'L202.857147216797,104.857177734375 L201.714294433594,128.857177734375 L208,164.857177734375 ' +
+    'L213.142883300781,179.142883300781 L218.857147216797,183.714294433594 L218.857147216797,171.142883300781 ' +
+    'L213.142883300781,139.142883300781 L206.857147216797,111.142883300781 L201.714294433594,80.857177734375 ' +
+    'L201.142883300781,71.1428833007812 L200,71.1428833007812 L198.857147216797,74 L200,79.7142944335938 ' +
+    'L206.857147216797,95.1428833007812 L218.857147216797,107.142883300781 L241.142883300781,124.857177734375 ' +
+    'L265.142883300781,138 L277.142883300781,143.714294433594 L289.142883300781,148.857177734375 ' +
+    'L289.714294433594,143.714294433594 L282.857147216797,131.142883300781 L273.714294433594,112.857177734375 ' +
+    'L262.857147216797,94 L261.142883300781,87.7142944335938 L262.857147216797,90 L272,100.857177734375 ' +
+    'L286.857147216797,135.142883300781 L298.857147216797,155.142883300781 L321.714294433594,160.857177734375 ' +
+    'L346.857147216797,140.285766601562 L366.285736083984,120.857177734375 L390.857177734375,99.1428833007812 ' +
+    'L401.714294433594,83.1428833007812 L401.714294433594,76.857177734375';
 
-        CREATE TABLE jobs_photos (
-         jobno INTEGER NOT NULL,
-         photono INTEGER NOT NULL,
-         photo BLOB,
-         lastchanged DATETIME,
-         PRIMARY KEY(jobno, photono),
-         FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
-        );
-
-        CREATE TABLE jobs_spareparts (
-         spid INTEGER PRIMARY KEY AUTOINCREMENT,
-         jobno INTEGER NOT NULL,
-         partdetails TEXT NOT NULL,
-         qtyused INTEGER NOT NULL,
-         lastchanged DATETIME NOT NULL,
-         FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
-        );
-
-        CREATE TABLE jobs_timerecords (
-         trid INTEGER PRIMARY KEY AUTOINCREMENT,
-         jobno INTEGER NOT NULL,
-         logdate DATE,
-         traveltime TIME,
-         timearrived TIME,
-         timedeparted TIME,
-         timetotal TIME,
-         jobtimeseconds INTEGER,
-         traveltimeseconds INTEGER,
-         totaltimeseconds INTEGER,
-         mileage INTEGER,
-         lastchanged DATETIME,
-         FOREIGN KEY(jobno) REFERENCES jobs_master (jobno) on delete cascade
-        );
-
-        INSERT INTO jobs_master
-        (jobtype, jobdate, custname, address, postcode, email, telephone, callno, contractno, reason, workdone, remedial, referredto, engineername1, engineername2, signedby, signaturepathdata, lastchanged)
-        VALUES
+const
+  SQL_DATA_JOBS: string =
+    '''
+      INSERT INTO jobs_master (jobtype, jobdate, custname, address, postcode, email, telephone, callno, contractno, reason, workdone, remedial, referredto, engineername1, engineername2, signedby, signaturepathdata, lastchanged) VALUES
         ('MAINTENANCE',  45931.0, 'Oakridge Solutions Ltd',  '12 Elm Street, Manchester',                   'M1 2AB',  'info@oakridge.co.uk',               '0161 555 1234',  'C001', 'CN1001', 'Annual service',                     'Boiler serviced and tested',                          'None',                          'N/A',      'James Carter',  'Sarah Bennett',  'Sarah Bennett', '', 45931.395833),
         ('BREAKDOWN',    45932.0, 'Brightwave Media',        '45 King''s Road, Brighton',                   'BN1 3XY', 'hello@brightwave.co.uk',            '01273 555 6789', 'C002', 'CN1002', 'Power outage',                       'Replaced fuse board',                                 'Check wiring in 6 months',      'N/A',      'Emily Watson',  'Tom Harris',     'James Carter',  '', 45932.59375),
         ('BREAKDOWN',    45933.0, 'Nimbus Technologies',     '88 Cloud Lane, Leeds',                        'LS2 8PL', 'support@nimbus-tech.co.uk',         '0113 555 2468',  'C003', 'CN1003', 'Leak reported',                      'Pipe replaced under sink',                            'Monitor for leaks',             'N/A',      'Oliver Scott',  'Rachel Moore',   '',              '', 45933.489583),
@@ -189,9 +228,32 @@ const
         ('INSTALLATION', 45942.0, 'Beacon Analytics',        'Suite 10, Innovation Park, Edinburgh',        'EH3 9AB', 'data@beaconanalytics.co.uk',        '0131 555 7788',  'C012', 'CN1012', 'New external lighting',              'Installed 2x LED floodlights with PIR sensor',        'None',                          'N/A',      'Harry Walker',  'Ella Hughes',    '',              '', 45942.541667),
         ('BREAKDOWN',    45943.0, 'Willow HR Services',      'Office 2, 5 Station Road, Reading',           'RG1 1AA', 'hr@willowservices.co.uk',           '0118 555 8899',  'C013', 'CN1013', 'Main breaker trips intermittently',  'Identified and replaced faulty circuit breaker (MCB)','None',                          'N/A',      'Oscar Reed',    'Mia Palmer',     '',              '', 45943.489583),
         ('OTHER',        45944.0, 'Ironclad Security Ltd',   'Unit 7, Forge Business Park, Newcastle',      'NE1 4ST', 'secure@ironclad.co.uk',             '0191 555 1122',  'C014', 'CN1014', 'Camera view obstructed',             'Repositioned camera 3 and cleaned lens',              'None',                          'N/A',      'Leo Chapman',   'Charlotte Webb', '',              '', 45944.430556),
-        ('BREAKDOWN',    45945.0, 'Aurora Events',           'The Loft, 22 Market Place, Oxford',           'OX1 3DU', 'events@aurora.co.uk',               '01865 555 6677', 'C015', 'CN1015', 'No hot water in kitchenette',        'Replaced failed heating element in water heater',     'None',                          'N/A',      'Jacob Knight',  'Evie Russell',   '',              '', 45945.5);
-
-        INSERT INTO jobs_expenses (exid, jobno, exdate, exdetails, excost, lastchanged) VALUES
+        ('BREAKDOWN',    45945.0, 'Aurora Events',           'The Loft, 22 Market Place, Oxford',           'OX1 3DU', 'events@aurora.co.uk',               '01865 555 6677', 'C015', 'CN1015', 'No hot water in kitchenette',        'Replaced failed heating element in water heater',     'None',                          'N/A',      'Jacob Knight',  'Evie Russell',   'Andrew Barnes', '', 45945.5);
+      UPDATE jobs_master SET signaturepathdata = 'M33.1428604125977,128.857177734375 M53.1428604125977,159.714294433594 L49.7142944335937,140.285766601562 L50.8571472167969,
+          128.857177734375 L56.0000076293945,103.142883300781 L62.8571472167969,80.857177734375 L70.8571472167969,60.857177734375 L82.8571472167969,
+          36.2857360839844 L94.2857208251953,23.1428833007813 L97.7142944335938,20.2857360839844 L101.142868041992,20.2857360839844 L101.142868041992,
+          .857177734375 L100,31.7142944335937 L98.8571472167969,38.0000305175781 L97.7142944335938,48.857177734375 L97.1428680419922,60.2857666015625 L97.7142944335938,
+          68.857177734375 L98.8571472167969,83.1428833007812 L101.142868041992,100.857177734375 L102.285720825195,112.857177734375 L102.285720825195,
+          124.857177734375 L101.142868041992,140.857177734375 L101.142868041992,155.142883300781 L100,162 L98.8571472167969,168.857177734375 L98.8571472167969,
+          171.142883300781 L100,168.857177734375 L98.8571472167969,167.714294433594 L98.8571472167969,166 M62.8571472167969,
+          128.857177734375 L81.7142944335938,127.714294433594 L97.1428680419922,122 L114.857147216797,111.714294433594 L141.142868041992,
+          98 L154.857147216797,87.7142944335938 L169.142868041992,76.2857666015625 L174.285720825195,71.1428833007812 L174.285720825195,68.857177734375 L166.285720825195,
+           L154.857147216797,72.857177734375 L150.285720825195,75.1428833007812 L145.142868041992,79.1428833007812 L140.000015258789,87.7142944335938 L137.714294433594,
+           94 L134.285720825195,108.285766601562 L130.857147216797,124.285766601562 L132.000015258789,147.142883300781 L137.714294433594,160.857177734375 L142.857147216797,
+           159.142883300781 L146.857147216797,140.285766601562 L153.142868041992,95.1428833007812 L158.285720825195,55.7142944335937 L161.142868041992,44.2857360839844 L162.857147216797,
+           40.857177734375 L162.857147216797,51.1428833007812 L161.714294433594,67.1428833007812 L157.142868041992,102 L150.285720825195,136.857177734375 L145.142868041992,
+           152.857177734375 L141.142868041992,159.714294433594 L140.000015258789,156.857177734375 L142.857147216797,139.142883300781 L145.714294433594,124.285766601562 L150.857147216797,
+           108.285766601562 L157.142868041992,103.142883300781 L165.142868041992,107.142883300781 L177.714294433594,132.285766601562 L193.142868041992,163.142883300781 L206.857147216797,
+           172.857177734375 L221.142883300781,156.857177734375 L228,110 L228,87.7142944335938 L222.857147216797,67.1428833007812 L218.857147216797,67.1428833007812 L209.142883300781,
+           79.1428833007812 L202.857147216797,104.857177734375 L201.714294433594,128.857177734375 L208,164.857177734375 L213.142883300781,179.142883300781 L218.857147216797,
+           183.714294433594 L218.857147216797,171.142883300781 L213.142883300781,139.142883300781 L206.857147216797,111.142883300781 L201.714294433594,80.857177734375 L201.142883300781,
+           71.1428833007812 L200,71.1428833007812 L198.857147216797,74 L200,79.7142944335938 L206.857147216797,95.1428833007812 L218.857147216797,107.142883300781 L241.142883300781,
+           124.857177734375 L265.142883300781,138 L277.142883300781,143.714294433594 L289.142883300781,148.857177734375 L289.714294433594,
+           143.714294433594 L282.857147216797,131.142883300781 L273.714294433594,112.857177734375 L262.857147216797,94 L261.142883300781,87.7142944335938 L262.857147216797,
+           90 L272,100.857177734375 L286.857147216797,135.142883300781 L298.857147216797,155.142883300781 L321.714294433594,160.857177734375 L346.857147216797,
+           140.285766601562 L366.285736083984,120.857177734375 L390.857177734375,99.1428833007812 L401.714294433594,83.1428833007812 L401.714294433594,76.857177734375'
+           WHERE jobno = 15;
+      INSERT INTO jobs_expenses (exid, jobno, exdate, exdetails, excost, lastchanged) VALUES
         (1,  1,  45931.0, 'Replacement fuse',         45.00, 45931.40625),
         (2,  2,  45932.0, 'Travel costs',             20.00, 45932.604167),
         (3,  3,  45933.0, 'Pipe sealant',             12.50, 45933.5),
@@ -207,8 +269,7 @@ const
         (13, 13, 45943.0, 'Small Parts Consumables',   5.00, 45943.5),
         (14, 14, 45944.0, 'Secure Parking',           11.50, 45944.447917),
         (15, 15, 45945.0, 'Pipe Joint Compound',       8.25, 45945.520833);
-
-        INSERT INTO jobs_spareparts (spid, jobno, partdetails, qtyused, lastchanged) VALUES
+      INSERT INTO jobs_spareparts (spid, jobno, partdetails, qtyused, lastchanged) VALUES
         (1,  1,  'Fuse 13A',                            2,  45931.409722),
         (2,  2,  'Circuit breaker unit',                1,  45932.611111),
         (3,  3,  'Copper pipe 15mm',                    2,  45933.506944),
@@ -224,8 +285,7 @@ const
         (13, 13, '32A MCB Type B',                      1,  45943.506944),
         (14, 14, 'Lens Cleaning Cloth (Microfibre)',    1,  45944.451389),
         (15, 15, 'Immersion Heater Element 3kW',        1,  45945.527778);
-
-        INSERT INTO jobs_timerecords (trid, jobno, logdate, traveltime, timearrived, timedeparted, timetotal, jobtimeseconds, traveltimeseconds, totaltimeseconds, mileage, lastchanged) VALUES
+      INSERT INTO jobs_timerecords (trid, jobno, logdate, traveltime, timearrived, timedeparted, timetotal, jobtimeseconds, traveltimeseconds, totaltimeseconds, mileage, lastchanged) VALUES
         (1,  1,  45931.0, 0.020833, 0.375,    0.416667, 0.041667, 3600,  1800, 5400,  12, 45931.420139),
         (2,  2,  45932.0, 0.03125,  0.5625,   0.625,    0.0625,   5400,  2700, 8100,  20, 45932.631944),
         (3,  3,  45933.0, 0.013889, 0.479167, 0.520833, 0.041667, 3600,  1200, 4800,  8,  45933.524306),
@@ -246,12 +306,20 @@ const
    const svgdelete: string =
    '<?xml version="1.0" encoding="utf-8"?>' +
     '<svg width="800px" height="800px" viewBox="0 0 1024 1024" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M779.5 1002.7h-535c-64.3 0-116.5-52.3-116.5-116.5V170.7h768v715.5c0 64.2-52.3 116.5-116.5 116.5zM213.3 256v630.1c0 17.2 14 31.2 31.2 31.2h534.9c17.2 0 31.2-14 31.2-31.2V256H213.3z" fill="#3688FF" /><path d="M917.3 256H106.7C83.1 256 64 236.9 64 213.3s19.1-42.7 42.7-42.7h810.7c23.6 0 42.7 19.1 42.7 42.7S940.9 256 917.3 256zM618.7 128H405.3c-23.6 0-42.7-19.1-42.7-42.7s19.1-42.7 42.7-42.7h213.3c23.6 0 42.7 19.1 42.7 42.7S642.2 128 618.7 128zM405.3 725.3c-23.6 0-42.7-19.1-42.7-42.7v-256c0-23.6 19.1-42.7 42.7-42.7S448 403 448 426.6v256c0 23.6-19.1 42.7-42.7 42.7zM618.7 725.3c-23.6 0-42.7-19.1-42.7-42.7v-256c0-23.6 19.1-42.7 42.7-42.7s42.7 19.1 42.7 42.7v256c-0.1 23.6-19.2 42.7-42.7 42.7z" fill="#5F6379" /></svg>';
+
+const
+  WORKSHEET_FOLDER = 'WorkSheets';
+  DB_FILE = 'WorksheetV1.sdb';
+
 var
   DM: TDM;
-  DBName: string;
-  SAVE_PATH: string;
+  SQLITE_DATABASE: string;
+  PDF_PATH: string;
+  ReportManager: THeaderDetailsManager;
 
 procedure RequestPermissions;
+procedure DeleteFilesWithSuffix(const AFolder, ASuffix: string);
+procedure DeleteFilesWithExtension(const AFolder, AExtension: string);
 
 implementation
 
@@ -260,23 +328,33 @@ implementation
 {$R *.dfm}
 
 procedure TDM.DataModuleCreate(Sender: TObject);
+var
+  savePath: string;
 begin
   // Setup connection information depending on platform (e.g. android, windows)
   {$IF DEFINED(Android)}
-    SAVE_PATH := TPath.GetHomePath;
-    DBName := TPath.Combine(TPath.GetHomePath, 'WorksheetV1.sdb');
+    savePath := TPath.GetHomePath;
   {$ELSEIF DEFINED(MSWINDOWS)}
-    SAVE_PATH := TPath.Combine(TPath.GetHomePath, 'WorkSheets');
-    if not DirectoryExists(SAVE_PATH) then
-      CreateDir(SAVE_PATH);
-    DBName := TPath.Combine(SAVE_PATH, 'WorksheetV1.sdb');
+    savePath := TPath.Combine(TPath.GetDocumentsPath, WORKSHEET_FOLDER);
+    ForceDirectories(savePath);   // create folder if not exists
   {$ENDIF}
-
-  FDlocal.Params.Database := DBName;
+  PDF_PATH := savePath;
+  SQLITE_DATABASE := TPath.Combine(savePath, DB_FILE);
+  FDlocal.Params.Database := SQLITE_DATABASE;
 
   // If not found, we create the database
-  if not FileExists(DBName) then
+  if not FileExists(SQLITE_DATABASE) then
     CreateDB();
+
+  // now the report
+  ReportManager := THeaderDetailsManager.Create(DM.FDlocal);
+
+end;
+
+procedure TDM.DataModuleDestroy(Sender: TObject);
+begin
+  if Assigned(ReportManager) then
+    ReportManager.Free;
 end;
 
 procedure TDM.FDlocalAfterConnect(Sender: TObject);
@@ -284,11 +362,66 @@ begin
   FDLocal.ExecSQL('PRAGMA foreignkeys = ON');
 end;
 
+procedure TDM.CreateDBWithDemoData();
+begin
+  // Database is created with schema and test data
+  FDlocal.Open; // this creates the database
+  FDLocal.ExecSQL(SQL_SCHEMA);
+  FDLocal.ExecSQL(SQL_DATA_CUSTOMERS);
+  FDLocal.ExecSQL(SQL_DATA_JOBS);
+  FDLocal.Close;
+end;
+
+procedure TDM.AskCreateDB(ADemodata: boolean);
+var
+  MSG: string;
+begin
+  MSG := 'WARNING!' + sLineBreak + 'This will DESTROY all existing data' + sLineBreak;
+  if ADemodata then
+    MSG := MSG + 'Do you wish to delete the database and recreate with default data ?'
+  else
+    MSG := MSG + 'Do you wish to delete the database ?';
+
+  TDialogService.MessageDialog(
+    Msg,
+    TMsgDlgType.mtConfirmation,
+    [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
+    TMsgDlgBtn.mbNo,
+    0,
+    procedure(const AResult: TModalResult)
+    begin
+      if AResult = mrYes then
+      begin
+        // Delete the existing database!
+        if FileExists(SQLITE_DATABASE) then
+        begin
+          FDlocal.Close;
+          DeleteFile(SQLITE_DATABASE);
+        end;
+        // Now delete stray .pdf / signatures
+        DeleteFilesWithSuffix(PDF_PATH, 'signature.png');
+        DeleteFilesWithExtension(PDF_PATH, '.pdf');
+        if ADemodata then
+        begin
+          CreateDBWithDemoData();
+          ShowInfo('The database schema has been created with demonstration data');
+        end
+        else
+        begin
+          CreateDB();
+          ShowInfo('The database schema has been created');
+        end;
+
+      end;
+    end
+  );
+
+end;
+
 procedure TDM.CreateDB();
 begin
-  FDlocal.Open; // Database is defined as Createon open...
-  FDLocal.ExecSQL(SQL_CUSTOMERS);
-  FDLocal.ExecSQL(SQL_JOBSMASTER);
+  FDlocal.Open; // this creates the database
+  FDLocal.ExecSQL(SQL_SCHEMA);
   FDLocal.Close;
 end;
 
@@ -311,5 +444,61 @@ begin
   {$ENDIF}
 end;
 
+procedure DeleteFilesWithExtension(const AFolder, AExtension: string);
+var
+  Files: TArray<string>;
+  FileName: string;
+  Ext: string;
+begin
+  // Normalise extension (".pdf" or "pdf" both accepted)
+  Ext := AExtension.Trim;
+  if (Ext <> '') and (Ext[1] <> '.') then
+    Ext := '.' + Ext;
+
+  // Get all matching files in the folder
+  Files := TDirectory.GetFiles(
+    AFolder,
+    '*' + Ext,
+    TSearchOption.soTopDirectoryOnly
+  );
+
+  // Delete them
+  for FileName in Files do
+  begin
+    try
+      TFile.Delete(FileName);
+    except
+      on E: Exception do
+        // Up to you: log, raise, or ignore
+        raise Exception.CreateFmt('Failed to delete %s: %s', [FileName, E.Message]);
+    end;
+  end;
+end;
+
+procedure DeleteFilesWithSuffix(const AFolder, ASuffix: string);
+var
+  Files: TArray<string>;
+  FileName: string;
+  Pattern: string;
+begin
+  // Normalise suffix (no wildcard needed from caller)
+  Pattern := '*' + ASuffix.Trim;
+
+  Files := TDirectory.GetFiles(
+    AFolder,
+    Pattern,
+    TSearchOption.soTopDirectoryOnly
+  );
+
+  for FileName in Files do
+  begin
+    try
+      TFile.Delete(FileName);
+    except
+      on E: Exception do
+        raise Exception.CreateFmt('Failed to delete %s: %s', [FileName, E.Message]);
+    end;
+  end;
+end;
 
 end.

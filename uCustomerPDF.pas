@@ -339,7 +339,7 @@ begin
         begin
           // we have data, so hopefully can convert to a png!
 
-          var SignatureFilename := TPath.Combine(SAVE_PATH, Format('%d_signature.png', [Job.Jobno]));
+          var SignatureFilename := TPath.Combine(PDF_PATH, Format('%d_signature.png', [Job.Jobno]));
           // consider changing to a function to avoid checks for FileExists?
           ExportSignatureAsPNG(Job.SignatureSVG, SignatureFilename);
           if FileExists(SignatureFilename) then
@@ -367,7 +367,7 @@ begin
       var photofile: string;
       for I := 1 to 6 do
       begin
-        photofile := TPath.Combine(SAVE_PATH, Format('pdf_photo_%d.png', [I]));
+        photofile := TPath.Combine(PDF_PATH, Format('pdf_photo_%d.png', [I]));
         if FileExists(photofile) then
           DeleteFile(photofile);
       end;
@@ -379,7 +379,7 @@ begin
         if not DM.qryPDF.FieldByName('photo').IsNull then
         begin
           try
-            photofile := TPath.Combine(SAVE_PATH, Format('pdf_photo_%d.png', [DM.qryPDF.FieldByName('photono').AsInteger]));
+            photofile := TPath.Combine(PDF_PATH, Format('pdf_photo_%d.png', [DM.qryPDF.FieldByName('photono').AsInteger]));
             (DM.qryPDF.FieldByName('photo') as TBlobField).SaveToFile(photofile);
             case I of
               1, 3, 5:

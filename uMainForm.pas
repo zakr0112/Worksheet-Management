@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.TabControl,
-  System.Skia, FMX.Skia, FMX.StdCtrls, FMX.Controls.Presentation, uCommonDialogs,
+  System.Skia, FMX.Skia, FMX.StdCtrls, FMX.Controls.Presentation,
+  FMX.DialogService.Async, FMX.DialogService, uCommonDialogs,
       {$IF Defined(Android)}
     AndroidAPI.JNI.JavaTypes, AndroidAPI.JNI.Widget, AndroidAPI.Helpers, Posix.UNISTD,
   {$ENDIF}
@@ -37,16 +38,18 @@ type
     Label2: TLabel;
     btnSave: TButton;
     Label9: TLabel;
-    btnRecreatedb: TButton;
     spdAdmin: TSpeedButton;
     SkSvg1: TSkSvg;
+    btnCreate: TButton;
+    btnCreatedemo: TButton;
     procedure btnCustomersClick(Sender: TObject);
-    procedure btnRecreatedbClick(Sender: TObject);
+    procedure btnCreateClick(Sender: TObject);
     procedure btnManageJobsClick(Sender: TObject);
     procedure spdAdminClick(Sender: TObject);
     procedure spdbackcustomerClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
+    procedure btnCreatedemoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,33 +80,29 @@ end;
 
 procedure TMainForm.btnManageJobsClick(Sender: TObject);
 var
-   frm: TJobForm;
+  frm: TJobForm;
 begin
-   frm := TJobForm.Create(nil);
-   frm.ShowModal (
-      procedure(ModalResult: TModalResult)
+  frm := TJobForm.Create(nil);
+  frm.ShowModal (
+    procedure(ModalResult: TModalResult)
       begin
-         // Put something here to do AFTER form has closed and come back e.g.
-         // RefreshFirstPage;
+      // Put something here to do AFTER form has closed and come back e.g.
+      // RefreshFirstPage;
       end
-   );
-
+    );
 end;
 
-procedure TMainForm.btnRecreatedbClick(Sender: TObject);
+procedure TMainForm.btnCreateClick(Sender: TObject);
 begin
-  if FileExists(DBName) then
-  begin
-    DM.FDlocal.Close;
-    DeleteFile(DBName);
-  end;
-  DM.CreateDB;
+  DM.AskCreateDB(false); // create schema only
+end;
+
+procedure TMainForm.btnCreatedemoClick(Sender: TObject);
+begin
+  DM.AskCreateDB(true); // create with demo data
 end;
 
 procedure TMainForm.btnSaveClick(Sender: TObject);
-var
-  Mgr: THeaderDetailsManager;
-  D: THeaderDetails;
 begin
 
   if txtHeaderName.text.IsEmpty then
@@ -121,17 +120,10 @@ begin
     ShowWarning('You must enter the company email address!', txtHeaderEmail);
     exit;
   end;
-  D.HeaderName := txtHeaderName.Text;
-  D.HeaderTelephone := txtHeaderTelephone.Text;
-  D.HeaderEmail := txtHeaderEmail.Text;
-
-  Mgr := THeaderDetailsManager.Create(DM.FDlocal);
-  try
-    Mgr.Save(D);
-    ShowMessage('Header details saved.');
-  finally
-    Mgr.Free;
-  end;
+  ReportManager.Name := txtHeaderName.Text;
+  ReportManager.Phone := txtHeaderTelephone.Text;
+  ReportManager.Email := txtHeaderEmail.Text;
+  ReportManager.Save;
 
 end;
 
@@ -143,24 +135,10 @@ begin
 end;
 
 procedure TMainForm.spdAdminClick(Sender: TObject);
-var
-  Mgr: THeaderDetailsManager;
-  D: THeaderDetails;
 begin
-  // Load the report heading details
-    Mgr := THeaderDetailsManager.Create(DM.FDlocal);
-  try
-    Mgr.EnsureDefaultRow;
-    if Mgr.Load(D) then
-    begin
-      txtHeaderName.Text := D.HeaderName;
-      txtHeaderTelephone.Text := D.HeaderTelephone;
-      txtHeaderEmail.Text := D.HeaderEmail;
-    end;
-  finally
-    Mgr.Free;
-  end;
-
+  txtHeaderName.Text := ReportManager.Name;
+  txtHeaderTelephone.Text := ReportManager.Phone;
+  txtHeaderEmail.Text := ReportManager.Email;
   TCMain.TabRight(tiAdmin);
 end;
 

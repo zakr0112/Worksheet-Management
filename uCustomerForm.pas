@@ -12,11 +12,11 @@ uses
   FMX.StdCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Controls.Presentation,
   System.Rtti, FMX.ListView.Types, FMX.ListView.Appearances,
   FMX.ListView.Adapters.Base, FMX.ListView, FMX.DialogService.Async, FMX.DialogService,
-    {$IF Defined(Android)}
+  {$IF Defined(Android)}
     AndroidAPI.JNI.JavaTypes, AndroidAPI.JNI.Widget, AndroidAPI.Helpers, Posix.UNISTD,
   {$ENDIF}
   uCommonDialogs, uCustomerManagerClass, uHelperTabControl, System.Skia,
-  FMX.Skia, FMX.MultiView, uJobForm, FMX.Objects, uCommonPDFLauncher, System.Threading,
+  FMX.Skia, FMX.MultiView, uJobForm, FMX.Objects, uCommonPDFLauncher,
   uWorksheetPDF, uJobsManagerClass;
 
 type
@@ -86,8 +86,6 @@ type
       const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
   private
     procedure PopulateJobHistory;
-    procedure CreateWorksheetPDFThread(const AJobno: integer);
-    //
     { Private declarations }
   public
     { Public declarations }
@@ -168,41 +166,6 @@ begin
   PopulateCustomerList;
 end;
 
-procedure TCustomerForm.CreateWorksheetPDFThread(const AJobno: integer);
-var
-  PDFBuilt: boolean;
-begin
-  aniProgress.Enabled := true;
-  rectProgress.Visible := true;
-  TTask.Run(
-    procedure
-    begin
-      try
-        PDFBuilt := CreateWorksheetPdf(AJobno);
-
-        TThread.Queue(nil,
-          procedure
-          begin
-            aniProgress.Enabled := false;
-            rectProgress.Visible := false;
-            // now we show it...
-            if PDFBuilt then
-             LaunchPDF(AJobno);
-          end);
-      except
-        on E: Exception do
-        begin
-          TThread.Queue(nil,
-          procedure
-          begin
-            aniProgress.Enabled := false;
-            rectProgress.Visible := false;
-          end);
-        end;
-      end;
-    end);
-end;
-
 procedure TCustomerForm.LVZJobsItemClickEx(const Sender: TObject;
   ItemIndex: Integer; const LocalClickPos: TPointF;
   const ItemObject: TListItemDrawable);
@@ -220,7 +183,7 @@ begin
         ShowWarning('Unable to find the selected job record!');
         exit;
       end;
-      CreateWorksheetPDFThread(JobNo);
+      CreateWorksheetPDFThread(JobNo, aniProgress, rectProgress);
     end;
   end;
 end;
@@ -275,7 +238,7 @@ end;
 
 procedure TCustomerForm.spdHomeClick(Sender: TObject);
 begin
-    Close;
+  Close;
 end;
 
 procedure TCustomerForm.spdNewClick(Sender: TObject);
@@ -298,13 +261,11 @@ begin
 end;
 
 procedure TCustomerForm.btnDeleteClick(Sender: TObject);
-var
-  MSG: string;
 begin
   // Confirm they want to delete the current record
   if CustID = -1 then
     exit;
-  MSG := Format('Are you sure you want to delete %s?', [custname]);
+  var MSG := Format('Are you sure you want to delete %s?', [custname]);
   TDialogService.MessageDialog(MSG, TMsgDlgType.mtConfirmation, mbYesNo, TMsgDlgBtn.mbNo, 0,
     procedure (const AResult: TModalResult) begin
       if AResult = mrYes then
@@ -438,6 +399,5 @@ begin
     qryListjobs.Close;
   end;
 end;
-
 
 end.

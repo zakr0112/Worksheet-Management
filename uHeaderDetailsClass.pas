@@ -3,125 +3,91 @@ unit uHeaderDetailsClass;
 interface
 
 uses
-  System.SysUtils,
-  FireDAC.Comp.Client;
+  System.SysUtils, FireDAC.Comp.Client, FireDAC.Stan.Param,
+  Data.DB, uCommonDialogs;
 
 type
-  THeaderDetails = record
-    HeaderName: string;
-    HeaderTelephone: string;
-    HeaderEmail: string;
-  end;
 
   THeaderDetailsManager = class
   private
-    FConnection: TFDConnection;
+    FQry: TFDQuery;
+    FName: String;
+    FEmail: String;
+    FPhone: String;
+    FHasData: boolean;
+    procedure LoadHeader;
   public
     constructor Create(AConnection: TFDConnection);
-    function Exists: Boolean;
-    function Load(out ADetails: THeaderDetails): Boolean;
-    procedure Save(const ADetails: THeaderDetails);
-    procedure EnsureDefaultRow;
+    destructor Destroy; override;
+    procedure Save;
+    function GetHeader(): string;
+    property Name: String read FName write FName;
+    property Phone: String read FPhone write FPhone;
+    property Email: String read FEmail write FEmail;
   end;
 
 implementation
 
+destructor THeaderDetailsManager.Destroy();
+begin
+  FQry.Free;
+  inherited;
+end;
+
+function THeaderDetailsManager.GetHeader(): string;
+begin
+  result := Format('%s%s%s%s%s', [FName, sLineBreak, FPhone, sLineBreak, FEmail]);
+end;
+
 constructor THeaderDetailsManager.Create(AConnection: TFDConnection);
 begin
   inherited Create;
-  FConnection := AConnection;
+  FQry := TFDQuery.Create(nil);
+  FQry.Connection := AConnection;
+  LoadHeader();
 end;
 
-function THeaderDetailsManager.Exists: Boolean;
-var
-  Q: TFDQuery;
+procedure THeaderDetailsManager.LoadHeader();
 begin
-  Q := TFDQuery.Create(nil);
   try
-    Q.Connection := FConnection;
-    Q.SQL.Text := 'SELECT 1 FROM headerdetails WHERE id = 1';
-    Q.Open;
-    Result := not Q.IsEmpty;
-  finally
-    Q.Free;
-  end;
-end;
-
-function THeaderDetailsManager.Load(out ADetails: THeaderDetails): Boolean;
-var
-  Q: TFDQuery;
-begin
-  ADetails.HeaderName := '';
-  ADetails.HeaderTelephone := '';
-  ADetails.HeaderEmail := '';
-
-  Q := TFDQuery.Create(nil);
-  try
-    Q.Connection := FConnection;
-    Q.SQL.Text :=
+    FQry.Close;
+    FQry.Open(
       'SELECT headername, headertelephone, headeremail ' +
       'FROM headerdetails ' +
-      'WHERE id = 1';
-    Q.Open;
-
-    Result := not Q.IsEmpty;
-    if Result then
+      'WHERE id = 1'
+    );
+    if not FQry.IsEmpty then
     begin
-      ADetails.HeaderName := Q.FieldByName('headername').AsString;
-      ADetails.HeaderTelephone := Q.FieldByName('headertelephone').AsString;
-      ADetails.HeaderEmail := Q.FieldByName('headeremail').AsString;
-    end;
-  finally
-    Q.Free;
-  end;
-end;
-
-procedure THeaderDetailsManager.Save(const ADetails: THeaderDetails);
-var
-  Q: TFDQuery;
-begin
-  Q := TFDQuery.Create(nil);
-  try
-    Q.Connection := FConnection;
-
-    if Exists then
-    begin
-      Q.SQL.Text :=
-        'UPDATE headerdetails ' +
-        'SET headername = :headername, ' +
-        '    headertelephone = :headertelephone, ' +
-        '    headeremail = :headeremail ' +
-        'WHERE id = 1';
+      FHasData := true;
+      FName := FQry.FieldByName('headername').AsString;
+      FPhone := FQry.FieldByName('headertelephone').AsString;
+      FEmail := FQry.FieldByName('headeremail').AsString;
     end
     else
     begin
-      Q.SQL.Text :=
-        'INSERT INTO headerdetails ' +
-        '(id, headername, headertelephone, headeremail) ' +
-        'VALUES ' +
-        '(1, :headername, :headertelephone, :headeremail)';
+      // set defaults...
+      FHasData := false;
+      FName := 'Worksheet Manager';
+      FPhone := '0800 03482132';
+      FEmail := 'worksheetmanager@worksheet.com';
     end;
-
-    Q.ParamByName('headername').AsString := Trim(ADetails.HeaderName);
-    Q.ParamByName('headertelephone').AsString := Trim(ADetails.HeaderTelephone);
-    Q.ParamByName('headeremail').AsString := Trim(ADetails.HeaderEmail);
-    Q.ExecSQL;
   finally
-    Q.Free;
+    FQry.Close;
   end;
 end;
 
-procedure THeaderDetailsManager.EnsureDefaultRow;
-var
-  LDetails: THeaderDetails;
+procedure THeaderDetailsManager.Save();
 begin
-  if not Exists then
-  begin
-    LDetails.HeaderName := 'Worksheet Manager';
-    LDetails.HeaderTelephone := '0800 03482132';
-    LDetails.HeaderEmail := 'worksheetmanager@worksheet.com';
-    Save(LDetails);
-  end;
+  FQry.Close; // just incase!
+  FQry.SQL.Text :=
+    'INSERT OR REPLACE INTO headerdetails ' +
+    '(id, headername, headertelephone, headeremail) ' +
+    'VALUES (1, :headername, :headertelephone, :headeremail)';
+  FQry.ParamByName('headername').AsString := Trim(FName);
+  FQry.ParamByName('headertelephone').AsString := Trim(FPhone);
+  FQry.ParamByName('headeremail').AsString := Trim(FEmail);
+  FQry.ExecSQL;
+  ShowInfo('Report Header Information has been updated');
 end;
 
 end.
