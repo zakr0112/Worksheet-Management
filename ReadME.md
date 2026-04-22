@@ -17,7 +17,7 @@ The application was created to replace a paper-based worksheet process with a di
 
 Please review the following branch for the complete assessed version of the project:
 
-**Marked branch:** [`main-assessment`](https://github.com/zakr0112/Worksheet-Management/tree/RELEASE)
+**Marked branch:** [`RELEASE`](https://github.com/zakr0112/Worksheet-Management/tree/RELEASE)
 
 ## Branch Information
 
