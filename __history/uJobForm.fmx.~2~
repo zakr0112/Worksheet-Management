@@ -1,0 +1,3835 @@
+object JobForm: TJobForm
+  Left = 0
+  Top = 0
+  Caption = 'Job Management'
+  ClientHeight = 864
+  ClientWidth = 720
+  Position = MainFormCenter
+  StyleBook = DM.StyleBook1
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 3
+  object TCJobs: TTabControl
+    Align = Client
+    Size.Width = 720.000000000000000000
+    Size.Height = 864.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 2
+    TabOrder = 1
+    TabPosition = PlatformDefault
+    Sizes = (
+      720s
+      815s
+      720s
+      815s
+      720s
+      815s)
+    object TIjoblist: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = False
+      Size.Width = 240.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'List'
+      ExplicitSize.cx = 38.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object LVZJobs: TListView
+        ItemAppearanceClassName = 'TDynamicAppearance'
+        ItemEditAppearanceClassName = 'TDynamicAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        AlternatingColors = True
+        Align = Client
+        Margins.Right = 8.000000000000000000
+        Size.Width = 712.000000000000000000
+        Size.Height = 771.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        ItemAppearance.ItemHeight = 56
+        ItemAppearance.HeaderHeight = 1
+        ItemAppearance.FooterHeight = 1
+        ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+          item
+            AppearanceObjectName = 'lvoCustname'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 18.000000000000000000
+            Appearance.TextAlign = Leading
+            Appearance.TextShadow.Enabled = False
+            Appearance.TextColor = claPaleturquoise
+            Appearance.Width = 430.000000000000000000
+            Appearance.Height = 28.000000000000000000
+            Appearance.PlaceOffset.X = 88.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'lvoJobdate'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 16.000000000000000000
+            Appearance.TextAlign = Trailing
+            Appearance.TextShadow.Enabled = False
+            Appearance.Width = 213.000000000000000000
+            Appearance.Height = 28.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Trailing
+            Appearance.PlaceOffset.X = -170.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'lvoSelect'
+            AppearanceClassName = 'TAccessoryObjectAppearance'
+            Appearance.Width = 60.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Center
+            Appearance.Visible = False
+          end
+          item
+            AppearanceObjectName = 'lvoJobtype'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.TextAlign = Leading
+            Appearance.TextShadow.Enabled = False
+            Appearance.Width = 223.000000000000000000
+            Appearance.Height = 28.000000000000000000
+            Appearance.VertAlign = Trailing
+            Appearance.PlaceOffset.X = 88.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'lvoJobno'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 30.000000000000000000
+            Appearance.TextAlign = Leading
+            Appearance.TextColor = claLightskyblue
+            Appearance.Width = 86.000000000000000000
+            Appearance.VertAlign = Center
+          end
+          item
+            AppearanceObjectName = 'lvoImgEdit'
+            AppearanceClassName = 'TImageObjectAppearance'
+            Appearance.ScalingMode = Original
+            Appearance.Width = 42.000000000000000000
+            Appearance.Height = 42.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Center
+          end
+          item
+            AppearanceObjectName = 'lvoImgPdf'
+            AppearanceClassName = 'TImageObjectAppearance'
+            Appearance.ScalingMode = Original
+            Appearance.Width = 42.000000000000000000
+            Appearance.Height = 42.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Center
+            Appearance.PlaceOffset.X = -54.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'lvoImgHtml'
+            AppearanceClassName = 'TImageObjectAppearance'
+            Appearance.ScalingMode = Original
+            Appearance.Width = 42.000000000000000000
+            Appearance.Height = 42.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Center
+            Appearance.PlaceOffset.X = -108.000000000000000000
+          end>
+        ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+          item
+            AppearanceObjectName = 'Text1'
+            AppearanceClassName = 'TTextObjectAppearance'
+          end>
+        OnItemClickEx = LVZJobsItemClickEx
+        OnPullRefresh = LVZJobsPullRefresh
+        SearchVisible = True
+        PullToRefresh = True
+      end
+      object panHeaderCustList: TPanel
+        Align = MostTop
+        Size.Width = 720.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object spdNew: TSpeedButton
+          Align = MostRight
+          Padding.Left = 4.000000000000000000
+          Padding.Top = 4.000000000000000000
+          Padding.Right = 4.000000000000000000
+          Padding.Bottom = 4.000000000000000000
+          Position.X = 632.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          OnClick = spdNewClick
+          object svgNew: TSkSvg
+            Align = Client
+            Size.Width = 36.000000000000000000
+            Size.Height = 36.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="utf-8"?>'#13#10'<!-- Uploaded to: SVG Re' +
+              'po, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->'#13#10'<svg w' +
+              'idth="800px" height="800px" viewBox="0 0 1024 1024" class="icon"' +
+              '  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M512' +
+              ' 512m-448 0a448 448 0 1 0 896 0 448 448 0 1 0-896 0Z" fill="#4CA' +
+              'F50" /><path d="M448 298.666667h128v426.666666h-128z" fill="#FFF' +
+              'FFF" /><path d="M298.666667 448h426.666666v128H298.666667z" fill' +
+              '="#FFFFFF" /></svg>'
+          end
+        end
+        object lblHeader: TSkLabel
+          Align = Client
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 32.000000000000000000
+          Size.Width = 540.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style]
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claGhostwhite
+          Words = <
+            item
+              Text = 'Jobs List'
+            end>
+        end
+        object spdHome: TSpeedButton
+          Align = MostLeft
+          Padding.Left = 4.000000000000000000
+          Padding.Top = 4.000000000000000000
+          Padding.Right = 4.000000000000000000
+          Padding.Bottom = 4.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          OnClick = spdHomeClick
+          object svgHome: TSkSvg
+            Align = Client
+            Size.Width = 36.000000000000000000
+            Size.Height = 36.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="utf-8"?>'#13#10'<!-- License: PD. Made b' +
+              'y icons8: https://icons8.com/c/flat-color-icons -->'#13#10'<svg width=' +
+              '"800px" height="800px" viewBox="0 0 48 48" version="1" xmlns="ht' +
+              'tp://www.w3.org/2000/svg" enable-background="new 0 0 48 48">'#13#10'  ' +
+              '  <polygon fill="#E8EAF6" points="42,39 6,39 6,23 24,6 42,23"/>'#13 +
+              #10'    <g fill="#C5CAE9">'#13#10'        <polygon points="39,21 34,16 34' +
+              ',9 39,9"/>'#13#10'        <rect x="6" y="39" width="36" height="5"/>'#13#10 +
+              '    </g>'#13#10'    <polygon fill="#B71C1C" points="24,4.3 4,22.9 6,25' +
+              '.1 24,8.4 42,25.1 44,22.9"/>'#13#10'    <rect x="18" y="28" fill="#D84' +
+              '315" width="12" height="16"/>'#13#10'    <rect x="21" y="17" fill="#01' +
+              '579B" width="6" height="6"/>'#13#10'    <path fill="#FF8A65" d="M27.5,' +
+              '35.5c-0.3,0-0.5,0.2-0.5,0.5v2c0,0.3,0.2,0.5,0.5,0.5S28,38.3,28,3' +
+              '8v-2C28,35.7,27.8,35.5,27.5,35.5z"/>'#13#10'</svg>'
+          end
+        end
+        object spdMenu: TSpeedButton
+          Align = MostRight
+          Padding.Left = 6.000000000000000000
+          Padding.Top = 6.000000000000000000
+          Padding.Right = 6.000000000000000000
+          Padding.Bottom = 6.000000000000000000
+          Position.X = 676.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          object svgMenu: TSkSvg
+            Align = Client
+            Size.Width = 32.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="iso-8859-1"?>'#13#10'<!-- Uploaded to: S' +
+              'VG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->'#13#10'<' +
+              'svg height="800px" width="800px" version="1.1" id="Layer_1" xmln' +
+              's="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/19' +
+              '99/xlink" '#13#10#9' viewBox="0 0 508 508" xml:space="preserve">'#13#10'<circ' +
+              'le style="fill:#324A5E;" cx="254" cy="254" r="254"/>'#13#10'<g>'#13#10#9'<pol' +
+              'ygon style="fill:#FFFFFF;" points="300.8,323.6 398.8,323.6 397.2' +
+              ',348.4 302.4,348.4 '#9'"/>'#13#10#9'<polygon style="fill:#FFFFFF;" points=' +
+              '"402,272.4 400,299.2 299.6,299.2 297.6,272.4 '#9'"/>'#13#10#9'<polygon sty' +
+              'le="fill:#FFFFFF;" points="450,180.4 407.6,180.4 403.2,248 296.4' +
+              ',248 292,180.4 249.6,180.4 350,80 '#9'"/>'#13#10'</g>'#13#10'<g>'#13#10#9'<polygon sty' +
+              'le="fill:#FF7058;" points="207.2,184.4 109.2,184.4 110.8,159.6 2' +
+              '05.6,159.6 '#9'"/>'#13#10#9'<polygon style="fill:#FF7058;" points="106,235' +
+              '.6 108,208.8 208.4,208.8 210.4,235.6 '#9'"/>'#13#10#9'<polygon style="fill' +
+              ':#FF7058;" points="58,327.6 100.4,327.6 104.8,260 211.6,260 216,' +
+              '327.6 258.4,327.6 158,428 '#9'"/>'#13#10'</g>'#13#10'</svg>'
+          end
+        end
+      end
+      object rectProgress: TRectangle
+        Align = Contents
+        Fill.Color = x80000000
+        Size.Width = 720.000000000000000000
+        Size.Height = 815.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        object aniProgress: TAniIndicator
+          Align = Center
+        end
+      end
+      object MVDrawerJOB: TMultiView
+        DrawerOptions.Placement = Right
+        MasterButton = spdMenu
+        Mode = Drawer
+        Size.Width = 250.000000000000000000
+        Size.Height = 542.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        TabOrder = 2
+        object gpanelSort: TGridPanelLayout
+          Align = Top
+          Padding.Left = 2.000000000000000000
+          Padding.Top = 2.000000000000000000
+          Padding.Right = 2.000000000000000000
+          Padding.Bottom = 2.000000000000000000
+          Size.Width = 250.000000000000000000
+          Size.Height = 273.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = lblSort
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = radSortJobnoHL
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = radSortJobnoLH
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = radSortCustAZ
+              Row = 3
+            end
+            item
+              Column = 0
+              Control = radSortCustZA
+              Row = 4
+            end>
+          RowCollection = <
+            item
+              SizeStyle = Absolute
+              Value = 30.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 44.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 44.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 44.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 44.000000000000000000
+            end>
+          object lblSort: TLabel
+            Align = Client
+            StyledSettings = [Family, Style, FontColor]
+            Size.Width = 246.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 16.000000000000000000
+            Text = 'Sort By'
+            TabOrder = 0
+          end
+          object radSortJobnoHL: TRadioButton
+            Align = Client
+            GroupName = 'custSort'
+            IsChecked = True
+            Margins.Left = 16.000000000000000000
+            Size.Width = 230.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'Job No (High-Low)'
+            OnClick = radSortJobnoHLClick
+          end
+          object radSortJobnoLH: TRadioButton
+            Tag = 1
+            Align = Client
+            GroupName = 'custSort'
+            Margins.Left = 16.000000000000000000
+            Size.Width = 230.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 4
+            Text = 'Job No (Low-High)'
+            OnClick = radSortJobnoHLClick
+          end
+          object radSortCustAZ: TRadioButton
+            Tag = 2
+            Align = Client
+            GroupName = 'custSort'
+            Margins.Left = 16.000000000000000000
+            Size.Width = 230.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Text = 'Customer Name (A-Z)'
+            OnClick = radSortJobnoHLClick
+          end
+          object radSortCustZA: TRadioButton
+            Tag = 3
+            Align = Client
+            GroupName = 'custSort'
+            Margins.Left = 16.000000000000000000
+            Size.Width = 230.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            Text = 'Customer Name (Z-A)'
+            OnClick = radSortJobnoHLClick
+          end
+        end
+      end
+    end
+    object TIjobdetails: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = False
+      Size.Width = 240.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Details'
+      ExplicitSize.cx = 56.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object ToolBar2: TToolBar
+        Padding.Left = 8.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 8.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Margins.Bottom = 8.000000000000000000
+        Size.Width = 720.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        TabStop = False
+        object SpeedButton1: TSpeedButton
+          Align = MostLeft
+          Padding.Left = 4.000000000000000000
+          Padding.Top = 4.000000000000000000
+          Padding.Right = 4.000000000000000000
+          Padding.Bottom = 4.000000000000000000
+          Position.X = 8.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          ParentShowHint = False
+          ShowHint = True
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          OnClick = spdbackjoblistClick
+          object SkSvg1: TSkSvg
+            Align = Client
+            ParentShowHint = False
+            ShowHint = False
+            Size.Width = 36.000000000000000000
+            Size.Height = 36.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo' +
+              ', www.svgrepo.com, Generator: SVG Repo Mixer Tools -->'#13#10'<svg wid' +
+              'th="800px" height="800px" viewBox="0 0 48 48" fill="none" xmlns=' +
+              '"http://www.w3.org/2000/svg">'#13#10'<rect width="48" height="48" fill' +
+              '="white" fill-opacity="0.01"/>'#13#10'<path fill-rule="evenodd" clip-r' +
+              'ule="evenodd" d="M44 40.8361C39.1069 34.8632 34.7617 31.4739 30.' +
+              '9644 30.6682C27.1671 29.8625 23.5517 29.7408 20.1182 30.303V41L4' +
+              ' 23.5453L20.1182 7V17.167C26.4667 17.2172 31.8638 19.4948 36.309' +
+              '5 24C40.7553 28.5052 43.3187 34.1172 44 40.8361Z" fill="#2F88FF"' +
+              ' stroke="#000000" stroke-width="4" stroke-linejoin="round"/>'#13#10'</' +
+              'svg>'
+          end
+        end
+        object SkLabel1: TSkLabel
+          Align = Client
+          Margins.Left = 4.000000000000000000
+          Margins.Right = 4.000000000000000000
+          Size.Width = 652.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          AutoSize = False
+          StyledSettings = [Family, Style]
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claWhite
+          Words = <
+            item
+              Font.Size = 20.000000000000000000
+              FontColor = claLightskyblue
+              Name = 'injitem1'
+              StyledSettings = [Family, Style]
+              Text = 'Add New Job'
+            end>
+        end
+      end
+      object GridPanelLayout8: TGridPanelLayout
+        Align = Client
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 2.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Margins.Left = 128.000000000000000000
+        Margins.Right = 128.000000000000000000
+        Size.Width = 464.000000000000000000
+        Size.Height = 703.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 19
+        ColumnCollection = <
+          item
+            SizeStyle = Absolute
+            Value = 110.000000000000000000
+          end
+          item
+            Value = 100.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = Text22
+            Row = 0
+          end
+          item
+            Column = 0
+            Control = Text23
+            Row = 6
+          end
+          item
+            Column = 0
+            Control = Text24
+            Row = 3
+          end
+          item
+            Column = 1
+            Control = dtNewDate
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = txtNewCallNo
+            Row = 3
+          end
+          item
+            Column = 1
+            Control = txtNewContract
+            Row = 4
+          end
+          item
+            Column = 0
+            Control = Text25
+            Row = 1
+          end
+          item
+            Column = 0
+            Control = Text26
+            Row = 4
+          end
+          item
+            Column = 1
+            Control = txtNewEngineer1
+            Row = 5
+          end
+          item
+            Column = 1
+            Control = cbeNewJobtype
+            Row = 1
+          end
+          item
+            Column = 0
+            Control = Text27
+            Row = 5
+          end
+          item
+            Column = 1
+            Control = txtNewEngineer2
+            Row = 6
+          end
+          item
+            Column = 1
+            Control = cbCustomers
+            Row = 2
+          end
+          item
+            Column = 0
+            Control = Text11
+            Row = 2
+          end
+          item
+            Column = 0
+            Control = Text13
+            Row = 7
+          end
+          item
+            Column = 1
+            Control = memNewReason
+            Row = 7
+          end>
+        ExpandStyle = FixedSize
+        RowCollection = <
+          item
+            SizeStyle = Absolute
+            Value = 38.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 38.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 38.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 38.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 38.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 38.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 38.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 300.000000000000000000
+          end
+          item
+            SizeStyle = Auto
+            Value = 100.000000000000000000
+          end>
+        object Text22: TText
+          Align = Client
+          Size.Width = 106.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Job date *'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claLightblue
+          TextSettings.WordWrap = False
+          TextSettings.HorzAlign = Trailing
+        end
+        object Text23: TText
+          Align = Client
+          Size.Width = 106.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Engineer 2'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claLightblue
+          TextSettings.WordWrap = False
+          TextSettings.HorzAlign = Trailing
+        end
+        object Text24: TText
+          Align = Client
+          Size.Width = 106.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Call No'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claLightblue
+          TextSettings.WordWrap = False
+          TextSettings.HorzAlign = Trailing
+        end
+        object dtNewDate: TDateEdit
+          Date = 46134.000000000000000000
+          TodayDefault = True
+          Align = Left
+          FirstDayOfWeek = dowMonday
+          Position.X = 112.000000000000000000
+          Position.Y = 3.000000000000000000
+          Size.Width = 145.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style, FontColor]
+          TabOrder = 0
+          TabStop = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claWhite
+        end
+        object txtNewCallNo: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 2
+          TabStop = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claWhite
+          Margins.Bottom = 2.000000000000000000
+          Size.Width = 350.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Call no.'
+          StyledSettings = [Family, Style, FontColor]
+          Caret.Color = claChartreuse
+        end
+        object txtNewContract: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 4
+          TabStop = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claWhite
+          Margins.Bottom = 2.000000000000000000
+          Size.Width = 350.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Contract no.'
+          StyledSettings = [Family, Style, FontColor]
+          Caret.Color = claChartreuse
+        end
+        object Text25: TText
+          Align = Client
+          Size.Width = 106.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Job type *'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claLightblue
+          TextSettings.WordWrap = False
+          TextSettings.HorzAlign = Trailing
+        end
+        object Text26: TText
+          Align = Client
+          Size.Width = 106.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Contract #'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claLightblue
+          TextSettings.WordWrap = False
+          TextSettings.HorzAlign = Trailing
+        end
+        object txtNewEngineer1: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 5
+          TabStop = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claWhite
+          Size.Width = 350.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Lead engineer'
+          StyledSettings = [Family, Style, FontColor]
+          Caret.Color = claChartreuse
+        end
+        object cbeNewJobtype: TComboBox
+          Align = Client
+          Items.Strings = (
+            'BREAKDOWN'
+            'COMMISSIONING'
+            'INSTALLATION'
+            'MAINTENANCE'
+            'OTHER')
+          Size.Width = 350.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'cbeJobtypeStyle1'
+          TabOrder = 1
+          TabStop = False
+          ParentShowHint = False
+          ShowHint = False
+        end
+        object Text27: TText
+          Align = Client
+          Size.Width = 106.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Engineer 1'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claLightblue
+          TextSettings.WordWrap = False
+          TextSettings.HorzAlign = Trailing
+        end
+        object txtNewEngineer2: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 6
+          TabStop = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.FontColor = claWhite
+          Size.Width = 350.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Additional engineer'
+          StyledSettings = [Family, Style, FontColor]
+          Caret.Color = claChartreuse
+        end
+        object Text11: TText
+          Align = Client
+          Size.Width = 106.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Customer *'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claLightblue
+          TextSettings.WordWrap = False
+          TextSettings.HorzAlign = Trailing
+        end
+        object cbCustomers: TComboEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 8
+          ItemHeight = 19.000000000000000000
+          ItemIndex = -1
+          TextSettings.Font.Size = 18.000000000000000000
+          StyledSettings = [Family, Style, FontColor]
+          Size.Width = 350.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Text13: TText
+          Align = Client
+          Size.Width = 106.000000000000000000
+          Size.Height = 296.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Reason for visit'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claLightblue
+          TextSettings.HorzAlign = Trailing
+        end
+        object memNewReason: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          Caret.Color = claChartreuse
+          DataDetectorTypes = []
+          StyledSettings = [Family, Style, FontColor]
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.WordWrap = True
+          Align = Client
+          Size.Width = 350.000000000000000000
+          Size.Height = 296.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          TabStop = False
+          Viewport.Width = 342.000000000000000000
+          Viewport.Height = 288.000000000000000000
+        end
+      end
+      object ToolBar3: TToolBar
+        Align = Bottom
+        Padding.Left = 8.000000000000000000
+        Padding.Top = 4.000000000000000000
+        Padding.Right = 8.000000000000000000
+        Padding.Bottom = 4.000000000000000000
+        Margins.Left = 4.000000000000000000
+        Margins.Top = 4.000000000000000000
+        Margins.Right = 4.000000000000000000
+        Margins.Bottom = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 763.000000000000000000
+        Size.Width = 712.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        TabStop = False
+        object spdAddJob: TSpeedButton
+          Align = MostRight
+          StyledSettings = [Family, Style]
+          Hint = 'Add the job'
+          Margins.Left = 8.000000000000000000
+          Margins.Top = 2.000000000000000000
+          Margins.Bottom = 2.000000000000000000
+          Position.X = 456.000000000000000000
+          Position.Y = 6.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 36.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'buttonstyle'
+          Text = 'Save Job'
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          TintColor = claPalevioletred
+          OnClick = spdAddJobClick
+        end
+        object spdCancel: TSpeedButton
+          Align = MostRight
+          StyledSettings = [Family, Style]
+          Hint = 'Cancel the Add Job'
+          Margins.Left = 8.000000000000000000
+          Margins.Top = 2.000000000000000000
+          Margins.Bottom = 2.000000000000000000
+          Position.X = 584.000000000000000000
+          Position.Y = 6.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 36.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'buttonstyle'
+          Text = 'Cancel'
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          TintColor = claPalevioletred
+          OnClick = spdbackjoblistClick
+        end
+      end
+    end
+    object TIJobsEdit: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = True
+      Size.Width = 240.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TIJobsEdit'
+      ExplicitSize.cx = 396.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object tbarJobsEdit: TToolBar
+        Padding.Left = 8.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 8.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Margins.Bottom = 8.000000000000000000
+        Size.Width = 720.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        TabStop = False
+        object spdJobsBack: TSpeedButton
+          Align = MostLeft
+          Padding.Left = 4.000000000000000000
+          Padding.Top = 4.000000000000000000
+          Padding.Right = 4.000000000000000000
+          Padding.Bottom = 4.000000000000000000
+          Position.X = 8.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          ParentShowHint = False
+          ShowHint = True
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          OnClick = spdbackjoblistClick
+          object svgJobsBack: TSkSvg
+            Align = Client
+            ParentShowHint = False
+            ShowHint = False
+            Size.Width = 36.000000000000000000
+            Size.Height = 36.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo' +
+              ', www.svgrepo.com, Generator: SVG Repo Mixer Tools -->'#13#10'<svg wid' +
+              'th="800px" height="800px" viewBox="0 0 48 48" fill="none" xmlns=' +
+              '"http://www.w3.org/2000/svg">'#13#10'<rect width="48" height="48" fill' +
+              '="white" fill-opacity="0.01"/>'#13#10'<path fill-rule="evenodd" clip-r' +
+              'ule="evenodd" d="M44 40.8361C39.1069 34.8632 34.7617 31.4739 30.' +
+              '9644 30.6682C27.1671 29.8625 23.5517 29.7408 20.1182 30.303V41L4' +
+              ' 23.5453L20.1182 7V17.167C26.4667 17.2172 31.8638 19.4948 36.309' +
+              '5 24C40.7553 28.5052 43.3187 34.1172 44 40.8361Z" fill="#2F88FF"' +
+              ' stroke="#000000" stroke-width="4" stroke-linejoin="round"/>'#13#10'</' +
+              'svg>'
+          end
+        end
+        object lblJobEditHeader: TSkLabel
+          Align = Client
+          Margins.Left = 4.000000000000000000
+          Margins.Right = 4.000000000000000000
+          Size.Width = 500.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          AutoSize = False
+          StyledSettings = [Family, Style]
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claWhite
+          Words = <
+            item
+              Font.Size = 20.000000000000000000
+              FontColor = claLightskyblue
+              Name = 'injitem1'
+              StyledSettings = [Family, Style]
+              Text = 'WORKSHEETS...'
+            end>
+        end
+        object txtJobno: TText
+          Align = MostRight
+          Position.X = 560.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 152.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'JOB NO'
+          TextSettings.Font.Size = 30.000000000000000000
+          TextSettings.FontColor = claLightskyblue
+          TextSettings.WordWrap = False
+          TextSettings.HorzAlign = Trailing
+        end
+      end
+      object ToolBar1: TToolBar
+        Align = Bottom
+        Padding.Left = 8.000000000000000000
+        Padding.Top = 4.000000000000000000
+        Padding.Right = 8.000000000000000000
+        Padding.Bottom = 4.000000000000000000
+        Margins.Left = 4.000000000000000000
+        Margins.Top = 4.000000000000000000
+        Margins.Right = 4.000000000000000000
+        Margins.Bottom = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 763.000000000000000000
+        Size.Width = 712.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        TabStop = False
+        object spdDeleteJob: TSpeedButton
+          Align = Right
+          StyledSettings = [Family, Style]
+          Hint = 'Delete the currently displayed record'
+          Margins.Left = 8.000000000000000000
+          Margins.Top = 2.000000000000000000
+          Margins.Bottom = 2.000000000000000000
+          Position.X = 456.000000000000000000
+          Position.Y = 6.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 36.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'buttonstyle'
+          Text = 'Delete'
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          TintColor = claPalevioletred
+          OnClick = spdDeleteJobClick
+        end
+        object spdSaveJob: TSpeedButton
+          Align = MostRight
+          StyledSettings = [Family, Style]
+          Hint = 'Save the changes'
+          Margins.Left = 8.000000000000000000
+          Margins.Top = 2.000000000000000000
+          Margins.Bottom = 2.000000000000000000
+          Position.X = 584.000000000000000000
+          Position.Y = 6.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 36.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'buttonstyle'
+          Text = 'Save'
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          TintColor = claPalevioletred
+          OnClick = spdSaveJobClick
+        end
+        object sklLastchanged: TSkLabel
+          Align = Left
+          ParentShowHint = False
+          Position.X = 8.000000000000000000
+          Position.Y = 4.000000000000000000
+          ShowHint = False
+          Size.Width = 243.500000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style, FontColor]
+          TextSettings.HorzAlign = Trailing
+          Words = <
+            item
+              FontColor = claPaleturquoise
+              Name = 'Item 2'
+              StyledSettings = [Family, Size, Style]
+              Text = ' Last changed '
+            end
+            item
+              Font.Size = 16.000000000000000000
+              FontColor = claWhite
+              Name = 'Item 3'
+              StyledSettings = [Family, Style]
+              Text = '01/01/1974 12:00:00'
+            end>
+        end
+      end
+      object gridpanMain: TGridPanelLayout
+        Align = Top
+        Position.Y = 56.000000000000000000
+        Size.Width = 720.000000000000000000
+        Size.Height = 233.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        ColumnCollection = <
+          item
+            Value = 50.000770966432120000
+          end
+          item
+            Value = 49.999229033567880000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = gridpanDetails
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = gridpanCust
+            Row = 0
+          end>
+        RowCollection = <
+          item
+            Value = 100.000000000000000000
+          end>
+        object gridpanDetails: TGridPanelLayout
+          Align = Client
+          Padding.Left = 2.000000000000000000
+          Padding.Top = 2.000000000000000000
+          Padding.Right = 2.000000000000000000
+          Padding.Bottom = 2.000000000000000000
+          Size.Width = 360.005554199218800000
+          Size.Height = 233.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 21
+          ColumnCollection = <
+            item
+              SizeStyle = Absolute
+              Value = 110.000000000000000000
+            end
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = lblJobdate
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = lblCallno
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = lblContract
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = dtJobdate
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = txtCallno
+              Row = 2
+            end
+            item
+              Column = 1
+              Control = txtContract
+              Row = 3
+            end
+            item
+              Column = 0
+              Control = lblJobtype
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = lblEngineer1
+              Row = 4
+            end
+            item
+              Column = 1
+              Control = txtEngineer1
+              Row = 4
+            end
+            item
+              Column = 1
+              Control = cbeJobtype
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = Text3
+              Row = 5
+            end
+            item
+              Column = 1
+              Control = txtEngineer2
+              Row = 5
+            end>
+          ExpandStyle = FixedSize
+          RowCollection = <
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Auto
+              Value = 38.000000000000000000
+            end>
+          object lblJobdate: TText
+            Align = Client
+            Size.Width = 106.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Job date'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object lblCallno: TText
+            Align = Client
+            Size.Width = 106.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Call no'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object lblContract: TText
+            Align = Client
+            Size.Width = 106.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Contract #'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object dtJobdate: TDateEdit
+            Date = 46134.000000000000000000
+            TodayDefault = True
+            Align = Client
+            FirstDayOfWeek = dowMonday
+            Size.Width = 246.005554199218800000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            StyledSettings = [Family, Style, FontColor]
+            TabOrder = 0
+            TabStop = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.FontColor = claWhite
+          end
+          object txtCallno: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 2
+            TabStop = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.FontColor = claWhite
+            Size.Width = 246.005554199218800000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Call no.'
+            StyledSettings = [Family, Style, FontColor]
+            Caret.Color = claChartreuse
+          end
+          object txtContract: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 3
+            TabStop = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.FontColor = claWhite
+            Size.Width = 246.005554199218800000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Contract no.'
+            StyledSettings = [Family, Style, FontColor]
+            Caret.Color = claChartreuse
+          end
+          object lblJobtype: TText
+            Align = Client
+            Size.Width = 106.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Job type'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object lblEngineer1: TText
+            Align = Client
+            Size.Width = 106.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Engineer 1'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object txtEngineer1: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 4
+            TabStop = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.FontColor = claWhite
+            Size.Width = 246.005554199218800000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Lead engineer'
+            StyledSettings = [Family, Style, FontColor]
+            Caret.Color = claChartreuse
+          end
+          object cbeJobtype: TComboBox
+            Align = Client
+            Items.Strings = (
+              'BREAKDOWN'
+              'COMMISSIONING'
+              'INSTALLATION'
+              'MAINTENANCE'
+              'OTHER')
+            Size.Width = 246.005554199218800000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'cbeJobtypeStyle1'
+            TabOrder = 1
+            TabStop = False
+            ParentShowHint = False
+            ShowHint = False
+          end
+          object Text3: TText
+            Align = Client
+            Size.Width = 106.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Engineer 2'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object txtEngineer2: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 5
+            TabStop = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.FontColor = claWhite
+            Size.Width = 246.005554199218800000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Additional engineer'
+            StyledSettings = [Family, Style, FontColor]
+            Caret.Color = claChartreuse
+          end
+        end
+        object gridpanCust: TGridPanelLayout
+          Align = Client
+          Padding.Left = 2.000000000000000000
+          Padding.Top = 2.000000000000000000
+          Padding.Right = 2.000000000000000000
+          Padding.Bottom = 2.000000000000000000
+          Size.Width = 359.994445800781200000
+          Size.Height = 233.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 20
+          ColumnCollection = <
+            item
+              SizeStyle = Absolute
+              Value = 90.000000000000000000
+            end
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = Text1
+              Row = 1
+            end
+            item
+              Column = 1
+              Control = memAddress
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = lblEmail1
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = lblMobile
+              Row = 4
+            end
+            item
+              Column = 1
+              Control = txtEmail
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = txtTelephone
+              Row = 4
+            end
+            item
+              Column = 0
+              ColumnSpan = 2
+              Control = layoutCust
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = lblPostcode
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = txtPostcode
+              Row = 2
+            end>
+          ExpandStyle = FixedSize
+          RowCollection = <
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 76.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 38.000000000000000000
+            end>
+          object Text1: TText
+            Align = Client
+            Size.Width = 86.000000000000000000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Address'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object lblEmail1: TText
+            Align = Client
+            Size.Width = 86.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Postcode'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object lblMobile: TText
+            Align = Client
+            Size.Width = 86.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Phone'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object txtEmail: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 3
+            TabStop = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.FontColor = claWhite
+            Size.Width = 265.994445800781200000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Email'
+            StyledSettings = [Family, Style, FontColor]
+            Caret.Color = claChartreuse
+            CharCase = ecLowerCase
+          end
+          object txtTelephone: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 4
+            TabStop = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.FontColor = claWhite
+            Size.Width = 265.994445800781200000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Telephone'
+            StyledSettings = [Family, Style, FontColor]
+            Caret.Color = claChartreuse
+            CharCase = ecUpperCase
+          end
+          object layoutCust: TLayout
+            Align = Client
+            Size.Width = 355.994445800781200000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object txtCustname: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 2
+              TabStop = False
+              TextSettings.Font.Size = 18.000000000000000000
+              TextSettings.FontColor = claWhite
+              Size.Width = 355.994445800781200000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              TextPrompt = 'Customers name'
+              StyledSettings = [Family, Style, FontColor]
+            end
+          end
+          object lblPostcode: TText
+            Align = Client
+            Size.Width = 86.000000000000000000
+            Size.Height = 34.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Email'
+            TextSettings.Font.Size = 16.000000000000000000
+            TextSettings.FontColor = claLightblue
+            TextSettings.WordWrap = False
+            TextSettings.HorzAlign = Trailing
+          end
+          object txtPostcode: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 2
+            TabStop = False
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.FontColor = claWhite
+            Size.Width = 265.994445800781200000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Postcode'
+            StyledSettings = [Family, Style, FontColor]
+            Caret.Color = claChartreuse
+            CharCase = ecUpperCase
+          end
+          object memAddress: TMemo
+            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+            Caret.Color = claChartreuse
+            DataDetectorTypes = []
+            StyledSettings = [Family, Style, FontColor]
+            TextSettings.Font.Size = 18.000000000000000000
+            TextSettings.WordWrap = True
+            Align = Client
+            Size.Width = 265.994445800781200000
+            Size.Height = 72.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            TabStop = False
+            Viewport.Width = 258.000000000000000000
+            Viewport.Height = 64.000000000000000000
+          end
+        end
+      end
+      object VertScrollBox1: TVertScrollBox
+        Align = Client
+        Size.Width = 720.000000000000000000
+        Size.Height = 470.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Viewport.Width = 720.000000000000000000
+        Viewport.Height = 470.000000000000000000
+        object layForScrollJobs: TLayout
+          Align = Client
+          Size.Width = 720.000000000000000000
+          Size.Height = 470.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object TCJobDetails: TTabControl
+            Align = Client
+            FullSize = True
+            Margins.Bottom = 8.000000000000000000
+            Size.Width = 720.000000000000000000
+            Size.Height = 462.000000000000000000
+            Size.PlatformDefault = False
+            TabHeight = 49.000000000000000000
+            TabIndex = 7
+            TabOrder = 2
+            TabStop = False
+            TabPosition = PlatformDefault
+            Sizes = (
+              720s
+              413s
+              720s
+              413s
+              720s
+              413s
+              720s
+              413s
+              720s
+              413s
+              720s
+              413s
+              720s
+              413s
+              720s
+              413s)
+            object TIReason: TTabItem
+              CustomIcon = <
+                item
+                end>
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              StyledSettings = [Family]
+              IsSelected = False
+              Size.Width = 90.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = ''
+              TabOrder = 0
+              TabStop = False
+              Text = 'REASON'
+              ExplicitSize.cx = 87.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              object memReason: TMemo
+                Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+                Caret.Color = claChartreuse
+                DataDetectorTypes = []
+                StyledSettings = [Family, Style, FontColor]
+                TextSettings.Font.Size = 18.000000000000000000
+                TextSettings.WordWrap = True
+                Align = Top
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Margins.Bottom = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 8.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 545.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 3
+                TabStop = False
+                Viewport.Width = 696.000000000000000000
+                Viewport.Height = 537.000000000000000000
+              end
+            end
+            object tiWork: TTabItem
+              CustomIcon = <
+                item
+                end>
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              StyledSettings = [Family]
+              IsSelected = False
+              Size.Width = 90.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = ''
+              TabOrder = 0
+              TabStop = False
+              Text = 'WORK'
+              ExplicitSize.cx = 196.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              object memWorkdone: TMemo
+                Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+                DataDetectorTypes = []
+                StyledSettings = [Family, Style, FontColor]
+                TextSettings.Font.Size = 18.000000000000000000
+                TextSettings.WordWrap = True
+                Align = Top
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Margins.Bottom = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 8.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 545.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 2
+                TabStop = False
+                Viewport.Width = 696.000000000000000000
+                Viewport.Height = 537.000000000000000000
+              end
+            end
+            object tiRemedial: TTabItem
+              CustomIcon = <
+                item
+                end>
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              StyledSettings = [Family]
+              IsSelected = False
+              Size.Width = 90.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = ''
+              TabOrder = 0
+              TabStop = False
+              Text = 'OTHER'
+              ExplicitSize.cx = 196.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              object memRemedial: TMemo
+                Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+                DataDetectorTypes = []
+                StyledSettings = [Family, Style, FontColor]
+                TextSettings.Font.Size = 18.000000000000000000
+                TextSettings.WordWrap = True
+                Align = Top
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Margins.Bottom = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 60.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 493.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                TabStop = False
+                Viewport.Width = 696.000000000000000000
+                Viewport.Height = 485.000000000000000000
+              end
+              object Layout5: TLayout
+                Align = Top
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 8.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 44.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Text4: TText
+                  Align = MostLeft
+                  Margins.Right = 8.000000000000000000
+                  Size.Width = 137.000000000000000000
+                  Size.Height = 44.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Issue referred to'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.HorzAlign = Leading
+                end
+                object txtReferred: TEdit
+                  Touch.InteractiveGestures = [LongTap, DoubleTap]
+                  Align = Client
+                  TabOrder = 4
+                  TabStop = False
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  Margins.Right = 2.000000000000000000
+                  Size.Width = 557.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TextPrompt = 'REFERRED TO (If applicable)'
+                  StyledSettings = [Family, Style, FontColor]
+                  Caret.Color = claChartreuse
+                end
+              end
+            end
+            object tiSpareparts: TTabItem
+              CustomIcon = <
+                item
+                end>
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              StyledSettings = [Family]
+              IsSelected = False
+              Size.Width = 90.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = ''
+              TabOrder = 0
+              TabStop = False
+              Text = 'SPARES'
+              ExplicitSize.cx = 156.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              object LBSpares: TListBox
+                Align = Top
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 102.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 464.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 14
+                TabStop = False
+                AlternatingRowBackground = True
+                DisableFocusEffect = True
+                DefaultItemStyles.ItemStyle = ''
+                DefaultItemStyles.GroupHeaderStyle = ''
+                DefaultItemStyles.GroupFooterStyle = ''
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 464.000000000000000000
+              end
+              object GridPanelLayout3: TGridPanelLayout
+                Align = MostTop
+                Padding.Left = 2.000000000000000000
+                Padding.Top = 2.000000000000000000
+                Padding.Right = 2.000000000000000000
+                Padding.Bottom = 2.000000000000000000
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 8.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 86.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 34
+                ColumnCollection = <
+                  item
+                    SizeStyle = Absolute
+                    Value = 90.000000000000000000
+                  end
+                  item
+                    Value = 100.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 56.000000000000000000
+                  end>
+                ControlCollection = <
+                  item
+                    Column = 1
+                    Control = Text10
+                    Row = 0
+                  end
+                  item
+                    Column = 0
+                    Control = Text12
+                    Row = 0
+                  end
+                  item
+                    Column = 0
+                    Control = txtSpareqty
+                    Row = 1
+                  end
+                  item
+                    Column = 1
+                    Control = txtSparedetails
+                    Row = 1
+                  end
+                  item
+                    Column = 2
+                    Control = spdInsertspare
+                    Row = 1
+                  end>
+                RowCollection = <
+                  item
+                    SizeStyle = Absolute
+                    Value = 36.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 44.000000000000000000
+                  end
+                  item
+                    SizeStyle = Auto
+                  end>
+                object Text10: TText
+                  Align = Client
+                  Size.Width = 554.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Description of parts used'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object Text12: TText
+                  Align = Client
+                  Size.Width = 86.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Qty'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object txtSpareqty: TEdit
+                  Touch.InteractiveGestures = [LongTap, DoubleTap]
+                  Align = Client
+                  TabOrder = 1
+                  TabStop = False
+                  KeyboardType = NumberPad
+                  MaxLength = 5
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 86.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TextPrompt = 'Qty'
+                  StyledSettings = [Family, Style, FontColor]
+                  Caret.Color = claChartreuse
+                end
+                object txtSparedetails: TEdit
+                  Touch.InteractiveGestures = [LongTap, DoubleTap]
+                  Align = Client
+                  TabOrder = 0
+                  TabStop = False
+                  MaxLength = 250
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  Margins.Right = 4.000000000000000000
+                  Size.Width = 550.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TextPrompt = 'Details'
+                  StyledSettings = [Family, Style, FontColor]
+                  Caret.Color = claChartreuse
+                end
+                object spdInsertspare: TSpeedButton
+                  Align = Right
+                  StyledSettings = [Family, Style]
+                  Margins.Right = 8.000000000000000000
+                  Position.X = 654.000000000000000000
+                  Position.Y = 38.000000000000000000
+                  Size.Width = 40.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  StyleLookup = 'transparentcirclebuttonstyle'
+                  TextSettings.Font.Size = 28.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TextSettings.Trimming = None
+                  TintColor = claGreen
+                  OnClick = spdInsertspareClick
+                  object SkSvg2: TSkSvg
+                    Align = Client
+                    Size.Width = 40.000000000000000000
+                    Size.Height = 40.000000000000000000
+                    Size.PlatformDefault = False
+                    Svg.Source = 
+                      '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'#13#10'<!-- Upl' +
+                      'oaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer T' +
+                      'ools -->'#13#10#13#10'<svg'#13#10'   width="800px"'#13#10'   height="800px"'#13#10'   viewBo' +
+                      'x="0 0 24 24"'#13#10'   fill="none"'#13#10'   version="1.1"'#13#10'   id="svg2"'#13#10' ' +
+                      '  sodipodi:docname="add-svgrepo-com (1).svg"'#13#10'   inkscape:versio' +
+                      'n="1.3 (0e150ed6c4, 2023-07-21)"'#13#10'   xmlns:inkscape="http://www.' +
+                      'inkscape.org/namespaces/inkscape"'#13#10'   xmlns:sodipodi="http://sod' +
+                      'ipodi.sourceforge.net/DTD/sodipodi-0.dtd"'#13#10'   xmlns="http://www.' +
+                      'w3.org/2000/svg"'#13#10'   xmlns:svg="http://www.w3.org/2000/svg">'#13#10'  ' +
+                      '<defs'#13#10'     id="defs2" />'#13#10'  <sodipodi:namedview'#13#10'     id="named' +
+                      'view2"'#13#10'     pagecolor="#ffffff"'#13#10'     bordercolor="#666666"'#13#10'  ' +
+                      '   borderopacity="1.0"'#13#10'     inkscape:showpageshadow="2"'#13#10'     i' +
+                      'nkscape:pageopacity="0.0"'#13#10'     inkscape:pagecheckerboard="0"'#13#10' ' +
+                      '    inkscape:deskcolor="#d1d1d1"'#13#10'     inkscape:zoom="1.46625"'#13#10 +
+                      '     inkscape:cx="399.65899"'#13#10'     inkscape:cy="400"'#13#10'     inksc' +
+                      'ape:window-width="2560"'#13#10'     inkscape:window-height="1369"'#13#10'   ' +
+                      '  inkscape:window-x="-8"'#13#10'     inkscape:window-y="244"'#13#10'     ink' +
+                      'scape:window-maximized="1"'#13#10'     inkscape:current-layer="svg2" /' +
+                      '>'#13#10'  <circle'#13#10'     cx="12"'#13#10'     cy="12"'#13#10'     r="8.4"'#13#10'     str' +
+                      'oke="#2A4157"'#13#10'     stroke-opacity="0.24"'#13#10'     stroke-width="1.' +
+                      '2"'#13#10'     id="circle1"'#13#10'     style="fill:#6495ed" />'#13#10'  <path'#13#10'  ' +
+                      '   d="M12 8L12 16"'#13#10'     stroke="#222222"'#13#10'     stroke-width="1.' +
+                      '2"'#13#10'     stroke-linecap="square"'#13#10'     id="path1" />'#13#10'  <path'#13#10' ' +
+                      '    d="M16 12L8 12"'#13#10'     stroke="#222222"'#13#10'     stroke-width="1' +
+                      '.2"'#13#10'     stroke-linecap="square"'#13#10'     id="path2"'#13#10'     style="' +
+                      'fill:#0000ff" />'#13#10'  <path'#13#10'     style="fill:#0000ff;stroke:#4169' +
+                      'e1;stroke-width:0.682012"'#13#10'     d="M 380.56266,486.27451 V 419.4' +
+                      '3734 H 313.72549 246.88832 V 400 380.56266 h 66.83717 66.83717 V' +
+                      ' 313.72549 246.88832 H 400 419.43734 v 66.83717 66.83717 h 66.83' +
+                      '717 66.83717 V 400 419.43734 h -66.83717 -66.83717 v 66.83717 66' +
+                      '.83717 H 400 380.56266 Z"'#13#10'     id="path3"'#13#10'     transform="scal' +
+                      'e(0.03)" />'#13#10'</svg>'
+                  end
+                end
+              end
+            end
+            object tiTime: TTabItem
+              CustomIcon = <
+                item
+                end>
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              StyledSettings = [Family]
+              IsSelected = False
+              Size.Width = 90.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = ''
+              TabOrder = 0
+              TabStop = False
+              Text = 'TRAVEL'
+              ExplicitSize.cx = 196.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              object LBTime: TListBox
+                Align = Top
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 102.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 464.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 14
+                TabStop = False
+                AlternatingRowBackground = True
+                DisableFocusEffect = True
+                DefaultItemStyles.ItemStyle = ''
+                DefaultItemStyles.GroupHeaderStyle = ''
+                DefaultItemStyles.GroupFooterStyle = ''
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 464.000000000000000000
+              end
+              object GridPanelLayout2: TGridPanelLayout
+                Align = MostTop
+                Padding.Left = 2.000000000000000000
+                Padding.Top = 2.000000000000000000
+                Padding.Right = 2.000000000000000000
+                Padding.Bottom = 2.000000000000000000
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 8.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 86.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 34
+                ColumnCollection = <
+                  item
+                    SizeStyle = Absolute
+                    Value = 146.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 120.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 120.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 120.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 120.000000000000000000
+                  end
+                  item
+                    Value = 100.000000000000000000
+                  end>
+                ControlCollection = <
+                  item
+                    Column = 0
+                    Control = Text2
+                    Row = 0
+                  end
+                  item
+                    Column = 1
+                    Control = Text5
+                    Row = 0
+                  end
+                  item
+                    Column = 2
+                    Control = Text6
+                    Row = 0
+                  end
+                  item
+                    Column = 3
+                    Control = Text8
+                    Row = 0
+                  end
+                  item
+                    Column = 4
+                    Control = Text9
+                    Row = 0
+                  end
+                  item
+                    Column = 0
+                    Control = dtDate
+                    Row = 1
+                  end
+                  item
+                    Column = 1
+                    Control = teTravel
+                    Row = 1
+                  end
+                  item
+                    Column = 2
+                    Control = teArr
+                    Row = 1
+                  end
+                  item
+                    Column = 3
+                    Control = teDep
+                    Row = 1
+                  end
+                  item
+                    Column = 4
+                    Control = txtMileage
+                    Row = 1
+                  end
+                  item
+                    Column = 5
+                    Control = spdSaveTime
+                    Row = 1
+                  end>
+                RowCollection = <
+                  item
+                    SizeStyle = Absolute
+                    Value = 36.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 44.000000000000000000
+                  end
+                  item
+                    SizeStyle = Auto
+                  end>
+                object Text2: TText
+                  Align = Client
+                  Size.Width = 142.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Date'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object Text5: TText
+                  Align = Client
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Travel Time'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object Text6: TText
+                  Align = Client
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Time Arr.'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object Text8: TText
+                  Align = Client
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Time Dep.'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object Text9: TText
+                  Align = Client
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Mileage'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object dtDate: TDateEdit
+                  Date = 46134.000000000000000000
+                  TodayDefault = True
+                  Align = Client
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 142.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  StyleLookup = 'dateeditstyle'
+                  StyledSettings = [Family, Style, FontColor]
+                  TabOrder = 4
+                  TabStop = False
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                end
+                object teTravel: TTimeEdit
+                  Time = 0.333333333333333200
+                  IsEmpty = True
+                  Align = Client
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  StyledSettings = [Family, Style, FontColor]
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TabOrder = 3
+                  TabStop = False
+                end
+                object teArr: TTimeEdit
+                  Time = 0.333333333333333200
+                  IsEmpty = True
+                  Align = Client
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  StyledSettings = [Family, Style, FontColor]
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TabOrder = 2
+                  TabStop = False
+                end
+                object teDep: TTimeEdit
+                  Time = 0.666666666666666500
+                  IsEmpty = True
+                  Align = Client
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  StyledSettings = [Family, Style, FontColor]
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TabOrder = 1
+                  TabStop = False
+                end
+                object txtMileage: TEdit
+                  Touch.InteractiveGestures = [LongTap, DoubleTap]
+                  Align = Client
+                  TabOrder = 0
+                  TabStop = False
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TextPrompt = 'Mileage'
+                  StyledSettings = [Family, Style, FontColor]
+                  Caret.Color = claChartreuse
+                end
+                object spdSaveTime: TSpeedButton
+                  Align = Right
+                  StyledSettings = [Family, Style]
+                  Margins.Right = 8.000000000000000000
+                  Position.X = 654.000000000000000000
+                  Position.Y = 38.000000000000000000
+                  Size.Width = 40.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  StyleLookup = 'transparentcirclebuttonstyle'
+                  Text = '+'
+                  TextSettings.Font.Size = 28.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TextSettings.Trimming = None
+                  TintColor = claGreen
+                  OnClick = spdSaveTimeClick
+                  object svgSaveTime: TSkSvg
+                    Align = Client
+                    Size.Width = 40.000000000000000000
+                    Size.Height = 40.000000000000000000
+                    Size.PlatformDefault = False
+                    Svg.Source = 
+                      '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'#13#10'<!-- Upl' +
+                      'oaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer T' +
+                      'ools -->'#13#10#13#10'<svg'#13#10'   width="800px"'#13#10'   height="800px"'#13#10'   viewBo' +
+                      'x="0 0 24 24"'#13#10'   fill="none"'#13#10'   version="1.1"'#13#10'   id="svg2"'#13#10' ' +
+                      '  sodipodi:docname="add-svgrepo-com (1).svg"'#13#10'   inkscape:versio' +
+                      'n="1.3 (0e150ed6c4, 2023-07-21)"'#13#10'   xmlns:inkscape="http://www.' +
+                      'inkscape.org/namespaces/inkscape"'#13#10'   xmlns:sodipodi="http://sod' +
+                      'ipodi.sourceforge.net/DTD/sodipodi-0.dtd"'#13#10'   xmlns="http://www.' +
+                      'w3.org/2000/svg"'#13#10'   xmlns:svg="http://www.w3.org/2000/svg">'#13#10'  ' +
+                      '<defs'#13#10'     id="defs2" />'#13#10'  <sodipodi:namedview'#13#10'     id="named' +
+                      'view2"'#13#10'     pagecolor="#ffffff"'#13#10'     bordercolor="#666666"'#13#10'  ' +
+                      '   borderopacity="1.0"'#13#10'     inkscape:showpageshadow="2"'#13#10'     i' +
+                      'nkscape:pageopacity="0.0"'#13#10'     inkscape:pagecheckerboard="0"'#13#10' ' +
+                      '    inkscape:deskcolor="#d1d1d1"'#13#10'     inkscape:zoom="1.46625"'#13#10 +
+                      '     inkscape:cx="399.65899"'#13#10'     inkscape:cy="400"'#13#10'     inksc' +
+                      'ape:window-width="2560"'#13#10'     inkscape:window-height="1369"'#13#10'   ' +
+                      '  inkscape:window-x="-8"'#13#10'     inkscape:window-y="244"'#13#10'     ink' +
+                      'scape:window-maximized="1"'#13#10'     inkscape:current-layer="svg2" /' +
+                      '>'#13#10'  <circle'#13#10'     cx="12"'#13#10'     cy="12"'#13#10'     r="8.4"'#13#10'     str' +
+                      'oke="#2A4157"'#13#10'     stroke-opacity="0.24"'#13#10'     stroke-width="1.' +
+                      '2"'#13#10'     id="circle1"'#13#10'     style="fill:#6495ed" />'#13#10'  <path'#13#10'  ' +
+                      '   d="M12 8L12 16"'#13#10'     stroke="#222222"'#13#10'     stroke-width="1.' +
+                      '2"'#13#10'     stroke-linecap="square"'#13#10'     id="path1" />'#13#10'  <path'#13#10' ' +
+                      '    d="M16 12L8 12"'#13#10'     stroke="#222222"'#13#10'     stroke-width="1' +
+                      '.2"'#13#10'     stroke-linecap="square"'#13#10'     id="path2"'#13#10'     style="' +
+                      'fill:#0000ff" />'#13#10'  <path'#13#10'     style="fill:#0000ff;stroke:#4169' +
+                      'e1;stroke-width:0.682012"'#13#10'     d="M 380.56266,486.27451 V 419.4' +
+                      '3734 H 313.72549 246.88832 V 400 380.56266 h 66.83717 66.83717 V' +
+                      ' 313.72549 246.88832 H 400 419.43734 v 66.83717 66.83717 h 66.83' +
+                      '717 66.83717 V 400 419.43734 h -66.83717 -66.83717 v 66.83717 66' +
+                      '.83717 H 400 380.56266 Z"'#13#10'     id="path3"'#13#10'     transform="scal' +
+                      'e(0.03)" />'#13#10'</svg>'
+                  end
+                end
+              end
+            end
+            object TIExpenses: TTabItem
+              CustomIcon = <
+                item
+                end>
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              StyledSettings = [Family]
+              IsSelected = False
+              Size.Width = 90.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = ''
+              TabOrder = 0
+              Text = 'EXPENSES'
+              ExplicitSize.cx = 99.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              object LBExpenses: TListBox
+                Align = Top
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 102.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 464.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 14
+                TabStop = False
+                AlternatingRowBackground = True
+                DisableFocusEffect = True
+                DefaultItemStyles.ItemStyle = ''
+                DefaultItemStyles.GroupHeaderStyle = ''
+                DefaultItemStyles.GroupFooterStyle = ''
+                Viewport.Width = 704.000000000000000000
+                Viewport.Height = 464.000000000000000000
+              end
+              object GridPanelLayout1: TGridPanelLayout
+                Align = MostTop
+                Padding.Left = 2.000000000000000000
+                Padding.Top = 2.000000000000000000
+                Padding.Right = 2.000000000000000000
+                Padding.Bottom = 2.000000000000000000
+                Margins.Left = 8.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Right = 8.000000000000000000
+                Position.X = 8.000000000000000000
+                Position.Y = 8.000000000000000000
+                Size.Width = 704.000000000000000000
+                Size.Height = 86.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 34
+                ColumnCollection = <
+                  item
+                    SizeStyle = Absolute
+                    Value = 146.000000000000000000
+                  end
+                  item
+                    Value = 100.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 120.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 56.000000000000000000
+                  end>
+                ControlCollection = <
+                  item
+                    Column = 1
+                    Control = lblDetailsExp
+                    Row = 0
+                  end
+                  item
+                    Column = 2
+                    Control = lblCostExp
+                    Row = 0
+                  end
+                  item
+                    Column = 1
+                    Control = txtDetailsExp
+                    Row = 1
+                  end
+                  item
+                    Column = 2
+                    Control = txtCostExp
+                    Row = 1
+                  end
+                  item
+                    Column = 3
+                    Control = spdSaveExpenses
+                    Row = 1
+                  end
+                  item
+                    Column = 0
+                    Control = lblDateExp
+                    Row = 0
+                  end
+                  item
+                    Column = 0
+                    Control = dtDateExp
+                    Row = 1
+                  end>
+                RowCollection = <
+                  item
+                    SizeStyle = Absolute
+                    Value = 36.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 44.000000000000000000
+                  end
+                  item
+                    SizeStyle = Auto
+                  end>
+                object lblDetailsExp: TText
+                  Align = Client
+                  Size.Width = 378.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Expense details'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object lblCostExp: TText
+                  Align = Client
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Cost '#163
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object txtDetailsExp: TEdit
+                  Touch.InteractiveGestures = [LongTap, DoubleTap]
+                  Align = Client
+                  TabOrder = 1
+                  TabStop = False
+                  MaxLength = 250
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 378.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TextPrompt = 'Expense details'
+                  StyledSettings = [Family, Style, FontColor]
+                  Caret.Color = claChartreuse
+                end
+                object txtCostExp: TEdit
+                  Touch.InteractiveGestures = [LongTap, DoubleTap]
+                  Align = Client
+                  TabOrder = 2
+                  TabStop = False
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 116.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TextPrompt = 'Cost '#163
+                  StyledSettings = [Family, Style, FontColor]
+                  Caret.Color = claChartreuse
+                end
+                object spdSaveExpenses: TSpeedButton
+                  Align = Right
+                  StyledSettings = [Family, Style]
+                  Margins.Right = 8.000000000000000000
+                  Position.X = 654.000000000000000000
+                  Position.Y = 38.000000000000000000
+                  Size.Width = 40.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  StyleLookup = 'transparentcirclebuttonstyle'
+                  TextSettings.Font.Size = 28.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  TextSettings.Trimming = None
+                  TintColor = claGreen
+                  OnClick = spdSaveExpensesClick
+                  object svgSaveExpenses: TSkSvg
+                    Align = Client
+                    Size.Width = 40.000000000000000000
+                    Size.Height = 40.000000000000000000
+                    Size.PlatformDefault = False
+                    Svg.Source = 
+                      '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'#13#10'<!-- Upl' +
+                      'oaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer T' +
+                      'ools -->'#13#10#13#10'<svg'#13#10'   width="800px"'#13#10'   height="800px"'#13#10'   viewBo' +
+                      'x="0 0 24 24"'#13#10'   fill="none"'#13#10'   version="1.1"'#13#10'   id="svg2"'#13#10' ' +
+                      '  sodipodi:docname="add-svgrepo-com (1).svg"'#13#10'   inkscape:versio' +
+                      'n="1.3 (0e150ed6c4, 2023-07-21)"'#13#10'   xmlns:inkscape="http://www.' +
+                      'inkscape.org/namespaces/inkscape"'#13#10'   xmlns:sodipodi="http://sod' +
+                      'ipodi.sourceforge.net/DTD/sodipodi-0.dtd"'#13#10'   xmlns="http://www.' +
+                      'w3.org/2000/svg"'#13#10'   xmlns:svg="http://www.w3.org/2000/svg">'#13#10'  ' +
+                      '<defs'#13#10'     id="defs2" />'#13#10'  <sodipodi:namedview'#13#10'     id="named' +
+                      'view2"'#13#10'     pagecolor="#ffffff"'#13#10'     bordercolor="#666666"'#13#10'  ' +
+                      '   borderopacity="1.0"'#13#10'     inkscape:showpageshadow="2"'#13#10'     i' +
+                      'nkscape:pageopacity="0.0"'#13#10'     inkscape:pagecheckerboard="0"'#13#10' ' +
+                      '    inkscape:deskcolor="#d1d1d1"'#13#10'     inkscape:zoom="1.46625"'#13#10 +
+                      '     inkscape:cx="399.65899"'#13#10'     inkscape:cy="400"'#13#10'     inksc' +
+                      'ape:window-width="2560"'#13#10'     inkscape:window-height="1369"'#13#10'   ' +
+                      '  inkscape:window-x="-8"'#13#10'     inkscape:window-y="244"'#13#10'     ink' +
+                      'scape:window-maximized="1"'#13#10'     inkscape:current-layer="svg2" /' +
+                      '>'#13#10'  <circle'#13#10'     cx="12"'#13#10'     cy="12"'#13#10'     r="8.4"'#13#10'     str' +
+                      'oke="#2A4157"'#13#10'     stroke-opacity="0.24"'#13#10'     stroke-width="1.' +
+                      '2"'#13#10'     id="circle1"'#13#10'     style="fill:#6495ed" />'#13#10'  <path'#13#10'  ' +
+                      '   d="M12 8L12 16"'#13#10'     stroke="#222222"'#13#10'     stroke-width="1.' +
+                      '2"'#13#10'     stroke-linecap="square"'#13#10'     id="path1" />'#13#10'  <path'#13#10' ' +
+                      '    d="M16 12L8 12"'#13#10'     stroke="#222222"'#13#10'     stroke-width="1' +
+                      '.2"'#13#10'     stroke-linecap="square"'#13#10'     id="path2"'#13#10'     style="' +
+                      'fill:#0000ff" />'#13#10'  <path'#13#10'     style="fill:#0000ff;stroke:#4169' +
+                      'e1;stroke-width:0.682012"'#13#10'     d="M 380.56266,486.27451 V 419.4' +
+                      '3734 H 313.72549 246.88832 V 400 380.56266 h 66.83717 66.83717 V' +
+                      ' 313.72549 246.88832 H 400 419.43734 v 66.83717 66.83717 h 66.83' +
+                      '717 66.83717 V 400 419.43734 h -66.83717 -66.83717 v 66.83717 66' +
+                      '.83717 H 400 380.56266 Z"'#13#10'     id="path3"'#13#10'     transform="scal' +
+                      'e(0.03)" />'#13#10'</svg>'
+                  end
+                end
+                object lblDateExp: TText
+                  Align = Client
+                  Size.Width = 142.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Expense Date'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.WordWrap = False
+                  TextSettings.HorzAlign = Leading
+                  TextSettings.VertAlign = Trailing
+                end
+                object dtDateExp: TDateEdit
+                  Date = 46134.000000000000000000
+                  TodayDefault = True
+                  Align = Client
+                  Margins.Top = 2.000000000000000000
+                  Margins.Bottom = 2.000000000000000000
+                  Size.Width = 142.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  StyleLookup = 'dateeditstyle'
+                  StyledSettings = [Family, FontColor]
+                  TabOrder = 0
+                  TabStop = False
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                end
+              end
+            end
+            object tiPhotos: TTabItem
+              CustomIcon = <
+                item
+                end>
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              StyledSettings = [Family]
+              IsSelected = False
+              Size.Width = 90.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = ''
+              TabOrder = 0
+              TabStop = False
+              Text = 'PHOTOS'
+              ExplicitSize.cx = 113.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              object GPLjobs: TGridPanelLayout
+                Align = Client
+                Padding.Left = 4.000000000000000000
+                Padding.Top = 4.000000000000000000
+                Padding.Right = 4.000000000000000000
+                Padding.Bottom = 4.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Size.Width = 720.000000000000000000
+                Size.Height = 405.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                ColumnCollection = <
+                  item
+                    Value = 24.999987088599290000
+                  end
+                  item
+                    Value = 24.999972626790120000
+                  end
+                  item
+                    Value = 25.000021660751520000
+                  end
+                  item
+                    Value = 25.000018623859090000
+                  end>
+                ControlCollection = <
+                  item
+                    Column = 0
+                    ColumnSpan = 3
+                    Control = rectMainphoto
+                    Row = 1
+                    RowSpan = 4
+                  end
+                  item
+                    Column = 0
+                    Control = layImage1
+                    Row = 0
+                  end
+                  item
+                    Column = 1
+                    Control = layImage2
+                    Row = 0
+                  end
+                  item
+                    Column = 2
+                    Control = layImage3
+                    Row = 0
+                  end
+                  item
+                    Column = 3
+                    Control = layImage4
+                    Row = 0
+                  end
+                  item
+                    Column = 3
+                    Control = layImage5
+                    Row = 1
+                  end
+                  item
+                    Column = 3
+                    Control = layImage6
+                    Row = 2
+                  end>
+                ExpandStyle = FixedSize
+                RowCollection = <
+                  item
+                    SizeStyle = Absolute
+                    Value = 133.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 133.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 133.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 133.000000000000000000
+                  end
+                  item
+                    SizeStyle = Absolute
+                    Value = 20.000000000000000000
+                  end>
+                object rectMainphoto: TRectangle
+                  Align = Client
+                  Corners = [TopLeft, TopRight]
+                  Fill.Color = claBlack
+                  Opacity = 0.600000023841857900
+                  Size.Width = 531.999877929687500000
+                  Size.Height = 411.000000000000000000
+                  Size.PlatformDefault = False
+                  Stroke.Kind = None
+                  XRadius = 8.000000000000000000
+                  YRadius = 8.000000000000000000
+                  object imgMainphoto: TImage
+                    MultiResBitmap = <
+                      item
+                      end>
+                    Align = Client
+                    Margins.Left = 3.000000000000000000
+                    Margins.Top = 3.000000000000000000
+                    Margins.Right = 3.000000000000000000
+                    Margins.Bottom = 3.000000000000000000
+                    Size.Width = 525.999877929687500000
+                    Size.Height = 405.000000000000000000
+                    Size.PlatformDefault = False
+                    WrapMode = Stretch
+                  end
+                end
+                object layImage1: TLayout
+                  Align = Client
+                  Size.Width = 171.999908447265600000
+                  Size.Height = 125.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 18
+                  object rectImage1: TRectangle
+                    Tag = 1
+                    Align = Client
+                    Fill.Color = claLightslategray
+                    Opacity = 0.600000023841857900
+                    Size.Width = 171.999908447265600000
+                    Size.Height = 125.000000000000000000
+                    Size.PlatformDefault = False
+                    Stroke.Kind = None
+                    XRadius = 8.000000000000000000
+                    YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
+                    object imgThumb1: TImage
+                      MultiResBitmap = <
+                        item
+                        end>
+                      Align = Client
+                      HitTest = False
+                      Margins.Left = 4.000000000000000000
+                      Margins.Top = 4.000000000000000000
+                      Margins.Right = 4.000000000000000000
+                      Size.Width = 163.999908447265600000
+                      Size.Height = 93.000000000000000000
+                      Size.PlatformDefault = False
+                      WrapMode = Stretch
+                    end
+                    object layControls1: TLayout
+                      Align = Bottom
+                      Padding.Left = 8.000000000000000000
+                      Padding.Right = 8.000000000000000000
+                      Position.Y = 97.000000000000000000
+                      Size.Width = 171.999908447265600000
+                      Size.Height = 28.000000000000000000
+                      Size.PlatformDefault = False
+                      TabOrder = 4
+                      object imgCamera1: TSkSvg
+                        Tag = 1
+                        Align = Left
+                        HitTest = True
+                        Position.X = 8.000000000000000000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#45AAB8" d="M56,54H8V18h8c1.062,0,2.078-0.' +
+                          '422,2.828-1.172L25.656,10h12.688l6.828,6.828'#13#10#9#9'C45.922,17.578,4' +
+                          '6.938,18,48,18h8V54z"/>'#13#10#9'<path fill="#394240" d="M60,10H49.656l' +
+                          '-6.828-6.828C42.078,2.422,41.062,2,40,2H24c-1.062,0-2.078,0.422-' +
+                          '2.828,1.172L14.344,10H4'#13#10#9#9'c-2.211,0-4,1.789-4,4v44c0,2.211,1.78' +
+                          '9,4,4,4h56c2.211,0,4-1.789,4-4V14C64,11.789,62.211,10,60,10z M56' +
+                          ',54H8V18h8'#13#10#9#9'c1.062,0,2.078-0.422,2.828-1.172L25.656,10h12.688l' +
+                          '6.828,6.828C45.922,17.578,46.938,18,48,18h8V54z"/>'#13#10#9'<path fill=' +
+                          '"#394240" d="M32,18c-8.824,0-16,7.18-16,16c0,8.824,7.176,16,16,1' +
+                          '6s16-7.176,16-16C48,25.18,40.824,18,32,18z M32,42'#13#10#9#9'c-4.41,0-8-' +
+                          '3.59-8-8s3.59-8,8-8s8,3.59,8,8S36.41,42,32,42z"/>'#13#10#9'<circle fill' +
+                          '="#F9EBB2" cx="32" cy="34" r="8"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                      object imgAlbum1: TSkSvg
+                        Tag = 1
+                        Align = Center
+                        HitTest = True
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#F9EBB2" d="M8,8h48v32.688l-9.113-9.113c-1' +
+                          '.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8z"/>'#13#10#9'<polygon fill' +
+                          '="#B4CCB9" points="28.117,56 44.059,40.059 56,52 56,56 '#9'"/>'#13#10#9'<g' +
+                          '>'#13#10#9#9'<path fill="#394240" d="M60,0H4C1.789,0,0,1.789,0,4v56c0,2.' +
+                          '211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V4C64,1.789,62.211,0,60,0z' +
+                          #13#10#9#9#9' M56,56H28.117l15.941-15.941L56,52V56z M56,40.688l-9.113-9.' +
+                          '113c-1.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8h48V40.688z"/>' +
+                          #13#10#9#9'<circle fill="#394240" cx="24" cy="24" r="8"/>'#13#10#9'</g>'#13#10'</g>'#13 +
+                          #10'</svg>'
+                      end
+                      object imgDelete1: TSkSvg
+                        Tag = 1
+                        Align = Right
+                        HitTest = True
+                        Position.X = 135.999908447265600000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<g>'#13#10#9#9'<path fill="#394240" d="M12,60c0,2.211,1.789,4,' +
+                          '4,4h32c2.211,0,4-1.789,4-4V16H12V60z M20,24h24v32H20V24z"/>'#13#10#9#9'<' +
+                          'path fill="#394240" d="M56,4H40c0-2.211-1.789-4-4-4h-8c-2.211,0-' +
+                          '4,1.789-4,4H8C5.789,4,4,5.789,4,8s1.789,4,4,4h48'#13#10#9#9#9'c2.211,0,4-' +
+                          '1.789,4-4S58.211,4,56,4z"/>'#13#10#9'</g>'#13#10#9'<rect x="20" y="24" fill="#' +
+                          'B4CCB9" width="24" height="32"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                    end
+                  end
+                end
+                object layImage2: TLayout
+                  Align = Client
+                  Size.Width = 171.999786376953100000
+                  Size.Height = 125.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 13
+                  object rectImage2: TRectangle
+                    Tag = 2
+                    Align = Client
+                    Fill.Color = claLightslategray
+                    Opacity = 0.600000023841857900
+                    Size.Width = 171.999786376953100000
+                    Size.Height = 125.000000000000000000
+                    Size.PlatformDefault = False
+                    Stroke.Kind = None
+                    XRadius = 8.000000000000000000
+                    YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
+                    object imgThumb2: TImage
+                      MultiResBitmap = <
+                        item
+                        end>
+                      Align = Client
+                      HitTest = False
+                      Margins.Left = 4.000000000000000000
+                      Margins.Top = 4.000000000000000000
+                      Margins.Right = 4.000000000000000000
+                      Size.Width = 163.999786376953100000
+                      Size.Height = 93.000000000000000000
+                      Size.PlatformDefault = False
+                      WrapMode = Stretch
+                    end
+                    object layControls2: TLayout
+                      Align = Bottom
+                      Padding.Left = 8.000000000000000000
+                      Padding.Right = 8.000000000000000000
+                      Position.Y = 97.000000000000000000
+                      Size.Width = 171.999786376953100000
+                      Size.Height = 28.000000000000000000
+                      Size.PlatformDefault = False
+                      TabOrder = 4
+                      object imgCamera2: TSkSvg
+                        Tag = 2
+                        Align = Left
+                        HitTest = True
+                        Position.X = 8.000000000000000000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#45AAB8" d="M56,54H8V18h8c1.062,0,2.078-0.' +
+                          '422,2.828-1.172L25.656,10h12.688l6.828,6.828'#13#10#9#9'C45.922,17.578,4' +
+                          '6.938,18,48,18h8V54z"/>'#13#10#9'<path fill="#394240" d="M60,10H49.656l' +
+                          '-6.828-6.828C42.078,2.422,41.062,2,40,2H24c-1.062,0-2.078,0.422-' +
+                          '2.828,1.172L14.344,10H4'#13#10#9#9'c-2.211,0-4,1.789-4,4v44c0,2.211,1.78' +
+                          '9,4,4,4h56c2.211,0,4-1.789,4-4V14C64,11.789,62.211,10,60,10z M56' +
+                          ',54H8V18h8'#13#10#9#9'c1.062,0,2.078-0.422,2.828-1.172L25.656,10h12.688l' +
+                          '6.828,6.828C45.922,17.578,46.938,18,48,18h8V54z"/>'#13#10#9'<path fill=' +
+                          '"#394240" d="M32,18c-8.824,0-16,7.18-16,16c0,8.824,7.176,16,16,1' +
+                          '6s16-7.176,16-16C48,25.18,40.824,18,32,18z M32,42'#13#10#9#9'c-4.41,0-8-' +
+                          '3.59-8-8s3.59-8,8-8s8,3.59,8,8S36.41,42,32,42z"/>'#13#10#9'<circle fill' +
+                          '="#F9EBB2" cx="32" cy="34" r="8"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                      object imgAlbum2: TSkSvg
+                        Tag = 2
+                        Align = Center
+                        HitTest = True
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#F9EBB2" d="M8,8h48v32.688l-9.113-9.113c-1' +
+                          '.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8z"/>'#13#10#9'<polygon fill' +
+                          '="#B4CCB9" points="28.117,56 44.059,40.059 56,52 56,56 '#9'"/>'#13#10#9'<g' +
+                          '>'#13#10#9#9'<path fill="#394240" d="M60,0H4C1.789,0,0,1.789,0,4v56c0,2.' +
+                          '211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V4C64,1.789,62.211,0,60,0z' +
+                          #13#10#9#9#9' M56,56H28.117l15.941-15.941L56,52V56z M56,40.688l-9.113-9.' +
+                          '113c-1.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8h48V40.688z"/>' +
+                          #13#10#9#9'<circle fill="#394240" cx="24" cy="24" r="8"/>'#13#10#9'</g>'#13#10'</g>'#13 +
+                          #10'</svg>'
+                      end
+                      object imgDelete2: TSkSvg
+                        Tag = 2
+                        Align = Right
+                        HitTest = True
+                        Position.X = 135.999786376953100000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<g>'#13#10#9#9'<path fill="#394240" d="M12,60c0,2.211,1.789,4,' +
+                          '4,4h32c2.211,0,4-1.789,4-4V16H12V60z M20,24h24v32H20V24z"/>'#13#10#9#9'<' +
+                          'path fill="#394240" d="M56,4H40c0-2.211-1.789-4-4-4h-8c-2.211,0-' +
+                          '4,1.789-4,4H8C5.789,4,4,5.789,4,8s1.789,4,4,4h48'#13#10#9#9#9'c2.211,0,4-' +
+                          '1.789,4-4S58.211,4,56,4z"/>'#13#10#9'</g>'#13#10#9'<rect x="20" y="24" fill="#' +
+                          'B4CCB9" width="24" height="32"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                    end
+                  end
+                end
+                object layImage3: TLayout
+                  Align = Client
+                  Size.Width = 172.000183105468700000
+                  Size.Height = 125.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 15
+                  object rectImage3: TRectangle
+                    Tag = 3
+                    Align = Client
+                    Fill.Color = claLightslategray
+                    Opacity = 0.600000023841857900
+                    Size.Width = 172.000183105468700000
+                    Size.Height = 125.000000000000000000
+                    Size.PlatformDefault = False
+                    Stroke.Kind = None
+                    XRadius = 8.000000000000000000
+                    YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
+                    object imgThumb3: TImage
+                      MultiResBitmap = <
+                        item
+                        end>
+                      Align = Client
+                      HitTest = False
+                      Margins.Left = 4.000000000000000000
+                      Margins.Top = 4.000000000000000000
+                      Margins.Right = 4.000000000000000000
+                      Size.Width = 164.000183105468700000
+                      Size.Height = 93.000000000000000000
+                      Size.PlatformDefault = False
+                      WrapMode = Stretch
+                    end
+                    object layControls3: TLayout
+                      Align = Bottom
+                      Padding.Left = 8.000000000000000000
+                      Padding.Right = 8.000000000000000000
+                      Position.Y = 97.000000000000000000
+                      Size.Width = 172.000183105468700000
+                      Size.Height = 28.000000000000000000
+                      Size.PlatformDefault = False
+                      TabOrder = 4
+                      object imgCamera3: TSkSvg
+                        Tag = 3
+                        Align = Left
+                        HitTest = True
+                        Position.X = 8.000000000000000000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#45AAB8" d="M56,54H8V18h8c1.062,0,2.078-0.' +
+                          '422,2.828-1.172L25.656,10h12.688l6.828,6.828'#13#10#9#9'C45.922,17.578,4' +
+                          '6.938,18,48,18h8V54z"/>'#13#10#9'<path fill="#394240" d="M60,10H49.656l' +
+                          '-6.828-6.828C42.078,2.422,41.062,2,40,2H24c-1.062,0-2.078,0.422-' +
+                          '2.828,1.172L14.344,10H4'#13#10#9#9'c-2.211,0-4,1.789-4,4v44c0,2.211,1.78' +
+                          '9,4,4,4h56c2.211,0,4-1.789,4-4V14C64,11.789,62.211,10,60,10z M56' +
+                          ',54H8V18h8'#13#10#9#9'c1.062,0,2.078-0.422,2.828-1.172L25.656,10h12.688l' +
+                          '6.828,6.828C45.922,17.578,46.938,18,48,18h8V54z"/>'#13#10#9'<path fill=' +
+                          '"#394240" d="M32,18c-8.824,0-16,7.18-16,16c0,8.824,7.176,16,16,1' +
+                          '6s16-7.176,16-16C48,25.18,40.824,18,32,18z M32,42'#13#10#9#9'c-4.41,0-8-' +
+                          '3.59-8-8s3.59-8,8-8s8,3.59,8,8S36.41,42,32,42z"/>'#13#10#9'<circle fill' +
+                          '="#F9EBB2" cx="32" cy="34" r="8"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                      object imgAlbum3: TSkSvg
+                        Tag = 3
+                        Align = Center
+                        HitTest = True
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#F9EBB2" d="M8,8h48v32.688l-9.113-9.113c-1' +
+                          '.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8z"/>'#13#10#9'<polygon fill' +
+                          '="#B4CCB9" points="28.117,56 44.059,40.059 56,52 56,56 '#9'"/>'#13#10#9'<g' +
+                          '>'#13#10#9#9'<path fill="#394240" d="M60,0H4C1.789,0,0,1.789,0,4v56c0,2.' +
+                          '211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V4C64,1.789,62.211,0,60,0z' +
+                          #13#10#9#9#9' M56,56H28.117l15.941-15.941L56,52V56z M56,40.688l-9.113-9.' +
+                          '113c-1.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8h48V40.688z"/>' +
+                          #13#10#9#9'<circle fill="#394240" cx="24" cy="24" r="8"/>'#13#10#9'</g>'#13#10'</g>'#13 +
+                          #10'</svg>'
+                      end
+                      object imgDelete3: TSkSvg
+                        Tag = 3
+                        Align = Right
+                        HitTest = True
+                        Position.X = 136.000183105468800000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<g>'#13#10#9#9'<path fill="#394240" d="M12,60c0,2.211,1.789,4,' +
+                          '4,4h32c2.211,0,4-1.789,4-4V16H12V60z M20,24h24v32H20V24z"/>'#13#10#9#9'<' +
+                          'path fill="#394240" d="M56,4H40c0-2.211-1.789-4-4-4h-8c-2.211,0-' +
+                          '4,1.789-4,4H8C5.789,4,4,5.789,4,8s1.789,4,4,4h48'#13#10#9#9#9'c2.211,0,4-' +
+                          '1.789,4-4S58.211,4,56,4z"/>'#13#10#9'</g>'#13#10#9'<rect x="20" y="24" fill="#' +
+                          'B4CCB9" width="24" height="32"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                    end
+                  end
+                end
+                object layImage4: TLayout
+                  Align = Client
+                  Size.Width = 172.000122070312500000
+                  Size.Height = 125.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 14
+                  object rectImage4: TRectangle
+                    Tag = 4
+                    Align = Client
+                    Fill.Color = claLightslategray
+                    Opacity = 0.600000023841857900
+                    Size.Width = 172.000122070312500000
+                    Size.Height = 125.000000000000000000
+                    Size.PlatformDefault = False
+                    Stroke.Kind = None
+                    XRadius = 8.000000000000000000
+                    YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
+                    object imgThumb4: TImage
+                      MultiResBitmap = <
+                        item
+                        end>
+                      Align = Client
+                      HitTest = False
+                      Margins.Left = 4.000000000000000000
+                      Margins.Top = 4.000000000000000000
+                      Margins.Right = 4.000000000000000000
+                      Size.Width = 164.000122070312500000
+                      Size.Height = 93.000000000000000000
+                      Size.PlatformDefault = False
+                      WrapMode = Stretch
+                    end
+                    object layControls4: TLayout
+                      Align = Bottom
+                      Padding.Left = 8.000000000000000000
+                      Padding.Right = 8.000000000000000000
+                      Position.Y = 97.000000000000000000
+                      Size.Width = 172.000122070312500000
+                      Size.Height = 28.000000000000000000
+                      Size.PlatformDefault = False
+                      TabOrder = 4
+                      object imgCamera4: TSkSvg
+                        Tag = 4
+                        Align = Left
+                        HitTest = True
+                        Position.X = 8.000000000000000000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#45AAB8" d="M56,54H8V18h8c1.062,0,2.078-0.' +
+                          '422,2.828-1.172L25.656,10h12.688l6.828,6.828'#13#10#9#9'C45.922,17.578,4' +
+                          '6.938,18,48,18h8V54z"/>'#13#10#9'<path fill="#394240" d="M60,10H49.656l' +
+                          '-6.828-6.828C42.078,2.422,41.062,2,40,2H24c-1.062,0-2.078,0.422-' +
+                          '2.828,1.172L14.344,10H4'#13#10#9#9'c-2.211,0-4,1.789-4,4v44c0,2.211,1.78' +
+                          '9,4,4,4h56c2.211,0,4-1.789,4-4V14C64,11.789,62.211,10,60,10z M56' +
+                          ',54H8V18h8'#13#10#9#9'c1.062,0,2.078-0.422,2.828-1.172L25.656,10h12.688l' +
+                          '6.828,6.828C45.922,17.578,46.938,18,48,18h8V54z"/>'#13#10#9'<path fill=' +
+                          '"#394240" d="M32,18c-8.824,0-16,7.18-16,16c0,8.824,7.176,16,16,1' +
+                          '6s16-7.176,16-16C48,25.18,40.824,18,32,18z M32,42'#13#10#9#9'c-4.41,0-8-' +
+                          '3.59-8-8s3.59-8,8-8s8,3.59,8,8S36.41,42,32,42z"/>'#13#10#9'<circle fill' +
+                          '="#F9EBB2" cx="32" cy="34" r="8"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                      object imgAlbum4: TSkSvg
+                        Tag = 4
+                        Align = Center
+                        HitTest = True
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#F9EBB2" d="M8,8h48v32.688l-9.113-9.113c-1' +
+                          '.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8z"/>'#13#10#9'<polygon fill' +
+                          '="#B4CCB9" points="28.117,56 44.059,40.059 56,52 56,56 '#9'"/>'#13#10#9'<g' +
+                          '>'#13#10#9#9'<path fill="#394240" d="M60,0H4C1.789,0,0,1.789,0,4v56c0,2.' +
+                          '211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V4C64,1.789,62.211,0,60,0z' +
+                          #13#10#9#9#9' M56,56H28.117l15.941-15.941L56,52V56z M56,40.688l-9.113-9.' +
+                          '113c-1.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8h48V40.688z"/>' +
+                          #13#10#9#9'<circle fill="#394240" cx="24" cy="24" r="8"/>'#13#10#9'</g>'#13#10'</g>'#13 +
+                          #10'</svg>'
+                      end
+                      object imgDelete4: TSkSvg
+                        Tag = 4
+                        Align = Right
+                        HitTest = True
+                        Position.X = 136.000122070312500000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<g>'#13#10#9#9'<path fill="#394240" d="M12,60c0,2.211,1.789,4,' +
+                          '4,4h32c2.211,0,4-1.789,4-4V16H12V60z M20,24h24v32H20V24z"/>'#13#10#9#9'<' +
+                          'path fill="#394240" d="M56,4H40c0-2.211-1.789-4-4-4h-8c-2.211,0-' +
+                          '4,1.789-4,4H8C5.789,4,4,5.789,4,8s1.789,4,4,4h48'#13#10#9#9#9'c2.211,0,4-' +
+                          '1.789,4-4S58.211,4,56,4z"/>'#13#10#9'</g>'#13#10#9'<rect x="20" y="24" fill="#' +
+                          'B4CCB9" width="24" height="32"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                    end
+                  end
+                end
+                object layImage5: TLayout
+                  Align = Client
+                  Size.Width = 172.000122070312500000
+                  Size.Height = 125.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 17
+                  object rectImage5: TRectangle
+                    Tag = 5
+                    Align = Client
+                    Fill.Color = claLightslategray
+                    Opacity = 0.600000023841857900
+                    Size.Width = 172.000122070312500000
+                    Size.Height = 125.000000000000000000
+                    Size.PlatformDefault = False
+                    Stroke.Kind = None
+                    XRadius = 8.000000000000000000
+                    YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
+                    object imgThumb5: TImage
+                      MultiResBitmap = <
+                        item
+                        end>
+                      Align = Client
+                      HitTest = False
+                      Margins.Left = 4.000000000000000000
+                      Margins.Top = 4.000000000000000000
+                      Margins.Right = 4.000000000000000000
+                      Size.Width = 164.000122070312500000
+                      Size.Height = 93.000000000000000000
+                      Size.PlatformDefault = False
+                      WrapMode = Stretch
+                    end
+                    object layControls5: TLayout
+                      Align = Bottom
+                      Padding.Left = 8.000000000000000000
+                      Padding.Right = 8.000000000000000000
+                      Position.Y = 97.000000000000000000
+                      Size.Width = 172.000122070312500000
+                      Size.Height = 28.000000000000000000
+                      Size.PlatformDefault = False
+                      TabOrder = 4
+                      object imgCamera5: TSkSvg
+                        Tag = 5
+                        Align = Left
+                        HitTest = True
+                        Position.X = 8.000000000000000000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#45AAB8" d="M56,54H8V18h8c1.062,0,2.078-0.' +
+                          '422,2.828-1.172L25.656,10h12.688l6.828,6.828'#13#10#9#9'C45.922,17.578,4' +
+                          '6.938,18,48,18h8V54z"/>'#13#10#9'<path fill="#394240" d="M60,10H49.656l' +
+                          '-6.828-6.828C42.078,2.422,41.062,2,40,2H24c-1.062,0-2.078,0.422-' +
+                          '2.828,1.172L14.344,10H4'#13#10#9#9'c-2.211,0-4,1.789-4,4v44c0,2.211,1.78' +
+                          '9,4,4,4h56c2.211,0,4-1.789,4-4V14C64,11.789,62.211,10,60,10z M56' +
+                          ',54H8V18h8'#13#10#9#9'c1.062,0,2.078-0.422,2.828-1.172L25.656,10h12.688l' +
+                          '6.828,6.828C45.922,17.578,46.938,18,48,18h8V54z"/>'#13#10#9'<path fill=' +
+                          '"#394240" d="M32,18c-8.824,0-16,7.18-16,16c0,8.824,7.176,16,16,1' +
+                          '6s16-7.176,16-16C48,25.18,40.824,18,32,18z M32,42'#13#10#9#9'c-4.41,0-8-' +
+                          '3.59-8-8s3.59-8,8-8s8,3.59,8,8S36.41,42,32,42z"/>'#13#10#9'<circle fill' +
+                          '="#F9EBB2" cx="32" cy="34" r="8"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                      object imgAlbum5: TSkSvg
+                        Tag = 5
+                        Align = Center
+                        HitTest = True
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#F9EBB2" d="M8,8h48v32.688l-9.113-9.113c-1' +
+                          '.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8z"/>'#13#10#9'<polygon fill' +
+                          '="#B4CCB9" points="28.117,56 44.059,40.059 56,52 56,56 '#9'"/>'#13#10#9'<g' +
+                          '>'#13#10#9#9'<path fill="#394240" d="M60,0H4C1.789,0,0,1.789,0,4v56c0,2.' +
+                          '211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V4C64,1.789,62.211,0,60,0z' +
+                          #13#10#9#9#9' M56,56H28.117l15.941-15.941L56,52V56z M56,40.688l-9.113-9.' +
+                          '113c-1.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8h48V40.688z"/>' +
+                          #13#10#9#9'<circle fill="#394240" cx="24" cy="24" r="8"/>'#13#10#9'</g>'#13#10'</g>'#13 +
+                          #10'</svg>'
+                      end
+                      object imgDelete5: TSkSvg
+                        Tag = 5
+                        Align = Right
+                        HitTest = True
+                        Position.X = 136.000122070312500000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<g>'#13#10#9#9'<path fill="#394240" d="M12,60c0,2.211,1.789,4,' +
+                          '4,4h32c2.211,0,4-1.789,4-4V16H12V60z M20,24h24v32H20V24z"/>'#13#10#9#9'<' +
+                          'path fill="#394240" d="M56,4H40c0-2.211-1.789-4-4-4h-8c-2.211,0-' +
+                          '4,1.789-4,4H8C5.789,4,4,5.789,4,8s1.789,4,4,4h48'#13#10#9#9#9'c2.211,0,4-' +
+                          '1.789,4-4S58.211,4,56,4z"/>'#13#10#9'</g>'#13#10#9'<rect x="20" y="24" fill="#' +
+                          'B4CCB9" width="24" height="32"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                    end
+                  end
+                end
+                object layImage6: TLayout
+                  Align = Client
+                  Size.Width = 172.000122070312500000
+                  Size.Height = 125.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 16
+                  object rectImage6: TRectangle
+                    Tag = 6
+                    Align = Client
+                    Fill.Color = claLightslategray
+                    Opacity = 0.600000023841857900
+                    Size.Width = 172.000122070312500000
+                    Size.Height = 125.000000000000000000
+                    Size.PlatformDefault = False
+                    Stroke.Kind = None
+                    XRadius = 8.000000000000000000
+                    YRadius = 8.000000000000000000
+                    OnClick = ShowPictureClick
+                    object imgThumb6: TImage
+                      MultiResBitmap = <
+                        item
+                        end>
+                      Align = Client
+                      HitTest = False
+                      Margins.Left = 4.000000000000000000
+                      Margins.Top = 4.000000000000000000
+                      Margins.Right = 4.000000000000000000
+                      Size.Width = 164.000122070312500000
+                      Size.Height = 93.000000000000000000
+                      Size.PlatformDefault = False
+                      WrapMode = Stretch
+                    end
+                    object layControls6: TLayout
+                      Align = Bottom
+                      Padding.Left = 8.000000000000000000
+                      Padding.Right = 8.000000000000000000
+                      Position.Y = 97.000000000000000000
+                      Size.Width = 172.000122070312500000
+                      Size.Height = 28.000000000000000000
+                      Size.PlatformDefault = False
+                      TabOrder = 4
+                      object imgCamera6: TSkSvg
+                        Tag = 6
+                        Align = Left
+                        HitTest = True
+                        Position.X = 8.000000000000000000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = ImageCameraClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#45AAB8" d="M56,54H8V18h8c1.062,0,2.078-0.' +
+                          '422,2.828-1.172L25.656,10h12.688l6.828,6.828'#13#10#9#9'C45.922,17.578,4' +
+                          '6.938,18,48,18h8V54z"/>'#13#10#9'<path fill="#394240" d="M60,10H49.656l' +
+                          '-6.828-6.828C42.078,2.422,41.062,2,40,2H24c-1.062,0-2.078,0.422-' +
+                          '2.828,1.172L14.344,10H4'#13#10#9#9'c-2.211,0-4,1.789-4,4v44c0,2.211,1.78' +
+                          '9,4,4,4h56c2.211,0,4-1.789,4-4V14C64,11.789,62.211,10,60,10z M56' +
+                          ',54H8V18h8'#13#10#9#9'c1.062,0,2.078-0.422,2.828-1.172L25.656,10h12.688l' +
+                          '6.828,6.828C45.922,17.578,46.938,18,48,18h8V54z"/>'#13#10#9'<path fill=' +
+                          '"#394240" d="M32,18c-8.824,0-16,7.18-16,16c0,8.824,7.176,16,16,1' +
+                          '6s16-7.176,16-16C48,25.18,40.824,18,32,18z M32,42'#13#10#9#9'c-4.41,0-8-' +
+                          '3.59-8-8s3.59-8,8-8s8,3.59,8,8S36.41,42,32,42z"/>'#13#10#9'<circle fill' +
+                          '="#F9EBB2" cx="32" cy="34" r="8"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                      object imgAlbum6: TSkSvg
+                        Tag = 6
+                        Align = Center
+                        HitTest = True
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = LoadFromLibraryClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<path fill="#F9EBB2" d="M8,8h48v32.688l-9.113-9.113c-1' +
+                          '.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8z"/>'#13#10#9'<polygon fill' +
+                          '="#B4CCB9" points="28.117,56 44.059,40.059 56,52 56,56 '#9'"/>'#13#10#9'<g' +
+                          '>'#13#10#9#9'<path fill="#394240" d="M60,0H4C1.789,0,0,1.789,0,4v56c0,2.' +
+                          '211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V4C64,1.789,62.211,0,60,0z' +
+                          #13#10#9#9#9' M56,56H28.117l15.941-15.941L56,52V56z M56,40.688l-9.113-9.' +
+                          '113c-1.562-1.559-4.094-1.559-5.656,0L16.805,56H8V8h48V40.688z"/>' +
+                          #13#10#9#9'<circle fill="#394240" cx="24" cy="24" r="8"/>'#13#10#9'</g>'#13#10'</g>'#13 +
+                          #10'</svg>'
+                      end
+                      object imgDelete6: TSkSvg
+                        Tag = 6
+                        Align = Right
+                        HitTest = True
+                        Position.X = 136.000122070312500000
+                        Size.Width = 28.000000000000000000
+                        Size.Height = 28.000000000000000000
+                        Size.PlatformDefault = False
+                        OnClick = DeletePictureClick
+                        Svg.Source = 
+                          '<?xml version="1.0" encoding="utf-8"?>'#13#10#13#10'<!DOCTYPE svg PUBLIC "' +
+                          '-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-2001' +
+                          '0904/DTD/svg10.dtd">'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.co' +
+                          'm, Generator: SVG Repo Mixer Tools -->'#13#10'<svg version="1.0" id="L' +
+                          'ayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w' +
+                          'ww.w3.org/1999/xlink" '#13#10#9' width="800px" height="800px" viewBox="' +
+                          '0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve' +
+                          '">'#13#10'<g>'#13#10#9'<g>'#13#10#9#9'<path fill="#394240" d="M12,60c0,2.211,1.789,4,' +
+                          '4,4h32c2.211,0,4-1.789,4-4V16H12V60z M20,24h24v32H20V24z"/>'#13#10#9#9'<' +
+                          'path fill="#394240" d="M56,4H40c0-2.211-1.789-4-4-4h-8c-2.211,0-' +
+                          '4,1.789-4,4H8C5.789,4,4,5.789,4,8s1.789,4,4,4h48'#13#10#9#9#9'c2.211,0,4-' +
+                          '1.789,4-4S58.211,4,56,4z"/>'#13#10#9'</g>'#13#10#9'<rect x="20" y="24" fill="#' +
+                          'B4CCB9" width="24" height="32"/>'#13#10'</g>'#13#10'</svg>'
+                      end
+                    end
+                  end
+                end
+              end
+            end
+            object tiSignatures: TTabItem
+              CustomIcon = <
+                item
+                end>
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              StyledSettings = [Family]
+              IsSelected = True
+              Size.Width = 90.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = ''
+              TabOrder = 0
+              TabStop = False
+              Text = 'SIGNATURE'
+              ExplicitSize.cx = 196.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              object Image2: TImage
+                MultiResBitmap = <
+                  item
+                  end>
+                Position.X = 2.000000000000000000
+                Position.Y = 58.000000000000000000
+              end
+              object Layout10: TLayout
+                Align = Top
+                Padding.Left = 8.000000000000000000
+                Padding.Top = 2.000000000000000000
+                Padding.Right = 64.000000000000000000
+                Padding.Bottom = 2.000000000000000000
+                Margins.Top = 8.000000000000000000
+                Margins.Bottom = 8.000000000000000000
+                Position.Y = 8.000000000000000000
+                Size.Width = 720.000000000000000000
+                Size.Height = 44.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 34
+                object txtPersonsigning: TEdit
+                  Touch.InteractiveGestures = [LongTap, DoubleTap]
+                  Align = Client
+                  TabOrder = 0
+                  TabStop = False
+                  MaxLength = 250
+                  TextSettings.Font.Size = 18.000000000000000000
+                  TextSettings.FontColor = claWhite
+                  Margins.Right = 8.000000000000000000
+                  Size.Width = 484.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TextPrompt = 'Name of person signing'
+                  StyledSettings = [Family, Style, FontColor]
+                  Caret.Color = claChartreuse
+                end
+                object Text7: TText
+                  Align = MostLeft
+                  Margins.Right = 8.000000000000000000
+                  Position.X = 8.000000000000000000
+                  Position.Y = 2.000000000000000000
+                  Size.Width = 148.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'Person signing'
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.FontColor = claLightblue
+                  TextSettings.HorzAlign = Trailing
+                end
+              end
+              object RoundRectSignatureCust: TRoundRect
+                Align = Top
+                Corners = []
+                Fill.Color = claWhitesmoke
+                Margins.Left = 60.000000000000000000
+                Margins.Top = 64.000000000000000000
+                Margins.Right = 60.000000000000000000
+                Margins.Bottom = 8.000000000000000000
+                Position.X = 60.000000000000000000
+                Position.Y = 124.000000000000000000
+                Size.Width = 600.000000000000000000
+                Size.Height = 200.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Color = claFirebrick
+                Stroke.Thickness = 3.000000000000000000
+                Stroke.Dash = Dash
+                OnMouseDown = RoundRectSignatureCustMouseDown
+                OnMouseMove = RoundRectSignatureCustMouseMove
+                object PathSignatureCust: TPath
+                  Align = Client
+                  Fill.Kind = None
+                  Locked = True
+                  HitTest = False
+                  Size.Width = 600.000000000000000000
+                  Size.Height = 200.000000000000000000
+                  Size.PlatformDefault = False
+                  Stroke.Thickness = 2.000000000000000000
+                  WrapMode = Original
+                end
+              end
+              object btnClearSignature: TButton
+                StyledSettings = [Family, Style, FontColor]
+                Margins.Left = 4.000000000000000000
+                Margins.Top = 2.000000000000000000
+                Margins.Right = 4.000000000000000000
+                Margins.Bottom = 2.000000000000000000
+                Position.X = 60.000000000000000000
+                Position.Y = 342.000000000000000000
+                Size.Width = 180.000000000000000000
+                Size.Height = 36.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                TabStop = False
+                Text = 'Clear Signature'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.Trimming = None
+                OnClick = btnClearSignatureClick
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 279
+    Top = 591
+  end
+  object imgEdit: TImage
+    MultiResBitmap.Height = 32
+    MultiResBitmap.Width = 32
+    MultiResBitmap = <
+      item
+        Width = 32
+        Height = 32
+        PNG = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000000473424954080808087C086488000005F3494441545885D5974D6C1D
+          5715C77FE7CE879FF35E1C273871920627C26A514BA1AA60D1567142AAB04384
+          20394DA15D20242AB1020915D280EB149164CF028450912A50205E9020211615
+          AA12976F212101355549535C9A97B4759AF8F3CD9BB9E7B09879F3E6393685AA
+          0871373373EEC7F9FFFFF79C73EFC0FFB8C93B9D38F9F0734328DB0192B66F9E
+          FAC9C1B9FF2A8027C7A747CCE9617087C01E00FA560D49CCF8254ECE3BCFB913
+          5363B3EF0A8063E317B7C6625F33912FF437A270E3E688C6604C143BA238C0CC
+          C852234D3C8B37DBCC5F6FD35ACA32C19E4E23993CF9837DCD770C60E2E8F4A3
+          987DBBBF11D6B7EF6ED0DF0811C02A930D1001B3FC89C1CA52C6B5D92596E6D3
+          25B0C79EFAF1FE1FFE47002627CDD9CCF4299C3CBE634F9D4D43B5DC03156F48
+          8160B5BD0B707EAE4DF3F202989C963BF71E9F9C145DED2B5C0B80CD4C9F0A22
+          F7F86DA31BA9D543D46BEED0AC0BD9B4782F685725286C1B37C784F100572E2D
+          7ED5CF3C0F70EC6D1598383AFDA860CFECBA7D80DA86A064262239B382A58860
+          157B89AB63CB072322B49633FEF1D202AAFAC8EAEDE801F0C423177784292F0D
+          8FD4EB1B07E32EE92AF90EE1EE6BC9BA3726AC0409C2C25B09AFBFBABC9445DC
+          5E0D4C570510A53659AB87F50D0311AA86F78699A1DE50B5D2D67957354C0DD3
+          DCA12FBED5E7B6CED3D4686C8AE96F84F52863624D05F23CB74B3BDFD708E35A
+          D0C3AF47E382ABADD38715DBB3AA5F105A2B19CDCB8BA9171BFDE68FF6BFDAA3
+          803AFB545C736118BB02BD76191825A35C052D98815AC1B65042AD50C757BE7D
+          3E27EA73C4B5200A4C3ED9F15BCD8243FDF508F3A02822C296E17E463F34580E
+          F8FDB34DEEDD3F4C1839DA2DCFF5E60AB37F9B47800FDC37C45BD75A3406A33C
+          6D8B96269E3F5E7CBD8C89DA868076CB1F02BE5551C044E0BEA8E6BA4CBC3238
+          D4C7071FD89A2B60A0AADC7DFF56366FABB1E93D7D1CFCF41E3E7A7804F5CA1D
+          F76E61DB481D330842E19EB16DD407A252818E827DFD21C0DEF1F1B341A9C0B1
+          C3BFD802712D703980725B0A395FF8ED9BB9FC3EDFD397FF748317FF30C76B97
+          163830BE9B5FFFFC4A4EC38C99DFCDD15F0FB9FBFEADFCE5376FD27C65B19232
+          867302D0F77E864780CB0E200CA39D9D90EC466F4E3B0C1D1FFFDC2807C64772
+          1B7966786FCC355700886B0106652C786F25A04E86A85A59400142279B4B0502
+          A7A604A837C4E5481550852C539E39F9E7A20648E1285F6CF49ECDB496336EBC
+          D1CA599A15019B03C855D39E9A61BD05240790B47D338A037CA6B8C095B993EF
+          A7E3C817EF04E0674F5F02E0231FDBC9870FEEA0AF3FE0D933AF9026BE605C64
+          8FB9EEB7166BD105952FEFAFD315C464E2A1E9E5812D712D8C033AB3376C8A19
+          DADE8968E1CACB0B6CDFD3C039214D3C73575768278A00C3BBEB2C2F662CCC25
+          4800BB4607B836BB48D2D2723D11216D2BF3D7936446AFD6A7A68EF8220DC5CC
+          2EFE2A4DF4411748896BE9469BA51B6DAA6DF6C59B80E4E74EB1CF20342F2F96
+          DFA2C2DFFF7AB37B3E75825A8D762BC3607A6AEA882FB7000027E7DB2DFF60DC
+          1F9485DFB4B7E6976B491E5C74342C6246CA73C27A0ECFEA1A69DB00CE976ECB
+          17CF39EF2D4B135F56B2B226746ABC5A4F5FEFB85BEDA6BD6BF854F199A62A76
+          2B80135363B3227C2F59F1E5847C21AD1C3CF400EB29C1FE565B777C5ED65BCB
+          1E4CBEDB39077A000088F7277C664BEDC477ABD73A8E7D07985F7D5A6AD9EFBD
+          96E7489A787CA68B59907CA3EAB307C0E4D481AB209F6DB7BCF9CC6E05A1059B
+          55A0B4C87F2D9CABB73205D51B59AAB41335137BECE49983D77A48B3469B3872
+          E1B438F7953092BC30556F26508655F582BA5E33CBD98B71F2C4D97DC757F7BB
+          B526B9BBF63D81713A6DABF98CB28C7683B15B72D70ACE8ECDA74A9A78433825
+          778D7D7D2D5FFFFA5AFED085CF807C47848648AE8615178E6A72756D3965A3A8
+          78B088C9E79F3A3B76663D1F6FFB6332F9F07343EADD9711F91210431540B53E
+          74EE7F00A4827D5F549FCCE36AFDF66FFF9A1D3F7AE1BD0E7758CC3E01EC65AD
+          5F339816F8A9173B574DB5770540B58D8F9F0DEE886EDBE5521D0270F0C60B34
+          5FEB94D7FFABF64F944B564C7D4A28480000000049454E44AE426082}
+        FileName = 'C:\Users\Mrcreeperman246\Downloads\pen.png'
+      end>
+    Position.X = 592.000000000000000000
+    Position.Y = 144.000000000000000000
+    Visible = False
+  end
+  object imgPdf: TImage
+    MultiResBitmap.Height = 32
+    MultiResBitmap.Width = 32
+    MultiResBitmap = <
+      item
+        Width = 32
+        Height = 32
+        PNG = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000000473424954080808087C08648800000637494441545885C5975D6C14
+          D715C77F773E76D7BBFE60C104C7012B6025224A5553A8D0A6F553A43E258A01
+          C552A58A97466AA5A6388848416A93C8551FE0A18AD6A0284855FB54D246E401
+          122A7868A44804C9E6C37220B24CB043D280EDD804CC6276C73B73EFC9C3CE0C
+          B35B4352D42A238DE6DE7BEE3DE77FEF39F77FCEC0F7FCA8075DB8E5E597DB7D
+          DFEF00A86A3D33F1E69B5FFF5F016C1918E8F261BB52AA0FF809906E98B2049C
+          1638E68A1C3D7FE0C0BFFF27007EB46BD76A6359AF02BF69CB669DD56D6DAC6A
+          6921934A91765D10612908F0AA55BEBE7D9BB985054A954A80527F7560F07CB1
+          38F3C0007A060676A2D45B6DD96CEEF1CE4EDA7239945288486D71D84E7E014A
+          E5329F4E4F737371F18E52EAD763C5E2E1FF0EC0E0A0D5B3B0B0CF52EA958D8F
+          3C42473E5F1B17810663D158DC062454F3D5C2021357AF6244F67F9CCFFF9EC1
+          41D368CA5E76E79B36ED4F39CE2B3F7CF451F2CDCD883108604490D08009C704
+          6AF248969893CB64C8373773E3F6EDDED5E572FAAB91910FBE1540CFC0C04E4B
+          A93F3DD9D545733A1D2B8D765667CCD436642299483D106348B92E6DB91CF3B7
+          6EF5AE2914266787872F26EDD5B960CBEEDD0F0722971FEBECCCB5B7B6A242C5
+          2A02A154BC203AE6E8D8633724E627E365BE54627266E68EA3D463C9C0B49200
+          02186C6D6ACAE573398C31045A638C41876F34A68D41873223527B13633AB946
+          042DC2AA96165AB3D95C20F2FAB227B06560A02B506AEA8975EB9C5CBAFE8A0B
+          F7BE2EF14E1B76DE280758F43C26AE5EF5B56D777FF2C61B5F0238D1446D593B
+          9A5CD7C9B82E3AF46D5D84DFEF11F94EFDA6548A6C3AED963D6F1B70B00E8088
+          F4B5E572778D032B5B5A28BEF0420DA0317C3137C7A19327E958B1823DDBB601
+          E00701D76EDCE0E8F030A39F7DC6A6F5EBD9D3D717EBF8E7B973BCF3D14771BF
+          A5A989F2D2525F04208A0105149A52A9D8D7DA9838CADF39758A7DEFBECBDAF6
+          769EDBBA151DEEE8D0C99314DF7F9F406B763DFB2CEB56ADC284B2B74E9CE0B5
+          C38739313A5A8B955067B6E6DEDEFEFE7E3B06B0F1C517570219DBB2EA032E04
+          B0502EF3E9B56B78D52A9665C546BEBC7E9DD1A9290E1E3F8E6D59F4AC5F1FCB
+          223D5EB54A10EAD2C6605B1640FAD29A355DB10BDC54AA1363504AD5C8460445
+          8D6C00763CF5143FEFEDC5B22C8E9D39C38A6C16208EF0F952090132A9547C6A
+          BF7DE61900868E1FE7F4F87878CEB56BAC00719C3C70C501505A0B4AA1B54659
+          561C34D16E46A7A618BE7489C9D959CA9EC7E6EEEE9A3CBC7A3FDDB811055C9E
+          9E8ED7BCFEF6DB7C313787E7FB7571D5109EB513A86A3D93761CAA5AE324124D
+          A4ECF2F4346357AEDC65C4F0BBBD50C0B16D367777736E7292D313136CDEB001
+          803B9E47A952F90F420A420AB7E00684547CFDEC59AFA350D89B715DC7B6ED98
+          EB019A3319C63EFF9CB98585588963DB584AE1F93ED74B25DE3B7386BF7DF821
+          DA185CC7C1528AF353532C562AF149456BAB41C01DCF5B7A7C7A7AEFF8F8B8C4
+          97BCE7A5973E68CD669F6ECE64EE52702307843C4F4216C50B4AC5F2653365D8
+          2F552A94CAE57F5D3870E067B10B42DF1C2B2F2D3D9D4DB26083EF546804A56A
+          B286341CF74359042EC9A45EB58A52EA58A437CE05AEC8D140EBC0AB56D15AD7
+          DE30CA634E8FC6927C9F9C17E589863C107D9782005F6B5FDB760C204EC73323
+          23B73A0A854E6DCC8F53AE5B4BB1614A4DA6E4A43F4504139E401433121A8CDB
+          D17A6358AC5430C61CBA582CFE23B21BBB00C0F7FD3F003B2BD56ACEB5ED654B
+          AE38E984BC21093FAB884394AAF14194BE4558F27D7CAD17B5527F4CDAAC2B48
+          E6CF9E5D7CB850B8EC6BFDBC6D592AF27DB2C8A8AB8496D92D89F9D1DC406BBC
+          6A5514FCF2C2D0D0F03D0100CC8E8C8C77140A4D8131BD6A196575ED44659404
+          95EC47740CEC1B1B1A1A6AB4E7340E007C9CCFFFAEE7E64DF17C7FAFEB38CA6A
+          8CF6C676D44F544D12066BA0B52891FD632B57BEB69CADFB26FB4DBB77FF4244
+          0E29A59A2DA5E2FB5D57AA35288AFA5A6B041645A95F5D2816FF7E2F1BCB56C5
+          D1333B3C7C716D6FEF9F8D3122225B8D886D92F11015A1D155BB5BA2F928F517
+          DFF7777C72F0E0F0FD6C7CE75FB31FECD9B3CED27ABB82E7805E96F935139153
+          0ADED38E73342AB9BEED79A09FD3FEFE7E7BF2A187D606B6DD0E9082F90D3333
+          D78E1C39A21F44DFF7FA7C0348DB3609BE900CC50000000049454E44AE426082}
+        FileName = 'C:\Users\Mrcreeperman246\Downloads\pdf (1).png'
+      end>
+    Position.X = 576.000000000000000000
+    Position.Y = 200.000000000000000000
+    Visible = False
+  end
+  object MobilePermissions1: TMobilePermissions
+    Left = 416
+    Top = 224
+  end
+  object imgHtml: TImage
+    MultiResBitmap.Height = 32
+    MultiResBitmap.Width = 32
+    MultiResBitmap = <
+      item
+        Width = 32
+        Height = 32
+        PNG = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000000473424954080808087C0864880000062E494441545885C5974D6C5D
+          4715C77FE7DEFBBEFDED38F5736AA722841062272154804A1A412A1654D0B4D0
+          8F45C80216ADC402090A0E69A11821E583486C5850A10A242484D46E92546251
+          601555621122B0E3246DA15553E2676312E28FE7F79EEFCC1C16F7BEFBEEB31D
+          5AA2A28EF4346F66CECCF99FFF3973CE5CF8809BDCE9C6A1A72F6CB292190408
+          32D9CAF5133B6FFC5F010C1D9D1E51671E11E19022F701B935220D515E45E42C
+          E29D9939B5EBDAFB0260F0D8C501B1FEF741BED153F483C1AE8081CE0C858C47
+          3E10146818A5B6EA985F36541642166AD600BF0C8360E25FC73F56B96300E5F1
+          A923A03FEF2DFAA59DE502BD450F89B7288A20EB7A805B35CB954A9D1B555305
+          9EAAFC64F76FFE370013EA0D56A74EF81EE3635B0A0CF5644135DE21A82A22D1
+          76558D0E11496462496616422E5DAFE11C272BA5B1679910B75655B091FEC1EA
+          D4897CC61BDF3B5CA0BBE063AC43DA1483BAA6625055405332020A835D19F281
+          F0D77FD4BE57AE4E518163EFCA40797CEA8827FAEB7D2345BAF27E62587C6662
+          DEDAF9E6416B654560A9EEF8F3B515ACD3AFAE75471B804DCF5C2E678C796367
+          395FDADC19ACF371B4A11503D1766D4710CB3499505510985B345C9DAD57C320
+          D89E0E4C2F0D2063CC4477C12FF5177DAC03E31CCE81718AB51AFF77A9713467
+          95A8771AEF53AC46BD53B00E063A027A8A7E2963C2E7366460E8E8F488AAFDFB
+          EE2D85A094F3DAAC6EB32CE5EBDBB58DD64584A5BAE5D2F55A88916D333F1D7B
+          A78D0155F3E562D60BF2192FB1DEC69658072EB6C83A30D62573D6B57ECD7124
+          A7A975C5584721E351CC79197C1E6EEA6DDD0295433D451F010E7FAA8FDF5F59
+          64E656C8D6BE0C9FDDD1C9EF2E2DF0E068778B37853FBD5965C7608EBE52C0B9
+          BFDCE2E68AA5BBE0F3F0DE1E6E560D2F4F2EF0E8BE1EA62B75AE54EA204A57DE
+          67B9111E027E96624005E1D3A5AC87A23CBAAF87818E00AB50EECEF0958FF760
+          35BA6E7BEF2E70E0C31DA846EC3CF0D12EBEB4BB9BFBB7776015EEDB56E2A13D
+          DD1CDCD18955F8C26837DB067231934A47CE43603F8FBDE82700B61CBBDA07E4
+          7D4F7071AA287767F8D0A62C9BBB22926617425E78F506972A3566E2FF97676A
+          80F2FA5C9D031FE9C43AE5C0F60E5E9FABA3440A015CEC126315DF1380DC5D5B
+          778C242E302E1CF288EEAC8D63E7EB9FE9C73808628E4C9C789C8B98688E55E1
+          FCDFAA3CB9BF9FD1A13CC3BD595E9E5CE093F794B04E516DC68626612C8027F4
+          026F45E659553CC15AC57A1182E7CECD70E1ED1AF76FEF60E28BE58499668271
+          8EE496FCBB6AB8786D856F7E6E33E7DF58268CAD302ECA904EA3E0055D773B3C
+          88EA3940C36A8BB618978BC75635B1A8496F042262ED95CB4B6CEDCFF2CA9525
+          9C46E05C2CFBC4BD7D3C7F789827EEEDA16123D8EABB9BCD780654CAE3532BE5
+          AE205FCCF97C62A4C86B7375166B969EA2CFB6811C17DE5E01606B7F8E4246B8
+          3A5B076074A8C0ECA261B961191BCA73F19D1A777506F4167DA62B75F60C17C9
+          791190F965CB6B73752A0B61A3F2D6D5122F3D6E5B89E8BB937FEC2AFA07BBF2
+          5E824BD6548A88FED8974DE8A971735DE2C5665D48F62B2CD40C8B0DF787CAA9
+          DD9F4F8230D6767665D51DECC879ADFCDFE43BBEF7E9C2A32E55925170B414BB
+          0DB2657C462D544439DB160391807726B46A6AAB2EC95CADECA6492674A94C67
+          525931CAFD2EB51667516D65C886518CD51023EB01446F387D61A9E19202931C
+          E4D62B8F0A50AA8FE5D27B5D1A8C5316EB16945F34EB40BB0B00A3C18FB0F6C8
+          4AE84A595F52E5B4F5DA69E3F33D3611A11E3A42ABCB36233F4EAFB595E3F9D3
+          BB6655F95AB5E174D54699AB594CD2EEB0F1BDB6C938BD46FB9A838671D4569D
+          8AF0D43F8F8FCDB581DB08F1E0F8E4494FE4683E103C217E76917A82910460EB
+          AD485BC036E79C837AE85091E3955363CFAED5E5AD9D00982D8E3DA34E4FD6C2
+          88096BE3D29A94E668CE5817075AEA21625BC1B76A945AE854D11395C2E80F36
+          74CF4693CD561E9F3C0C3C2F428727E089ACBBDB1B358DE9575816D527674EEF
+          F9EDED64DFF5C364E8E90B9B9C9FFD8EC0B7802CDC1E40CA1BA1C2AF8CFA3F9C
+          3FBD6BF6BF9DFFDE3FCDBE3D354CC0230E7D48603F1B7C9A219C1727E7B09C49
+          5FB5F705405B7BEC45BF3C327A3719B30940D49F9F7973FA3A2F3D6EEFE8BC0F
+          B2FD07241BF60B0E5542F80000000049454E44AE426082}
+        FileName = 'C:\Users\Mrcreeperman246\Downloads\pdf (1).png'
+      end>
+    Position.X = 584.000000000000000000
+    Position.Y = 208.000000000000000000
+    Visible = False
+  end
+  object qryListJobs: TFDQuery
+    Connection = DM.FDlocal
+    SQL.Strings = (
+      'SELECT jobno, custname, jobtype, jobdate'
+      'FROM jobs_master'
+      'ORDER BY jobno DESC')
+    Left = 312
+    Top = 168
+  end
+  object ActionList1: TActionList
+    Left = 72
+    Top = 575
+    object TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromLibraryAction1DidFinishTaking
+    end
+    object TakePhotoFromCameraAction1: TTakePhotoFromCameraAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromCameraAction1DidFinishTaking
+    end
+  end
+  object qrySavePhoto: TFDQuery
+    Connection = DM.FDlocal
+    Left = 344
+    Top = 307
+  end
+  object qryJobphotos: TFDQuery
+    Connection = DM.FDlocal
+    Left = 288
+    Top = 267
+  end
+end

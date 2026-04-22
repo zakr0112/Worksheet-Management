@@ -1,0 +1,369 @@
+inherited JobForm_Windows: TJobForm_Windows
+  DesignerMasterStyle = 0
+  inherited TCJobs: TTabControl
+    Sizes = (
+      640s
+      768s
+      640s
+      768s
+      640s
+      768s)
+    inherited TIjoblist: TTabItem
+      ExplicitSize.cx = 38.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited LVZJobs: TListView
+        OnItemClickEx = nil
+        OnPullRefresh = nil
+      end
+      inherited panHeaderCustList: TPanel
+        inherited spdNew: TSpeedButton
+          OnClick = nil
+        end
+        inherited spdHome: TSpeedButton
+          OnClick = nil
+        end
+      end
+      inherited MVDrawerJOB: TMultiView
+        inherited gpanelSort: TGridPanelLayout
+          inherited radSortJobnoLH: TRadioButton
+            OnChange = nil
+          end
+        end
+      end
+    end
+    inherited TIjobdetails: TTabItem
+      ExplicitSize.cx = 56.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited panHeaderCustDetails: TPanel
+        inherited spdbackcustomer: TSpeedButton
+          OnClick = nil
+        end
+      end
+    end
+    inherited TIJobsEdit: TTabItem
+      ExplicitSize.cx = 396.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      inherited tbarJobsEdit: TToolBar
+        inherited spdJobsBack: TSpeedButton
+          OnClick = nil
+        end
+      end
+      inherited ToolBar1: TToolBar
+        inherited spdSaveJob: TSpeedButton
+          OnClick = nil
+        end
+      end
+      inherited gridpanMain: TGridPanelLayout
+        inherited gridpanCust: TGridPanelLayout
+          ControlCollection = <
+            item
+              Column = 0
+              Control = Text1
+              Row = 1
+            end
+            item
+              Column = 1
+              Control = memAddress
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = lblEmail1
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = lblMobile
+              Row = 4
+            end
+            item
+              Column = 1
+              Control = txtEmail
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = txtTelephone
+              Row = 4
+            end
+            item
+              Column = 0
+              Control = layoutCust
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = lblPostcode
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = txtPostcode
+              Row = 2
+            end>
+          inherited memAddress: TMemo
+            Viewport.Width = 226.000000000000000000
+            Viewport.Height = 106.000000000000000000
+          end
+          inherited layoutCust: TLayout
+            Size.Width = 86.000000000000000000
+            inherited txtCustname: TEdit
+              Size.Width = 36.000000000000000000
+            end
+            inherited spdSelectCustomer: TSpeedButton
+              Position.X = 38.000000000000000000
+              OnClick = nil
+            end
+          end
+        end
+      end
+      inherited VertScrollBox1: TVertScrollBox
+        Viewport.Width = 640.000000000000000000
+        Viewport.Height = 208.000000000000000000
+        inherited layForScrollJobs: TLayout
+          inherited TCJobDetails: TTabControl
+            Sizes = (
+              640s
+              333s
+              640s
+              333s
+              640s
+              333s
+              640s
+              333s
+              640s
+              333s
+              640s
+              333s
+              640s
+              333s
+              640s
+              333s)
+            inherited TIReason: TTabItem
+              ExplicitSize.cx = 87.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              inherited memReason: TMemo
+                Viewport.Width = 624.000000000000000000
+                Viewport.Height = 545.000000000000000000
+              end
+            end
+            inherited tiWork: TTabItem
+              ExplicitSize.cx = 196.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              inherited memWorkdone: TMemo
+                Viewport.Width = 624.000000000000000000
+                Viewport.Height = 545.000000000000000000
+              end
+            end
+            inherited tiRemedial: TTabItem
+              ExplicitSize.cx = 196.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              inherited memRemedial: TMemo
+                Viewport.Width = 624.000000000000000000
+                Viewport.Height = 493.000000000000000000
+              end
+            end
+            inherited tiSpareparts: TTabItem
+              ExplicitSize.cx = 156.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              inherited LBSpares: TListBox
+                Viewport.Width = 776.000000000000000000
+                Viewport.Height = 464.000000000000000000
+              end
+              inherited GridPanelLayout3: TGridPanelLayout
+                inherited spdInsertspare: TSpeedButton
+                  OnClick = nil
+                end
+              end
+            end
+            inherited tiTime: TTabItem
+              ExplicitSize.cx = 196.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              inherited LBTime: TListBox
+                Viewport.Width = 776.000000000000000000
+                Viewport.Height = 464.000000000000000000
+              end
+              inherited GridPanelLayout2: TGridPanelLayout
+                inherited spdSaveTime: TSpeedButton
+                  OnClick = nil
+                end
+              end
+            end
+            inherited TIExpenses: TTabItem
+              ExplicitSize.cx = 99.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              inherited LBExpenses: TListBox
+                Viewport.Width = 776.000000000000000000
+                Viewport.Height = 464.000000000000000000
+              end
+              inherited GridPanelLayout1: TGridPanelLayout
+                inherited spdSaveExpenses: TSpeedButton
+                  OnClick = nil
+                end
+              end
+            end
+            inherited tiPhotos: TTabItem
+              ExplicitSize.cx = 113.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              inherited GPLjobs: TGridPanelLayout
+                ControlCollection = <
+                  item
+                    Column = 0
+                    Control = rectMainphoto
+                    Row = 1
+                  end
+                  item
+                    Column = 0
+                    Control = layImage1
+                    Row = 0
+                  end
+                  item
+                    Column = 1
+                    Control = layImage2
+                    Row = 0
+                  end
+                  item
+                    Column = 2
+                    Control = layImage3
+                    Row = 0
+                  end
+                  item
+                    Column = 3
+                    Control = layImage4
+                    Row = 0
+                  end
+                  item
+                    Column = 3
+                    Control = layImage5
+                    Row = 1
+                  end
+                  item
+                    Column = 3
+                    Control = layImage6
+                    Row = 2
+                  end>
+                inherited rectMainphoto: TRectangle
+                  Size.Width = 151.999923706054700000
+                  Size.Height = 125.000000000000000000
+                  OnClick = nil
+                  inherited imgMainphoto: TImage
+                    Size.Width = 145.999923706054700000
+                    Size.Height = 119.000000000000000000
+                  end
+                end
+                inherited layImage1: TLayout
+                  inherited rectImage1: TRectangle
+                    OnClick = nil
+                    inherited layControls1: TLayout
+                      inherited imgCamera1: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgAlbum1: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgDelete1: TSkSvg
+                        OnClick = nil
+                      end
+                    end
+                  end
+                end
+                inherited layImage2: TLayout
+                  inherited rectImage2: TRectangle
+                    OnClick = nil
+                    inherited layControls2: TLayout
+                      inherited imgCamera2: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgAlbum2: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgDelete2: TSkSvg
+                        OnClick = nil
+                      end
+                    end
+                  end
+                end
+                inherited layImage3: TLayout
+                  inherited rectImage3: TRectangle
+                    OnClick = nil
+                    inherited layControls3: TLayout
+                      inherited imgCamera3: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgAlbum3: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgDelete3: TSkSvg
+                        OnClick = nil
+                      end
+                    end
+                  end
+                end
+                inherited layImage4: TLayout
+                  inherited rectImage4: TRectangle
+                    OnClick = nil
+                    inherited layControls4: TLayout
+                      inherited imgCamera4: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgAlbum4: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgDelete4: TSkSvg
+                        OnClick = nil
+                      end
+                    end
+                  end
+                end
+                inherited layImage5: TLayout
+                  inherited rectImage5: TRectangle
+                    OnClick = nil
+                    inherited layControls5: TLayout
+                      inherited imgCamera5: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgAlbum5: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgDelete5: TSkSvg
+                        OnClick = nil
+                      end
+                    end
+                  end
+                end
+                inherited layImage6: TLayout
+                  inherited rectImage6: TRectangle
+                    inherited layControls6: TLayout
+                      inherited imgCamera6: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgAlbum6: TSkSvg
+                        OnClick = nil
+                      end
+                      inherited imgDelete6: TSkSvg
+                        OnClick = nil
+                      end
+                    end
+                  end
+                end
+              end
+            end
+            inherited tiSignatures: TTabItem
+              ExplicitSize.cx = 196.000000000000000000
+              ExplicitSize.cy = 49.000000000000000000
+              inherited Layout10: TLayout
+                inherited btnClearSignature: TButton
+                  OnClick = nil
+                end
+              end
+              inherited RoundRectSignatureCust: TRoundRect
+                OnMouseDown = nil
+                OnMouseMove = nil
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

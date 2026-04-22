@@ -1,0 +1,2 @@
+.\assets\internal\logo.svg
+.\assets\internal\logo.png

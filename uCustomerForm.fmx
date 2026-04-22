@@ -1,0 +1,1041 @@
+object CustomerForm: TCustomerForm
+  Left = 0
+  Top = 0
+  Caption = 'Customer Management'
+  ClientHeight = 564
+  ClientWidth = 700
+  Position = MainFormCenter
+  StyleBook = DM.StyleBook1
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object TCCustomers: TTabControl
+    Align = Client
+    Size.Width = 700.000000000000000000
+    Size.Height = 564.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 1
+    TabOrder = 1
+    TabPosition = PlatformDefault
+    Sizes = (
+      700s
+      515s
+      700s
+      515s)
+    object TIcustomerlist: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = False
+      Size.Width = 38.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'List'
+      ExplicitSize.cx = 38.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object LVcustomers: TListView
+        ItemAppearanceClassName = 'TDynamicAppearance'
+        ItemEditAppearanceClassName = 'TDynamicAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        AlternatingColors = True
+        Align = Client
+        Margins.Right = 8.000000000000000000
+        Size.Width = 692.000000000000000000
+        Size.Height = 471.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        ItemAppearance.ItemHeight = 56
+        ItemAppearance.HeaderHeight = 1
+        ItemAppearance.FooterHeight = 1
+        ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+          item
+            AppearanceObjectName = 'lvoCustname'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 18.000000000000000000
+            Appearance.TextAlign = Leading
+            Appearance.TextShadow.Enabled = False
+            Appearance.TextColor = claPaleturquoise
+            Appearance.Width = 566.000000000000000000
+            Appearance.Height = 28.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'lvoContact'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 16.000000000000000000
+            Appearance.TextAlign = Leading
+            Appearance.TextShadow.Enabled = False
+            Appearance.Width = 308.000000000000000000
+            Appearance.Height = 28.000000000000000000
+            Appearance.VertAlign = Trailing
+          end
+          item
+            AppearanceObjectName = 'Accessory3'
+            AppearanceClassName = 'TAccessoryObjectAppearance'
+            Appearance.Width = 44.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.Visible = False
+          end
+          item
+            AppearanceObjectName = 'lvoPhone'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 16.000000000000000000
+            Appearance.TextAlign = Trailing
+            Appearance.TextShadow.Enabled = False
+            Appearance.Width = 264.000000000000000000
+            Appearance.Height = 28.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Trailing
+            Appearance.PlaceOffset.X = -106.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'lvoImgEdit'
+            AppearanceClassName = 'TImageObjectAppearance'
+            Appearance.ScalingMode = Original
+            Appearance.Width = 42.000000000000000000
+            Appearance.Height = 42.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Center
+          end
+          item
+            AppearanceObjectName = 'lvoImgPdf'
+            AppearanceClassName = 'TImageObjectAppearance'
+            Appearance.ScalingMode = Original
+            Appearance.Width = 42.000000000000000000
+            Appearance.Height = 42.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.VertAlign = Center
+            Appearance.Visible = False
+            Appearance.PlaceOffset.X = -54.000000000000000000
+          end>
+        ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+          item
+            AppearanceObjectName = 'Text1'
+            AppearanceClassName = 'TTextObjectAppearance'
+          end>
+        OnItemClickEx = LVcustomersItemClickEx
+        OnPullRefresh = LVcustomersPullRefresh
+        SearchVisible = True
+        PullToRefresh = True
+      end
+      object panHeaderCustList: TPanel
+        Align = MostTop
+        Size.Width = 700.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object spdNew: TSpeedButton
+          Align = MostRight
+          Padding.Left = 4.000000000000000000
+          Padding.Top = 4.000000000000000000
+          Padding.Right = 4.000000000000000000
+          Padding.Bottom = 4.000000000000000000
+          Position.X = 612.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          OnClick = spdNewClick
+          object svgNew: TSkSvg
+            Align = Client
+            Size.Width = 36.000000000000000000
+            Size.Height = 36.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="utf-8"?>'#13#10'<!-- Uploaded to: SVG Re' +
+              'po, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->'#13#10'<svg w' +
+              'idth="800px" height="800px" viewBox="0 0 1024 1024" class="icon"' +
+              '  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M512' +
+              ' 512m-448 0a448 448 0 1 0 896 0 448 448 0 1 0-896 0Z" fill="#4CA' +
+              'F50" /><path d="M448 298.666667h128v426.666666h-128z" fill="#FFF' +
+              'FFF" /><path d="M298.666667 448h426.666666v128H298.666667z" fill' +
+              '="#FFFFFF" /></svg>'
+          end
+        end
+        object lblHeader: TSkLabel
+          Align = Client
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 32.000000000000000000
+          Size.Width = 520.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style]
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claGhostwhite
+          Words = <
+            item
+              Text = 'Customers list'
+            end>
+        end
+        object spdHome: TSpeedButton
+          Align = MostLeft
+          Padding.Left = 4.000000000000000000
+          Padding.Top = 4.000000000000000000
+          Padding.Right = 4.000000000000000000
+          Padding.Bottom = 4.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          OnClick = spdHomeClick
+          object svgHome: TSkSvg
+            Align = Client
+            Size.Width = 36.000000000000000000
+            Size.Height = 36.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="utf-8"?>'#13#10'<!-- License: PD. Made b' +
+              'y icons8: https://icons8.com/c/flat-color-icons -->'#13#10'<svg width=' +
+              '"800px" height="800px" viewBox="0 0 48 48" version="1" xmlns="ht' +
+              'tp://www.w3.org/2000/svg" enable-background="new 0 0 48 48">'#13#10'  ' +
+              '  <polygon fill="#E8EAF6" points="42,39 6,39 6,23 24,6 42,23"/>'#13 +
+              #10'    <g fill="#C5CAE9">'#13#10'        <polygon points="39,21 34,16 34' +
+              ',9 39,9"/>'#13#10'        <rect x="6" y="39" width="36" height="5"/>'#13#10 +
+              '    </g>'#13#10'    <polygon fill="#B71C1C" points="24,4.3 4,22.9 6,25' +
+              '.1 24,8.4 42,25.1 44,22.9"/>'#13#10'    <rect x="18" y="28" fill="#D84' +
+              '315" width="12" height="16"/>'#13#10'    <rect x="21" y="17" fill="#01' +
+              '579B" width="6" height="6"/>'#13#10'    <path fill="#FF8A65" d="M27.5,' +
+              '35.5c-0.3,0-0.5,0.2-0.5,0.5v2c0,0.3,0.2,0.5,0.5,0.5S28,38.3,28,3' +
+              '8v-2C28,35.7,27.8,35.5,27.5,35.5z"/>'#13#10'</svg>'
+          end
+        end
+        object spdMenu: TSpeedButton
+          Align = MostRight
+          Padding.Left = 6.000000000000000000
+          Padding.Top = 6.000000000000000000
+          Padding.Right = 6.000000000000000000
+          Padding.Bottom = 6.000000000000000000
+          Position.X = 656.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          object svgMenu: TSkSvg
+            Align = Client
+            Size.Width = 32.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="iso-8859-1"?>'#13#10'<!-- Uploaded to: S' +
+              'VG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->'#13#10'<' +
+              'svg height="800px" width="800px" version="1.1" id="Layer_1" xmln' +
+              's="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/19' +
+              '99/xlink" '#13#10#9' viewBox="0 0 508 508" xml:space="preserve">'#13#10'<circ' +
+              'le style="fill:#324A5E;" cx="254" cy="254" r="254"/>'#13#10'<g>'#13#10#9'<pol' +
+              'ygon style="fill:#FFFFFF;" points="300.8,323.6 398.8,323.6 397.2' +
+              ',348.4 302.4,348.4 '#9'"/>'#13#10#9'<polygon style="fill:#FFFFFF;" points=' +
+              '"402,272.4 400,299.2 299.6,299.2 297.6,272.4 '#9'"/>'#13#10#9'<polygon sty' +
+              'le="fill:#FFFFFF;" points="450,180.4 407.6,180.4 403.2,248 296.4' +
+              ',248 292,180.4 249.6,180.4 350,80 '#9'"/>'#13#10'</g>'#13#10'<g>'#13#10#9'<polygon sty' +
+              'le="fill:#FF7058;" points="207.2,184.4 109.2,184.4 110.8,159.6 2' +
+              '05.6,159.6 '#9'"/>'#13#10#9'<polygon style="fill:#FF7058;" points="106,235' +
+              '.6 108,208.8 208.4,208.8 210.4,235.6 '#9'"/>'#13#10#9'<polygon style="fill' +
+              ':#FF7058;" points="58,327.6 100.4,327.6 104.8,260 211.6,260 216,' +
+              '327.6 258.4,327.6 158,428 '#9'"/>'#13#10'</g>'#13#10'</svg>'
+          end
+        end
+      end
+      object MultiView1: TMultiView
+        DrawerOptions.Placement = Right
+        MasterButton = spdMenu
+        Mode = Drawer
+        Size.Width = 250.000000000000000000
+        Size.Height = 494.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        TabOrder = 2
+        object gpanelSort: TGridPanelLayout
+          Align = Top
+          Padding.Left = 2.000000000000000000
+          Padding.Top = 2.000000000000000000
+          Padding.Right = 2.000000000000000000
+          Padding.Bottom = 2.000000000000000000
+          Size.Width = 250.000000000000000000
+          Size.Height = 273.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = lblSort
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = radSortAZ
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = radSortZA
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              SizeStyle = Absolute
+              Value = 30.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 44.000000000000000000
+            end
+            item
+              SizeStyle = Absolute
+              Value = 44.000000000000000000
+            end
+            item
+              Value = 50.000000000000000000
+            end
+            item
+              Value = 50.000000000000000000
+            end>
+          object lblSort: TLabel
+            Align = Client
+            StyledSettings = [Family, Style, FontColor]
+            Size.Width = 246.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 16.000000000000000000
+            Text = 'Sort By'
+            TabOrder = 0
+          end
+          object radSortAZ: TRadioButton
+            Align = Client
+            GroupName = 'custSort'
+            IsChecked = True
+            Margins.Left = 16.000000000000000000
+            Size.Width = 230.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'Customer Name (A-Z)'
+            OnChange = radSortAZChange
+          end
+          object radSortZA: TRadioButton
+            Align = Client
+            GroupName = 'custSort'
+            Margins.Left = 16.000000000000000000
+            Size.Width = 230.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Text = 'Customer Name (Z-A)'
+            OnChange = radSortZAChange
+          end
+        end
+      end
+    end
+    object TIcustomerdetails: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = True
+      Size.Width = 56.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Details'
+      ExplicitSize.cx = 56.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object TCCustedit: TTabControl
+        Align = Client
+        Size.Width = 700.000000000000000000
+        Size.Height = 459.000000000000000000
+        Size.PlatformDefault = False
+        TabHeight = 49.000000000000000000
+        TabIndex = 1
+        TabOrder = 0
+        TabPosition = PlatformDefault
+        Sizes = (
+          700s
+          410s
+          700s
+          410s)
+        object tiEdit: TTabItem
+          CustomIcon = <
+            item
+            end>
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Trimming = None
+          StyledSettings = [Family, Style, FontColor]
+          IsSelected = False
+          Size.Width = 115.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = ''
+          TabOrder = 0
+          Text = 'EDIT DETAILS'
+          ExplicitSize.cx = 350.000000000000000000
+          ExplicitSize.cy = 49.000000000000000000
+          object gpanCustomer: TGridPanelLayout
+            Align = Client
+            Padding.Left = 2.000000000000000000
+            Padding.Top = 2.000000000000000000
+            Padding.Right = 2.000000000000000000
+            Padding.Bottom = 2.000000000000000000
+            Margins.Left = 4.000000000000000000
+            Margins.Top = 4.000000000000000000
+            Margins.Right = 4.000000000000000000
+            Margins.Bottom = 4.000000000000000000
+            Size.Width = 692.000000000000000000
+            Size.Height = 402.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            ColumnCollection = <
+              item
+                SizeStyle = Absolute
+                Value = 150.000000000000000000
+              end
+              item
+                Value = 100.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 64.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = Label1
+                Row = 0
+              end
+              item
+                Column = 1
+                Control = txtCustname
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = Label3
+                Row = 1
+              end
+              item
+                Column = 1
+                Control = memCustaddress
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = Label5
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = txtCustpostcode
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = Label7
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = Label10
+                Row = 4
+              end
+              item
+                Column = 0
+                Control = Label13
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = txtCusttelephone
+                Row = 3
+              end
+              item
+                Column = 1
+                Control = txtCustemail
+                Row = 4
+              end
+              item
+                Column = 1
+                Control = txtCustcontact
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = GridPanelLayout1
+                Row = 6
+              end>
+            RowCollection = <
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 160.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end
+              item
+                SizeStyle = Absolute
+                Value = 44.000000000000000000
+              end>
+            object Label1: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Customer Name *'
+              TabOrder = 6
+            end
+            object txtCustname: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 11
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object Label3: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 156.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Address'
+              TabOrder = 5
+            end
+            object memCustaddress: TMemo
+              Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+              DataDetectorTypes = []
+              StyledSettings = [Family, Style, FontColor]
+              TextSettings.Font.Size = 18.000000000000000000
+              Align = Client
+              Size.Width = 474.000000000000000000
+              Size.Height = 156.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 12
+              Viewport.Width = 470.000000000000000000
+              Viewport.Height = 152.000000000000000000
+            end
+            object Label5: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Postcode'
+              TabOrder = 4
+            end
+            object txtCustpostcode: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 10
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object Label7: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Telephone No.'
+              TabOrder = 2
+            end
+            object Label10: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Email Address'
+              TabOrder = 1
+            end
+            object Label13: TLabel
+              Align = Client
+              StyledSettings = [Family, Style]
+              Size.Width = 146.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 14.000000000000000000
+              TextSettings.FontColor = claLightblue
+              TextSettings.HorzAlign = Trailing
+              Text = 'Contact Name'
+              TabOrder = 0
+            end
+            object txtCusttelephone: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 7
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object txtCustemail: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 8
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object txtCustcontact: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 9
+              TextSettings.Font.Size = 18.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Style, FontColor]
+            end
+            object GridPanelLayout1: TGridPanelLayout
+              Align = Client
+              Padding.Left = 2.000000000000000000
+              Padding.Top = 2.000000000000000000
+              Padding.Right = 2.000000000000000000
+              Padding.Bottom = 2.000000000000000000
+              Size.Width = 474.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 3
+              ColumnCollection = <
+                item
+                  Value = 33.338048014085410000
+                end
+                item
+                  Value = 33.361942341916990000
+                end
+                item
+                  Value = 33.300000000000000000
+                end>
+              ControlCollection = <
+                item
+                  Column = 0
+                  Control = btnSave
+                  Row = 0
+                end
+                item
+                  Column = 1
+                  Control = btnDelete
+                  Row = 0
+                end
+                item
+                  Column = 2
+                  Control = btnCancel
+                  Row = 0
+                end>
+              RowCollection = <
+                item
+                  Value = 100.000000000000000000
+                end>
+              object btnSave: TButton
+                Align = Client
+                StyledSettings = [Family, Style, FontColor]
+                Size.Width = 154.022354125976600000
+                Size.Height = 36.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 2
+                Text = 'Save'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.Trimming = None
+                OnClick = btnSaveClick
+              end
+              object btnDelete: TButton
+                Align = Client
+                StyledSettings = [Family, Style, FontColor]
+                Size.Width = 154.135604858398400000
+                Size.Height = 36.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                Text = 'Delete'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.Trimming = None
+                OnClick = btnDeleteClick
+              end
+              object btnCancel: TButton
+                Align = Client
+                StyledSettings = [Family, Style, FontColor]
+                Size.Width = 153.841979980468800000
+                Size.Height = 36.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                Text = 'Cancel'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.Trimming = None
+                OnClick = btnCancelClick
+              end
+            end
+          end
+        end
+        object tiPreviousJobs: TTabItem
+          CustomIcon = <
+            item
+            end>
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Trimming = None
+          StyledSettings = [Family, Style, FontColor]
+          IsSelected = True
+          Size.Width = 115.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = ''
+          TabOrder = 0
+          Text = 'JOB HISTORY'
+          ExplicitSize.cx = 350.000000000000000000
+          ExplicitSize.cy = 49.000000000000000000
+          object LVZJobs: TListView
+            ItemAppearanceClassName = 'TDynamicAppearance'
+            ItemEditAppearanceClassName = 'TDynamicAppearance'
+            HeaderAppearanceClassName = 'TListHeaderObjects'
+            FooterAppearanceClassName = 'TListHeaderObjects'
+            AlternatingColors = True
+            Align = Client
+            Margins.Right = 8.000000000000000000
+            Size.Width = 692.000000000000000000
+            Size.Height = 410.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            ItemAppearance.ItemHeight = 56
+            ItemAppearance.HeaderHeight = 1
+            ItemAppearance.FooterHeight = 1
+            ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+              item
+                AppearanceObjectName = 'lvoJobno'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 18.000000000000000000
+                Appearance.TextAlign = Trailing
+                Appearance.TextShadow.Enabled = False
+                Appearance.Width = 199.000000000000000000
+                Appearance.Height = 28.000000000000000000
+                Appearance.Align = Trailing
+                Appearance.PlaceOffset.X = -64.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'lvoJobtype'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 18.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.TextShadow.Enabled = False
+                Appearance.TextColor = claPaleturquoise
+                Appearance.Width = 233.000000000000000000
+                Appearance.Height = 28.000000000000000000
+                Appearance.PlaceOffset.X = 126.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'lvoJobdate'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 20.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.TextColor = claLightskyblue
+                Appearance.Width = 119.000000000000000000
+                Appearance.Height = 56.000000000000000000
+                Appearance.VertAlign = Center
+              end
+              item
+                AppearanceObjectName = 'lvoImgPdf'
+                AppearanceClassName = 'TImageObjectAppearance'
+                Appearance.ScalingMode = Original
+                Appearance.Width = 42.000000000000000000
+                Appearance.Height = 42.000000000000000000
+                Appearance.Align = Trailing
+                Appearance.VertAlign = Center
+                Appearance.PlaceOffset.X = -6.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'lvoReason'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 18.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.Width = 481.000000000000000000
+                Appearance.Height = 28.000000000000000000
+                Appearance.PlaceOffset.X = 126.000000000000000000
+                Appearance.PlaceOffset.Y = 28.000000000000000000
+              end>
+            ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+              item
+                AppearanceObjectName = 'Text1'
+                AppearanceClassName = 'TTextObjectAppearance'
+              end>
+            OnItemClickEx = LVZJobsItemClickEx
+            OnPullRefresh = LVZJobsPullRefresh
+            SearchVisible = True
+            PullToRefresh = True
+          end
+          object rectProgress: TRectangle
+            Align = Contents
+            Fill.Color = x80000000
+            Size.Width = 720.000000000000000000
+            Size.Height = 815.000000000000000000
+            Size.PlatformDefault = False
+            Visible = False
+            object aniProgress: TAniIndicator
+              Align = Center
+            end
+          end
+        end
+      end
+      object tbarCustomerEdit: TToolBar
+        Padding.Left = 8.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 8.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Margins.Bottom = 8.000000000000000000
+        Size.Width = 700.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        TabStop = False
+        object lblCustomerDetails: TSkLabel
+          Align = Client
+          Margins.Left = 16.000000000000000000
+          Margins.Right = 32.000000000000000000
+          Size.Width = 592.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style]
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claGhostwhite
+          Words = <
+            item
+              Text = 'Edit Customer Details'
+            end>
+        end
+        object spdbackcustomer: TSpeedButton
+          Align = MostLeft
+          Padding.Left = 4.000000000000000000
+          Padding.Top = 4.000000000000000000
+          Padding.Right = 4.000000000000000000
+          Padding.Bottom = 4.000000000000000000
+          Position.X = 8.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentcirclebuttonstyle'
+          TextSettings.Trimming = None
+          OnClick = btnCancelClick
+          object svgbackcustomer: TSkSvg
+            Align = Client
+            Size.Width = 36.000000000000000000
+            Size.Height = 36.000000000000000000
+            Size.PlatformDefault = False
+            Svg.Source = 
+              '<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo' +
+              ', www.svgrepo.com, Generator: SVG Repo Mixer Tools -->'#13#10'<svg wid' +
+              'th="800px" height="800px" viewBox="0 0 48 48" fill="none" xmlns=' +
+              '"http://www.w3.org/2000/svg">'#13#10'<rect width="48" height="48" fill' +
+              '="white" fill-opacity="0.01"/>'#13#10'<path fill-rule="evenodd" clip-r' +
+              'ule="evenodd" d="M44 40.8361C39.1069 34.8632 34.7617 31.4739 30.' +
+              '9644 30.6682C27.1671 29.8625 23.5517 29.7408 20.1182 30.303V41L4' +
+              ' 23.5453L20.1182 7V17.167C26.4667 17.2172 31.8638 19.4948 36.309' +
+              '5 24C40.7553 28.5052 43.3187 34.1172 44 40.8361Z" fill="#0356fc"' +
+              ' stroke="#000000" stroke-width="4" stroke-linejoin="round"/>'#13#10'</' +
+              'svg>'
+          end
+        end
+      end
+    end
+  end
+  object imgEdit: TImage
+    MultiResBitmap.Height = 32
+    MultiResBitmap.Width = 32
+    MultiResBitmap = <
+      item
+        Width = 32
+        Height = 32
+        PNG = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000000473424954080808087C086488000005F3494441545885D5974D6C1D
+          5715C77FE7CE879FF35E1C273871920627C26A514BA1AA60D1567142AAB04384
+          20394DA15D20242AB1020915D280EB149164CF028450912A50205E9020211615
+          AA12976F212101355549535C9A97B4759AF8F3CD9BB9E7B09879F3E6393685AA
+          0871373373EEC7F9FFFFF79C73EFC0FFB8C93B9D38F9F0734328DB0192B66F9E
+          FAC9C1B9FF2A8027C7A747CCE9617087C01E00FA560D49CCF8254ECE3BCFB913
+          5363B3EF0A8063E317B7C6625F33912FF437A270E3E688C6604C143BA238C0CC
+          C852234D3C8B37DBCC5F6FD35ACA32C19E4E23993CF9837DCD770C60E2E8F4A3
+          987DBBBF11D6B7EF6ED0DF0811C02A930D1001B3FC89C1CA52C6B5D92596E6D3
+          25B0C79EFAF1FE1FFE47002627CDD9CCF4299C3CBE634F9D4D43B5DC03156F48
+          8160B5BD0B707EAE4DF3F202989C963BF71E9F9C145DED2B5C0B80CD4C9F0A22
+          F7F86DA31BA9D543D46BEED0AC0BD9B4782F685725286C1B37C784F100572E2D
+          7ED5CF3C0F70EC6D1598383AFDA860CFECBA7D80DA86A064262239B382A58860
+          157B89AB63CB072322B49633FEF1D202AAFAC8EAEDE801F0C423177784292F0D
+          8FD4EB1B07E32EE92AF90EE1EE6BC9BA3726AC0409C2C25B09AFBFBABC9445DC
+          5E0D4C570510A53659AB87F50D0311AA86F78699A1DE50B5D2D67957354C0DD3
+          DCA12FBED5E7B6CED3D4686C8AE96F84F52863624D05F23CB74B3BDFD708E35A
+          D0C3AF47E382ABADD38715DBB3AA5F105A2B19CDCB8BA9171BFDE68FF6BFDAA3
+          803AFB545C736118BB02BD76191825A35C052D98815AC1B65042AD50C757BE7D
+          3E27EA73C4B5200A4C3ED9F15BCD8243FDF508F3A02822C296E17E463F34580E
+          F8FDB34DEEDD3F4C1839DA2DCFF5E60AB37F9B47800FDC37C45BD75A3406A33C
+          6D8B96269E3F5E7CBD8C89DA868076CB1F02BE5551C044E0BEA8E6BA4CBC3238
+          D4C7071FD89A2B60A0AADC7DFF56366FABB1E93D7D1CFCF41E3E7A7804F5CA1D
+          F76E61DB481D330842E19EB16DD407A252818E827DFD21C0DEF1F1B341A9C0B1
+          C3BFD802712D703980725B0A395FF8ED9BB9FC3EDFD397FF748317FF30C76B97
+          163830BE9B5FFFFC4A4EC38C99DFCDD15F0FB9FBFEADFCE5376FD27C65B19232
+          867302D0F77E864780CB0E200CA39D9D90EC466F4E3B0C1D1FFFDC2807C64772
+          1B7966786FCC355700886B0106652C786F25A04E86A85A59400142279B4B0502
+          A7A604A837C4E5481550852C539E39F9E7A20648E1285F6CF49ECDB496336EBC
+          D1CA599A15019B03C855D39E9A61BD05240790B47D338A037CA6B8C095B993EF
+          A7E3C817EF04E0674F5F02E0231FDBC9870FEEA0AF3FE0D933AF9026BE605C64
+          8FB9EEB7166BD105952FEFAFD315C464E2A1E9E5812D712D8C033AB3376C8A19
+          DADE8968E1CACB0B6CDFD3C039214D3C73575768278A00C3BBEB2C2F662CCC25
+          4800BB4607B836BB48D2D2723D11216D2BF3D7936446AFD6A7A68EF8220DC5CC
+          2EFE2A4DF4411748896BE9469BA51B6DAA6DF6C59B80E4E74EB1CF20342F2F96
+          DFA2C2DFFF7AB37B3E75825A8D762BC3607A6AEA882FB7000027E7DB2DFF60DC
+          1F9485DFB4B7E6976B491E5C74342C6246CA73C27A0ECFEA1A69DB00CE976ECB
+          17CF39EF2D4B135F56B2B226746ABC5A4F5FEFB85BEDA6BD6BF854F199A62A76
+          2B80135363B3227C2F59F1E5847C21AD1C3CF400EB29C1FE565B777C5ED65BCB
+          1E4CBEDB39077A000088F7277C664BEDC477ABD73A8E7D07985F7D5A6AD9EFBD
+          96E7489A787CA68B59907CA3EAB307C0E4D481AB209F6DB7BCF9CC6E05A1059B
+          55A0B4C87F2D9CABB73205D51B59AAB41335137BECE49983D77A48B3469B3872
+          E1B438F7953092BC30556F26508655F582BA5E33CBD98B71F2C4D97DC757F7BB
+          B526B9BBF63D81713A6DABF98CB28C7683B15B72D70ACE8ECDA74A9A78433825
+          778D7D7D2D5FFFFA5AFED085CF807C47848648AE8615178E6A72756D3965A3A8
+          78B088C9E79F3A3B76663D1F6FFB6332F9F07343EADD9711F91210431540B53E
+          74EE7F00A4827D5F549FCCE36AFDF66FFF9A1D3F7AE1BD0E7758CC3E01EC65AD
+          5F339816F8A9173B574DB5770540B58D8F9F0DEE886EDBE5521D0270F0C60B34
+          5FEB94D7FFABF64F944B564C7D4A28480000000049454E44AE426082}
+        FileName = 'C:\Users\Mrcreeperman246\Downloads\pen.png'
+      end>
+    Position.X = 592.000000000000000000
+    Position.Y = 144.000000000000000000
+    Visible = False
+  end
+  object imgPdf: TImage
+    MultiResBitmap.Height = 32
+    MultiResBitmap.Width = 32
+    MultiResBitmap = <
+      item
+        Width = 32
+        Height = 32
+        PNG = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000000473424954080808087C08648800000637494441545885C5975D6C14
+          D715C77F773E76D7BBFE60C104C7012B6025224A5553A8D0A6F553A43E258A01
+          C552A58A97466AA5A6388848416A93C8551FE0A18AD6A0284855FB54D246E401
+          122A7868A44804C9E6C37220B24CB043D280EDD804CC6276C73B73EFC9C3CE0C
+          B35B4352D42A238DE6DE7BEE3DE77FEF39F77FCEC0F7FCA8075DB8E5E597DB7D
+          DFEF00A86A3D33F1E69B5FFF5F016C1918E8F261BB52AA0FF809906E98B2049C
+          1638E68A1C3D7FE0C0BFFF27007EB46BD76A6359AF02BF69CB669DD56D6DAC6A
+          6921934A91765D10612908F0AA55BEBE7D9BB985054A954A80527F7560F07CB1
+          38F3C0007A060676A2D45B6DD96CEEF1CE4EDA7239945288486D71D84E7E014A
+          E5329F4E4F737371F18E52EAD763C5E2E1FF0EC0E0A0D5B3B0B0CF52EA958D8F
+          3C42473E5F1B17810663D158DC062454F3D5C2021357AF6244F67F9CCFFF9EC1
+          41D368CA5E76E79B36ED4F39CE2B3F7CF451F2CDCD883108604490D08009C704
+          6AF248969893CB64C8373773E3F6EDDED5E572FAAB91910FBE1540CFC0C04E4B
+          A93F3DD9D545733A1D2B8D765667CCD436642299483D106348B92E6DB91CF3B7
+          6EF5AE2914266787872F26EDD5B960CBEEDD0F0722971FEBECCCB5B7B6A242C5
+          2A02A154BC203AE6E8D8633724E627E365BE54627266E68EA3D463C9C0B49200
+          02186C6D6ACAE573398C31045A638C41876F34A68D41873223527B13633AB946
+          042DC2AA96165AB3D95C20F2FAB227B06560A02B506AEA8975EB9C5CBAFE8A0B
+          F7BE2EF14E1B76DE280758F43C26AE5EF5B56D777FF2C61B5F0238D1446D593B
+          9A5CD7C9B82E3AF46D5D84DFEF11F94EFDA6548A6C3AED963D6F1B70B00E8088
+          F4B5E572778D032B5B5A28BEF0420DA0317C3137C7A19327E958B1823DDBB601
+          E00701D76EDCE0E8F030A39F7DC6A6F5EBD9D3D717EBF8E7B973BCF3D14771BF
+          A5A989F2D2525F04208A0105149A52A9D8D7DA9838CADF39758A7DEFBECBDAF6
+          769EDBBA151DEEE8D0C99314DF7F9F406B763DFB2CEB56ADC284B2B74E9CE0B5
+          C38739313A5A8B955067B6E6DEDEFEFE7E3B06B0F1C517570219DBB2EA032E04
+          B0502EF3E9B56B78D52A9665C546BEBC7E9DD1A9290E1E3F8E6D59F4AC5F1FCB
+          223D5EB54A10EAD2C6605B1640FAD29A355DB10BDC54AA1363504AD5C8460445
+          8D6C00763CF5143FEFEDC5B22C8E9D39C38A6C16208EF0F952090132A9547C6A
+          BF7DE61900868E1FE7F4F87878CEB56BAC00719C3C70C501505A0B4AA1B54659
+          561C34D16E46A7A618BE7489C9D959CA9EC7E6EEEE9A3CBC7A3FDDB811055C9E
+          9E8ED7BCFEF6DB7C313787E7FB7571D5109EB513A86A3D93761CAA5AE324124D
+          A4ECF2F4346357AEDC65C4F0BBBD50C0B16D367777736E7292D313136CDEB001
+          803B9E47A952F90F420A420AB7E00684547CFDEC59AFA350D89B715DC7B6ED98
+          EB019A3319C63EFF9CB98585588963DB584AE1F93ED74B25DE3B7386BF7DF821
+          DA185CC7C1528AF353532C562AF149456BAB41C01DCF5B7A7C7A7AEFF8F8B8C4
+          97BCE7A5973E68CD669F6ECE64EE52702307843C4F4216C50B4AC5F2653365D8
+          2F552A94CAE57F5D3870E067B10B42DF1C2B2F2D3D9D4DB26083EF546804A56A
+          B286341CF74359042EC9A45EB58A52EA58A437CE05AEC8D140EBC0AB56D15AD7
+          DE30CA634E8FC6927C9F9C17E589863C107D9782005F6B5FDB760C204EC73323
+          23B73A0A854E6DCC8F53AE5B4BB1614A4DA6E4A43F4504139E401433121A8CDB
+          D17A6358AC5430C61CBA582CFE23B21BBB00C0F7FD3F003B2BD56ACEB5ED654B
+          AE38E984BC21093FAB884394AAF14194BE4558F27D7CAD17B5527F4CDAAC2B48
+          E6CF9E5D7CB850B8EC6BFDBC6D592AF27DB2C8A8AB8496D92D89F9D1DC406BBC
+          6A5514FCF2C2D0D0F03D0100CC8E8C8C77140A4D8131BD6A196575ED44659404
+          95EC47740CEC1B1B1A1A6AB4E7340E007C9CCFFFAEE7E64DF17C7FAFEB38CA6A
+          8CF6C676D44F544D12066BA0B52891FD632B57BEB69CADFB26FB4DBB77FF4244
+          0E29A59A2DA5E2FB5D57AA35288AFA5A6B041645A95F5D2816FF7E2F1BCB56C5
+          D1333B3C7C716D6FEF9F8D3122225B8D886D92F11015A1D155BB5BA2F928F517
+          DFF7777C72F0E0F0FD6C7CE75FB31FECD9B3CED27ABB82E7805E96F935139153
+          0ADED38E73342AB9BEED79A09FD3FEFE7E7BF2A187D606B6DD0E9082F90D3333
+          D78E1C39A21F44DFF7FA7C0348DB3609BE900CC50000000049454E44AE426082}
+        FileName = 'C:\Users\Mrcreeperman246\Downloads\pdf (1).png'
+      end>
+    Position.X = 576.000000000000000000
+    Position.Y = 200.000000000000000000
+    Visible = False
+  end
+  object qryCustomerlist: TFDQuery
+    Connection = DM.FDlocal
+    SQL.Strings = (
+      'SELECT * FROM customers '
+      'ORDER BY custname')
+    Left = 344
+    Top = 288
+  end
+  object qryListJobs: TFDQuery
+    Connection = DM.FDlocal
+    SQL.Strings = (
+      'SELECT jobno, custname, jobtype, jobdate'
+      'FROM jobs_master'
+      'ORDER BY jobno DESC')
+    Left = 256
+    Top = 272
+  end
+end

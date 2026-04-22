@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded button background -->
+  <rect x="3" y="3" width="48" height="48" rx="24" ry="24"
+        fill="#F4A259"/>
+
+  <!-- Inner subtle highlight -->
+  <defs>
+    <linearGradient id="btnHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="5" y="5" width="44" height="44" rx="22" ry="22"
+        fill="url(#btnHighlight)"/>
+
+  <!-- EDIT text -->
+  <text x="50%" y="50%"
+        text-anchor="middle"
+        dominant-baseline="central"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="14"
+        font-weight="bold"
+        fill="#FFFFFF">
+    EDIT
+  </text>
+</svg>
+
+

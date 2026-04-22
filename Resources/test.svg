@@ -1,0 +1,80 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024"
+     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Worksheet Manager Clipboard">
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1024" height="1024" rx="140" fill="#e8e3d6"/>
+
+  <!-- Clipboard shadow -->
+  <rect x="260" y="170" width="520" height="700" rx="60" fill="#c7c0ae"/>
+
+  <!-- Clipboard body -->
+  <rect x="240" y="150" width="520" height="700" rx="60"
+        fill="#fff1d6" stroke="#b3a892" stroke-width="8"/>
+
+  <!-- Clipboard clip -->
+  <rect x="360" y="80" width="280" height="80" rx="26" fill="#c07f1f"/>
+  <circle cx="500" cy="120" r="26" fill="#fff1d6"/>
+
+  <!-- Checklist boxes -->
+  <rect x="290" y="260" width="48" height="48" rx="6"
+        fill="none" stroke="#c07f1f" stroke-width="8"/>
+  <rect x="290" y="360" width="48" height="48" rx="6"
+        fill="none" stroke="#c07f1f" stroke-width="8"/>
+  <rect x="290" y="460" width="48" height="48" rx="6"
+        fill="none" stroke="#c07f1f" stroke-width="8"/>
+
+  <!-- Ticks -->
+  <path d="M298 286 L316 304 L334 268"
+        fill="none" stroke="#3f6a24" stroke-width="10"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M298 386 L316 404 L334 368"
+        fill="none" stroke="#3f6a24" stroke-width="10"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M298 486 L316 504 L334 468"
+        fill="none" stroke="#3f6a24" stroke-width="10"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Checklist text lines -->
+  <rect x="370" y="272" width="260" height="16" rx="8" fill="#b3a892"/>
+  <rect x="370" y="372" width="240" height="16" rx="8" fill="#b3a892"/>
+  <rect x="370" y="472" width="300" height="16" rx="8" fill="#b3a892"/>
+
+  <!-- Pretend image thumbnail -->
+  <rect x="370" y="560" width="260" height="180" rx="20"
+        fill="#d1c8b4" stroke="#b3a892" stroke-width="6"/>
+
+  <!-- Image: sky -->
+  <rect x="380" y="570" width="240" height="90" rx="16" fill="#8fa7c7"/>
+
+  <!-- Image: mountains -->
+  <path d="M390 660 L440 600 L500 680 L540 630 L610 700 L390 700 Z"
+        fill="#5f7694"/>
+
+  <!-- Image: sun -->
+  <circle cx="560" cy="600" r="22" fill="#d8921f"/>
+
+  <!-- TRUE construction hard hat -->
+  <g transform="translate(560,620)">
+    <!-- Brim (short, flat) -->
+    <ellipse cx="120" cy="150" rx="120" ry="28" fill="#d8921f"/>
+
+    <!-- Dome (low, shallow) -->
+    <path d="M40 150
+             C40 105, 80 70, 120 70
+             C160 70, 200 105, 200 150 Z"
+          fill="#f2b93d"/>
+
+    <!-- Horizontal band -->
+    <path d="M40 140 H200"
+          stroke="#c07f1f" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- Top ribs (shallow, construction style) -->
+    <path d="M120 70 L120 140"
+          stroke="#c07f1f" stroke-width="10" stroke-linecap="round"/>
+    <path d="M95 80 L95 140"
+          stroke="#c07f1f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M145 80 L145 140"
+          stroke="#c07f1f" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+</svg>
